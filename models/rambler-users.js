@@ -10,7 +10,7 @@ const rambleUserSchema = new Schema({
       unique: true
     },
   favorites: [{id: Number}],
-  completed: [{id:Number}]
+  completed: [{id: Number}]
   
 });
 
