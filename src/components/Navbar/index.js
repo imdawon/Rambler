@@ -12,7 +12,7 @@ function Navbar() {
         <button type="submit"> Wishlist </button>
         </Link>
         <Link to="/Completed">
-        <button type="submit"> Complted </button>
+        <button type="submit"> Completed </button>
         </Link>
         </div>
     );
