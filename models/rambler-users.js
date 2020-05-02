@@ -9,8 +9,8 @@ const rambleUserSchema = new Schema({
       required: true,
       unique: true
     },
-  favorites: [{id: Number}],
-  completed: [{id: Number}]
+  favorites: [ Number ],
+  completed: [ Number ]
   
 });
 
