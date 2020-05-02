@@ -2,13 +2,18 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const rambleUser = new Schema({
-  title: { type: String, required: true },
-  author: { type: String, required: true },
-  synopsis: String,
-  date: { type: Date, default: Date.now }
+
+const rambleUserSchema = new Schema({
+  user: { 
+      type: String, 
+      required: true,
+      unique: true
+    },
+  favorites: [{id: Number}],
+  completed: [{id:Number}]
+  
 });
 
-const Book = mongoose.model("Book", bookSchema);
+const RambleUser = mongoose.model("RambleUser", rambleUserSchema);
 
-module.exports = rambleUser;
+module.exports = RambleUser;
