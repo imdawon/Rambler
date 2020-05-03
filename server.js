@@ -1,11 +1,9 @@
 const express = require("express");
-
-const mongoose = require("mongoose");
 const routes = require("./routes");
 const mongoose = require("mongoose");
-const env = ("dotenv");
 const app = express();
 const PORT = process.env.PORT || 3001;
+require("dotenv").config();
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
