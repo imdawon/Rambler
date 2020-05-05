@@ -50,7 +50,9 @@ function Search() {
   };
 
   const handleFormSubmit = (event) => {
+    console.log("before event")
     event.preventDefault();
+    console.log("After")
   };
 
   return (
