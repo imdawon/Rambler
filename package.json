@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "rambler",
   "version": "1.0.0",
-  "description": "Mern Demo",
+  "description": "A hiking app with a sense of reward",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -21,6 +21,7 @@
   "dependencies": {
     "express": "^4.16.3",
     "if-env": "^1.0.4",
-    "mongoose": "^5.9.12"
+    "mongoose": "^5.9.12",
+    "dotenv": "^8.2.0"
   }
 }
