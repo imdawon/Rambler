@@ -15,6 +15,7 @@ function SearchResults() {
             <p>Distance: {hike.length}</p>
             <p>Elevation Gain: {hike.ascent}</p>
             <img src={hike.imgSmall} alt={hike.name} />
+            <button className='bucketlist-add'>Bucket List</button>
             </li>
         ))}
         </ul>
