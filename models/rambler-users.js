@@ -9,9 +9,8 @@ const rambleUserSchema = new Schema({
       required: true,
       unique: true
     },
-  favorites: [ Number ],
-  completed: [ Number ]
-  
+  bucketlist: [ Number ],
+  log: [ Number ]
 });
 
 const RambleUser = mongoose.model("RambleUser", rambleUserSchema);
