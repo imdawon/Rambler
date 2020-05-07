@@ -4,7 +4,7 @@ import * as queryString from 'query-string';
 function Auth() {
 
     const stringifiedParams = queryString.stringify({
-        client_id: process.env.OAUTH_CLIENT_ID,
+        client_id: process.env.REACT_APP_OAUTH_CLIENT_ID,
         redirect_uri: 'https://shielded-reaches-07010.herokuapp.com/google-auth/',
         scope: [
           'https://www.googleapis.com/auth/userinfo.email',
