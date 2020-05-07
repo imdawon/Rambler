@@ -2,8 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "../Navbar";
 import Search from "../../pages/Search";
-import Completed from "../../pages/Completed";
-import Wishlist from "../../pages/Wishlist";
 import Auth from "../../pages/Auth";
 import Log from "../../pages/Log";
 import BucketList from "../../pages/BucketList";
