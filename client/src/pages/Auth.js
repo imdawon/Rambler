@@ -1,12 +1,7 @@
 import React from "react";
-import * as queryString from 'query-string';
 
 function Auth() {
-
-  const onSignIn = (googleUser) => {
-    console.log(`User is ${googleUser.getBasicProfile}`)
-  }
-
+  
   return (
     <div>
       <h1>Weclome to Rambler Sign-in</h1>
