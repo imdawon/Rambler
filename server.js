@@ -27,6 +27,10 @@ app.get('/*', function (req, res) {
    res.sendFile(path.join(__dirname, 'build', 'index.html'));
  });
 
+ app.get('/google-auth', function(req, res) {
+   res.send("Google auth page");
+ })
+
 // Start the API server
 app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

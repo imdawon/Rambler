@@ -4,6 +4,7 @@ import Navbar from "../Navbar";
 import Search from "../../pages/Search";
 import Completed from "../../pages/Completed";
 import Wishlist from "../../pages/Wishlist";
+import Auth from "../../pages/Auth";
 
 function Main() {
     return (
@@ -18,6 +19,9 @@ function Main() {
         </Route>
         <Route exact path="/Completed"> 
         <Completed />
+        </Route>
+        <Route exact path="/Auth"> 
+        <Auth />
         </Route>
         </Switch>
         </Router>
