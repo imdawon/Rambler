@@ -3,16 +3,16 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 
-const rambleUserSchema = new Schema({
+const ramblerUserSchema = new Schema({
   user: { 
       type: String, 
       required: true,
       unique: true
     },
-  bucketlist: [ Number ],
-  log: [ Number ]
+  bucketlist: [[]],
+  log: [[]]
 });
 
-const RambleUser = mongoose.model("RambleUser", rambleUserSchema);
+const RamblerUser = mongoose.model("RamblerUser", ramblerUserSchema);
 
-module.exports = RambleUser;
+module.exports = RamblerUser;
