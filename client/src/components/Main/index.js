@@ -5,6 +5,8 @@ import Search from "../../pages/Search";
 import Completed from "../../pages/Completed";
 import Wishlist from "../../pages/Wishlist";
 import Auth from "../../pages/Auth";
+import Log from "../../pages/Log";
+import BucketList from "../../pages/BucketList";
 
 function Main() {
     return (
@@ -14,11 +16,11 @@ function Main() {
         <Route exact path="/">
         <Search />
         </Route>
-        <Route exact path="/Wishlist">
-        <Wishlist />
+        <Route exact path="/BucketList">
+        <BucketList />
         </Route>
-        <Route exact path="/Completed"> 
-        <Completed />
+        <Route exact path="/Log"> 
+        <Log />
         </Route>
         <Route exact path="/Auth"> 
         <Auth />
