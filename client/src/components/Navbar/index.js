@@ -14,6 +14,9 @@ function Navbar() {
         <Link to="/Completed">
         <button type="submit"> Completed </button>
         </Link>
+        <Link to="/Auth">
+        <button type="submit"> Login </button>
+        </Link>
         </div>
     );
 }
