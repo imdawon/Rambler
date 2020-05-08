@@ -16,6 +16,7 @@ function Auth() {
   return (
     <div>
       <h1>Weclome to Rambler Sign-in</h1>
+      <a href="/google-auth">Login With Google</a>
       <GoogleLogin
         clientId={process.env.OAUTH_CLIENT_ID}
         buttonText="Login"
