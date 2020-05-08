@@ -1,10 +1,16 @@
 import React from "react";
-import GoogleLogin from "react-google-login"
+import GoogleLogin from "react-google-login";
+import axios from 'axios';
 
 function Auth() {
 
   const responseGoogle = (response) => {
-    console.log(response)
+    // id we need to pass to our backend
+    const id_token = response.tc.id_token;
+    // axios.post(`/google-auth`, id_token)
+    // .then(res => {
+    //   console.log(res);
+    // })
   }
 
   return (
