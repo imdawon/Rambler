@@ -35,12 +35,13 @@ app.use(passport.session());
 
 
 // Define routes
-app.get('/*', function (req, res) {
+app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.get('/google-auth',
-  passport.authenticate('google', { scope: ['profile'] }));
+  passport.authenticate('google', { scope: ['profile'] })
+);
 
 app.get('/google-auth/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),

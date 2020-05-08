@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleLogin from "react-google-login";
-import axios from 'axios';
+// import axios from 'axios';
 
 function Auth() {
 
@@ -17,7 +17,7 @@ function Auth() {
     <div>
       <h1>Weclome to Rambler Sign-in</h1>
       <GoogleLogin
-        clientId="174389928584-m3a4ljtpsks71r09srq96fobsujg8l9v.apps.googleusercontent.com"
+        clientId={process.env.OAUTH_CLIENT_ID}
         buttonText="Login"
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
