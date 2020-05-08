@@ -43,12 +43,9 @@ app.get('/google-auth',
   passport.authenticate('google', { scope: ['profile'] })
 );
 
-app.get('/google-auth/callback', (req, res) => {
-  // passport.authenticate('google', { failureRedirect: '/login' }),
+app.get('/google-auth/callback', passport.authenticate('google'), (req, res) => {
   res.send('you reached callback URI');
-    // Successful authentication, redirect home.
-    // res.redirect('/');
-  });
+});
 
 // Start the API server
 app.listen(PORT, function () {

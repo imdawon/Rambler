@@ -9,13 +9,10 @@ passport.use(
         callbackURL: '/google-auth/callback',
         clientID: process.env.OAUTH_CLIENT_ID,
         clientSecret: process.env.OAUTH_CLIENT_SECRET
-    }, () => {
-    // }, function (accessToken, refreshToken, profile, cb) {
-    //     // passport callback function
-    //     db.findOrCreate({ googleId: profile.id }, function (err, user) {
-    //         return cb(err, user);
-        })
-    // })
+    }, (accessToken, refreshToken, profile, done) => {
+        console.log('passport callback function fired')
+        console.log(profile)
+    })
 )
 
 module.exports = passport;
