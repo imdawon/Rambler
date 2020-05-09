@@ -16,7 +16,7 @@ passport.deserializeUser((id, done) => {
 passport.use(
     new GoogleStrategy({
         // options for google strat
-        callbackURL: '/google-auth/callback',
+        callbackURL: 'https://shielded-reaches-07010.herokuapp.com/google-auth/callback',
         clientID: process.env.OAUTH_CLIENT_ID,
         clientSecret: process.env.OAUTH_CLIENT_SECRET
     },
