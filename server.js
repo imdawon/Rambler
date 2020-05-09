@@ -19,13 +19,15 @@ if (process.env.NODE_ENV === "production") {
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rambler", {
   // use mongodb v4 connection settings
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true
 });
 
 app.use(require('express-session')({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: { sameSite: 'strict' }
 }));
 
 // Initialize Passport and restore authentication state, if any, from the
