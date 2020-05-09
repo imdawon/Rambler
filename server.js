@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const session = require("express-session");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const path = require('path');
@@ -22,17 +23,18 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rambler", {
   useUnifiedTopology: true
 });
 
-app.use(require('express-session')({
+app.use('express-session')({
   secret: process.env.SESSION_SECRET,
   resave: true,
-  saveUninitialized: true
-}));
+  saveUninitialized: true,
+  cookie: {
+    // secure: true
+    sameSite: true}
+});
 
-// Initialize Passport and restore authentication state, if any, from the
-// session.
+// Initialize Passport and restore authentication state, if any, from the session
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 // Define routes
 app.get('/', function (req, res) {
@@ -43,7 +45,8 @@ app.get('/google-auth',
   passport.authenticate('google', { scope: ['profile'] })
 );
 
-app.get('/google-auth/callback', passport.authenticate('google'), (req, res) => {
+app.get('/google-auth/callback', 
+  passport.authenticate('google'), (req, res) => {
   res.send('you reached callback URI');
 });
 
