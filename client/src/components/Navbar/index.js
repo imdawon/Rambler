@@ -14,6 +14,9 @@ function Navbar() {
         <Link to="/log">
         <button type="submit"> Log </button>
         </Link>
+        <Link to="/Auth">
+        <button type="submit"> Login </button>
+        </Link>
         </div>
     );
 }
