@@ -1,22 +1,92 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const rambleUserSchema = new Schema({
+
+const ramblerUserSchema = new Schema({
   user: { 
       type: String, 
       required: true,
       unique: true
     },
+  bucketlist: [
+    {
+      id: {
+        type: Number,
+        required: true
+      },
+      name: {
+        type: String,
+        required: true
+      },
+      location: {
+        type: String
+      },
+      latitude: {
+        type: Number
+      },
+      longitude: {
+        type: Number
+      },
+      length: {
+        type: Number
+      },
+      ascent: {
+        type: Number
+      },
+      img: {
+        type: String
+      },
+      summary: {
+        type: String
+      },
+      url: {
+        type: String
+      }
+    }
+  ],
+  log: [
+    {
+      id: {
+        type: Number,
+        required: true
+      },
+      name: {
+        type: String,
+        required: true
+      },
+      location: {
+        type: String
+      },
+      latitude: {
+        type: Number
+      },
+      longitude: {
+        type: Number
+      },
+      length: {
+        type: Number
+      },
+      ascent: {
+        type: Number
+      },
+      img: {
+        type: String
+      },
+      summary: {
+        type: String
+      },
+      url: {
+        type: String
+      }
+    }
+  ],
   googleId: {
     type: String,
     required: true,
     unique: true
-  },
-  favorites: [ Number ],
-  completed: [ Number ]
-  
+  }
 });
 
-const RambleUser = mongoose.model("RambleUser", rambleUserSchema);
+const RamblerUser = mongoose.model("RamblerUser", ramblerUserSchema);
 
-module.exports = RambleUser;
+module.exports = RamblerUser;
