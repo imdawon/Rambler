@@ -8,10 +8,10 @@ function Navbar() {
         <Link to="/">
         <button type="submit"> Search </button>
         </Link>
-        <Link to="/BucketList">
+        <Link to="/bucketList">
         <button type="submit"> Bucket List </button>
         </Link>
-        <Link to="/Log">
+        <Link to="/log">
         <button type="submit"> Log </button>
         </Link>
         <Link to="/Auth">

@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import HikeContext from "../../utils/HikeContext";
 import "./style.css";
 
-function SearchResults() {
+function SearchResults(props) {
     const hikeData = useContext(HikeContext)
     console.log("search result props", hikeData);
     return (
@@ -19,7 +19,14 @@ function SearchResults() {
                         <p className="card_text">Location: {hike.location} </p>
                         <p className="card_text">Distance: {hike.length} miles</p>
                         <p className="card_text">Elevation Gain: {hike.ascent} feet</p>
-                        <button className="btn card_btn">Add to Bucket List</button>
+                        <button className="btn card_btn bucketlist-add" onClick={() => {props.setBucketList(
+                            {"id": hike.id, 
+                            "name": hike.name, 
+                            "location": hike.location, 
+                            "length": hike.length, 
+                            "ascent": hike.ascent, 
+                            "img": hike.imgSmall}
+                            )}}>Add to Bucket List</button>
                         <button className="btn card_btn">Add to Log Book</button>
                 </div>
             </div>
@@ -29,6 +36,6 @@ function SearchResults() {
 
         </div>
     )
-}
+};
 
 export default SearchResults;
