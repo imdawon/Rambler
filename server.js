@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Connect to the Mongo DB
-mongoose.connect( "mongodb://localhost/rambler", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rambler", {
   // use mongodb v4 connection settings
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -52,6 +52,3 @@ app.use(routes);
 app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
-
-
-// process.env.MONGODB_URI ||
