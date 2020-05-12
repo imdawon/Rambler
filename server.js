@@ -47,8 +47,13 @@ app.get('/google-auth',
 
 app.get('/google-auth/callback', 
   passport.authenticate('google'), (req, res) => {
-  res.redirect('/');
+   console.log(req);
+  res.redirect(`/?code=${req.query.code}`);
 });
+
+// want react to read the query code it sends ater google sign in is complete
+// do get or post to google to verify the code is valid
+// based on JWT validity, pass user either to the desired location, or back to login saying login failed
 
 // Start the API server
 app.listen(PORT, function () {
