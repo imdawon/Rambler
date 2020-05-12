@@ -7,14 +7,22 @@ function SearchResults() {
     console.log("search result props", hikeData);
     return (
         <div>
-        <ul className="hikeResultList">
+        <ul className="hikeResultList cards">
         {hikeData.map(hike => (
-            <li key={hike.id} className="hikeListItem">
-            <p>Name: {hike.name}</p>
-            <p>Location: {hike.location} </p>
-            <p>Distance: {hike.length}</p>
-            <p>Elevation Gain: {hike.ascent}</p>
-            <img src={hike.imgSmall} alt={hike.name} />
+            <li key={hike.id} className="hikeListItem cards_item">
+            <div className="card">
+                <div className="card_image">
+                    <img className="card-img-top" src={hike.imgSmall} alt={hike.name} />
+                </div>
+                <div className="card_content is-centered">
+                        <h2 className="card_title">{hike.name}</h2>
+                        <p className="card_text">Location: {hike.location} </p>
+                        <p className="card_text">Distance: {hike.length} miles</p>
+                        <p className="card_text">Elevation Gain: {hike.ascent} feet</p>
+                        <button className="btn card_btn">Add to Bucket List</button>
+                        <button className="btn card_btn">Add to Log Book</button>
+                </div>
+            </div>
             </li>
         ))}
         </ul>
