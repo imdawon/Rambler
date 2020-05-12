@@ -14,10 +14,17 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     }, 
-    update: function(req, res) {
+    updateBucketList: function(req, res) {
         db
         .findOneAndUpdate(req.params.id, 
         {$push: {bucketlist: req.body}})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => console.log(err));
+    },
+    updateLog: function(req, res) {
+        db
+        .findOneAndUpdate(req.params.id, 
+        {$push: {log: req.body}})
         .then(dbModel => res.json(dbModel))
         .catch(err => console.log(err));
     }

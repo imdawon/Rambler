@@ -8,6 +8,14 @@ router
 router
     .route("/:id")
     .get(ramblerUserController.findById)
-    .put(ramblerUserController.update)
+
+router
+    .route("/log/:id")
+    .put(ramblerUserController.updateLog)
+
+router
+    .route("/bucketlist/:id")
+    .put(ramblerUserController.updateBucketList)
+
 
 module.exports = router;

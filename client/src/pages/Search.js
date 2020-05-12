@@ -20,31 +20,31 @@ function Search() {
 
   // bucket list hike data
   const [bucketList, setBucketList] = useState({
-      id: "", 
-      name: "", 
-      location: "", 
-      latitude: "",
-      longitude: "",
-      length: "", 
-      ascent: "", 
-      img: "",
-      summary: "",
-      url: ""
-    });
+    id: "",
+    name: "",
+    location: "",
+    latitude: "",
+    longitude: "",
+    length: "",
+    ascent: "",
+    img: "",
+    summary: "",
+    url: ""
+  });
 
- // completed log hike data
- const [log, setLog] = useState({
-  id: "", 
-  name: "", 
-  location: "", 
-  latitude: "",
-  longitude: "",
-  length: "", 
-  ascent: "", 
-  img: "",
-  summary: "",
-  url: ""
-});
+  // completed log hike data
+  const [log, setLog] = useState({
+    id: "",
+    name: "",
+    location: "",
+    latitude: "",
+    longitude: "",
+    length: "",
+    ascent: "",
+    img: "",
+    summary: "",
+    url: ""
+  });
 
   // when search page loads &|| the user enters a search
   useEffect(() => {
@@ -57,18 +57,38 @@ function Search() {
     }
   }, [debouncedLocation]);
 
-// When the user adds the hike to their bucketlist
-useEffect(() => {
-  if (bucketList.name === "") {
-    return;
-  }
-  console.log(bucketList)
-  let id = "5eb9b55205ad602434e0d4dc";
- 
-   API.addToBucketList(id, bucketList)
-   .then(res => console.log("Updated bucket list", res.data))
-   .catch(err => console.log(err))
-})
+  // When the user adds the hike to their bucketlist
+  useEffect(() => {
+    if (bucketList.name === "") {
+      return;
+    }
+    console.log(bucketList)
+    let id = "5ebac57381cebe188487fdd2";
+
+    API.addToBucketList(id, bucketList)
+      .then(res => {
+        console.log("Updated bucket list", res.data)
+        setBucketList({ name: "" })
+      })
+      .catch(err => console.log(err))
+  });
+
+  // When the user adds the hike to their Log
+  useEffect(() => {
+    if (log.name === "") {
+      return;
+    }
+    console.log(log)
+    let id = "5ebac57381cebe188487fdd2";
+
+    API.addToLog(id, log)
+      .then(res => {
+        console.log("Updated log", res.data)
+        setLog({ name: "" })
+      })
+      .catch(err => console.log(err))
+  });
+
   // takes user search input to convert to lat lon LocationIQ API 
   const generateCoordinates = () => {
     API.getLocation(searchLocation)
@@ -87,7 +107,7 @@ useEffect(() => {
   // Takes converted lat and lon to make REI API call to gather hike data
   const loadHikes = (lat, lon) => {
     API.getTrails(lat, lon).then((trails) => {
-    let hikeResults = trails.data.trails
+      let hikeResults = trails.data.trails
       console.log(trails.data.trails);
       setHikes(hikeResults);
     });
@@ -104,15 +124,17 @@ useEffect(() => {
 
   return (
     <HikeContext.Provider value={hikes}>
-    <div>
-      <SearchForm
-        handleFormSubmit={handleFormSubmit}
-        handleInputChange={handleInputChange}
-        results={searchLocation}
-      />
-      <SearchResults setBucketList={setBucketList}
-      />
-    </div>
+      <div>
+        <SearchForm
+          handleFormSubmit={handleFormSubmit}
+          handleInputChange={handleInputChange}
+          results={searchLocation}
+        />
+        <SearchResults
+          setBucketList={setBucketList}
+          setLog={setLog}
+        />
+      </div>
     </HikeContext.Provider>
   );
 }
