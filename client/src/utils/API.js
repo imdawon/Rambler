@@ -10,6 +10,9 @@ export default {
         return axios.get("/rambler/bucketlist/" + id);
     },
     addToBucketList: function(id, bucketListHike) {
-        return axios.put('/api/user/' + id, bucketListHike)
+        return axios.put('/api/user/bucketlist/' + id, bucketListHike)
+    },
+    addToLog: function(id, logHike) {
+        return axios.put('/api/user/log/' + id, logHike)
     }
 }

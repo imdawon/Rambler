@@ -5,6 +5,7 @@ import "./style.css";
 function SearchResults(props) {
     const hikeData = useContext(HikeContext)
     console.log("search result props", hikeData);
+
     return (
         <div>
         <ul className="hikeResultList">
@@ -17,15 +18,39 @@ function SearchResults(props) {
             <img src={hike.imgSmall} alt={hike.name} />
             <button className='bucketlist-add' 
             onClick={() => {props.setBucketList(
-                {"id": hike.id, 
-                "name": hike.name, 
-                "location": hike.location, 
-                "length": hike.length, 
-                "ascent": hike.ascent, 
-                "img": hike.imgSmall}
-                )}}
+                {
+                    "id": hike.id, 
+                    "name": hike.name, 
+                    "location": hike.location,  
+                    "latitude": hike.latitude,
+                    "longitude": hike.longitude,
+                    "length": hike.length, 
+                    "ascent": hike.ascent, 
+                    "img": hike.imgSmall,
+                    "summary": hike.summary,
+                    "url": hike.url
+                }
+            )}}
             >
-            Bucket List
+            Bucket List 
+            </button>
+            <button className='log-add' 
+            onClick={() => {props.setLog(
+                {
+                    "id": hike.id, 
+                    "name": hike.name, 
+                    "location": hike.location,  
+                    "latitude": hike.latitude,
+                    "longitude": hike.longitude,
+                    "length": hike.length, 
+                    "ascent": hike.ascent, 
+                    "img": hike.imgSmall,
+                    "summary": hike.summary,
+                    "url": hike.url
+                }
+            )}}
+            >
+            Log
             </button>
             </li>
         ))}

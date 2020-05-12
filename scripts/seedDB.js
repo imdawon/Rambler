@@ -10,16 +10,27 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rambler", {
 const ramblerUserSeed = [
     {
         user: "scuba_steve",
-        bucketlist: [{
+        bucketlist: [
+          {
             "id": "7027304",
             "name": "Cougar Mountain Red Town Loop",
             "location": "Newcastle, Washington",
             "length": "5.1",
             "ascent": "690",
             "img": "https://cdn-files.apstatic.com/hike/7031970_small_1554932139.jpg"
-        }],
-    log: []
-    }
+        }
+      ],
+    log: [
+      {
+        "id": "7027304",
+        "name": "Cougar Mountain Red Town Loop",
+        "location": "Newcastle, Washington",
+        "length": "5.1",
+        "ascent": "690",
+        "img": "https://cdn-files.apstatic.com/hike/7031970_small_1554932139.jpg"
+      }
+    ]
+  }
 ];
 
 db
