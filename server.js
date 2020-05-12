@@ -40,19 +40,9 @@ app.use(passport.session());
 // Define routes
 app.use(routes);
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-app.get('/google-auth',
-  passport.authenticate('google', { scope: ['profile'] })
-);
-
-app.get('/google-auth/callback', 
-  passport.authenticate('google'), (req, res) => {
-   console.log(req);
-  res.redirect(`/?code=${req.query.code}`);
-});
+// app.get('/', function (req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 // want react to read the query code it sends ater google sign in is complete
 // do get or post to google to verify the code is valid
