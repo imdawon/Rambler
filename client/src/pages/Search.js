@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import SearchForm from "../components/SearchForm";
 import SearchResults from "../components/SearchResults";
 import HikeContext from "../utils/HikeContext";
 import useDebounce from "../utils/debounceHook";
 import API from "../utils/API";
+import { useParams } from "react-router-dom";
 
 function Search() {
   // holds hikes returned from REI API
@@ -17,6 +18,35 @@ function Search() {
   const [searchLon, setSearchLon] = useState();
   const [searchLat, setSearchLat] = useState();
 
+  // bucket list hike data
+  const [bucketList, setBucketList] = useState({
+      id: "", 
+      name: "", 
+      location: "", 
+      latitude: "",
+      longitude: "",
+      length: "", 
+      ascent: "", 
+      img: "",
+      summary: "",
+      url: ""
+    });
+
+ // completed log hike data
+ const [log, setLog] = useState({
+  id: "", 
+  name: "", 
+  location: "", 
+  latitude: "",
+  longitude: "",
+  length: "", 
+  ascent: "", 
+  img: "",
+  summary: "",
+  url: ""
+});
+
+  // when search page loads &|| the user enters a search
   useEffect(() => {
     if (!searchLocation) {
       return;
@@ -27,6 +57,18 @@ function Search() {
     }
   }, [debouncedLocation]);
 
+// When the user adds the hike to their bucketlist
+useEffect(() => {
+  if (bucketList.name === "") {
+    return;
+  }
+  console.log(bucketList)
+  let id = "5eb9b55205ad602434e0d4dc";
+ 
+   API.addToBucketList(id, bucketList)
+   .then(res => console.log("Updated bucket list", res.data))
+   .catch(err => console.log(err))
+})
   // takes user search input to convert to lat lon LocationIQ API 
   const generateCoordinates = () => {
     API.getLocation(searchLocation)
@@ -51,11 +93,6 @@ function Search() {
     });
   };
 
-  // When the user adds the hike to their bucketlist
-  const addHikeToBucketList = (hikeData) => {
-    console.log(hikeData)
-  }
-
   // sets the users search to state
   const handleInputChange = (event) => {
     setSearchLocation(event.target.value);
@@ -73,7 +110,7 @@ function Search() {
         handleInputChange={handleInputChange}
         results={searchLocation}
       />
-      <SearchResults addHikeToBucketList={addHikeToBucketList}
+      <SearchResults setBucketList={setBucketList}
       />
     </div>
     </HikeContext.Provider>
