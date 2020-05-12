@@ -16,7 +16,7 @@ function SearchResults(props) {
             <p>Elevation Gain: {hike.ascent}</p>
             <img src={hike.imgSmall} alt={hike.name} />
             <button className='bucketlist-add' 
-            onClick={() => {props.addHikeToBucketList(
+            onClick={() => {props.setBucketList(
                 {"id": hike.id, 
                 "name": hike.name, 
                 "location": hike.location, 

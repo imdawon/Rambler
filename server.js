@@ -2,7 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const path = require('path');
+// const path = require('path');
+const routes = require('./routes')
 require("dotenv").config();
 
 // Define middleware here
@@ -14,7 +15,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Server-sided routes
-// require("./routes/routes")(app);
+app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rambler", {
@@ -23,9 +24,9 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rambler", {
     useUnifiedTopology: true
   });
 
-app.get('/*', function (req, res) {
-   res.sendFile(path.join(__dirname, 'build', 'index.html'));
- });
+// app.get('/*', function (req, res) {
+//    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+//  });
 
 // Start the API server
 app.listen(PORT, function () {

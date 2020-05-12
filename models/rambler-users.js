@@ -9,8 +9,78 @@ const ramblerUserSchema = new Schema({
       required: true,
       unique: true
     },
-  bucketlist: [[]],
-  log: [[]]
+  bucketlist: [
+    {
+      id: {
+        type: Number,
+        required: true
+      },
+      name: {
+        type: String,
+        required: true
+      },
+      location: {
+        type: String
+      },
+      latitude: {
+        type: Number
+      },
+      longitude: {
+        type: Number
+      },
+      length: {
+        type: Number
+      },
+      ascent: {
+        type: Number
+      },
+      img: {
+        type: String
+      },
+      summary: {
+        type: String
+      },
+      url: {
+        type: String
+      }
+    }
+  ],
+  log: [
+    {
+      id: {
+        type: Number,
+        required: true
+      },
+      name: {
+        type: String,
+        required: true
+      },
+      location: {
+        type: String
+      },
+      latitude: {
+        type: Number
+      },
+      longitude: {
+        type: Number
+      },
+      length: {
+        type: Number
+      },
+      ascent: {
+        type: Number
+      },
+      img: {
+        type: String
+      },
+      summary: {
+        type: String
+      },
+      url: {
+        type: String
+      }
+    }
+  ]
 });
 
 const RamblerUser = mongoose.model("RamblerUser", ramblerUserSchema);

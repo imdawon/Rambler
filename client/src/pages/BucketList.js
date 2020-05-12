@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import API from '../utils/API';
 
 function BucketList() {
-    const [bucketList, setBucketList] = useState({});
+    const [bucketList, setBucketList] = useState([]);
 
     const {id} = useParams();
 
@@ -12,6 +12,9 @@ function BucketList() {
         .then(res => setBucketList(res.data))
         .catch(err => console.log(err));
     }, []);
+
+    
+ 
 
     return (
         <div>
