@@ -8,11 +8,14 @@ function Navbar() {
         <Link to="/">
         <button type="submit"> Search </button>
         </Link>
-        <Link to="/Wishlist">
-        <button type="submit"> Wishlist </button>
+        <Link to="/bucketList">
+        <button type="submit"> Bucket List </button>
         </Link>
-        <Link to="/Completed">
-        <button type="submit"> Completed </button>
+        <Link to="/log">
+        <button type="submit"> Log </button>
+        </Link>
+        <Link to="/Auth">
+        <button type="submit"> Login </button>
         </Link>
         </div>
     );

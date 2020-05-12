@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import HikeContext from "../../utils/HikeContext";
 import "./style.css";
 
-function SearchResults() {
+function SearchResults(props) {
     const hikeData = useContext(HikeContext)
     console.log("search result props", hikeData);
     return (
@@ -15,12 +15,24 @@ function SearchResults() {
             <p>Distance: {hike.length}</p>
             <p>Elevation Gain: {hike.ascent}</p>
             <img src={hike.imgSmall} alt={hike.name} />
+            <button className='bucketlist-add' 
+            onClick={() => {props.setBucketList(
+                {"id": hike.id, 
+                "name": hike.name, 
+                "location": hike.location, 
+                "length": hike.length, 
+                "ascent": hike.ascent, 
+                "img": hike.imgSmall}
+                )}}
+            >
+            Bucket List
+            </button>
             </li>
         ))}
         </ul>
 
         </div>
     )
-}
+};
 
 export default SearchResults;
