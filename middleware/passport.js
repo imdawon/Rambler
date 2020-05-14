@@ -2,6 +2,14 @@ var passport = require("passport");
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var RamblerUser = require('../models/rambler-users');
 
+
+let callbackURL;
+if (process.env.NODE_ENV === "production" ) {
+    callbackURL = 'https://shielded-reaches-07010.herokuapp.com/google-auth/callback';
+} else {
+    callbackURL = '/google-auth/callback';
+}
+
 // Generate cookie based off userid
 passport.serializeUser((user, done) => {
     done(null, user.id)
@@ -17,7 +25,7 @@ passport.deserializeUser((id, done) => {
 passport.use(
     new GoogleStrategy({
         // options for google strat
-        callbackURL: '/google-auth/callback',
+        callbackURL: callbackURL,
         clientID: process.env.OAUTH_CLIENT_ID,
         clientSecret: process.env.OAUTH_CLIENT_SECRET
     },
