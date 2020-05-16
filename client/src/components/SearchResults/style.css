@@ -3,7 +3,7 @@
 }
 
 html {
-    background-color: #ecf9ff;
+    background-color: #ffffff;
     
   }
   
@@ -96,6 +96,7 @@ html {
     }
     
     .card-img-top {
+      /* padding-right: 45px; */
         width: 50vw;
         height: 25vw;
         object-fit: fill;
@@ -108,6 +109,7 @@ html {
     }
 
     .card-img-top {
+      /* padding-right: 180px; */
         width: 50vw;
         height: 25vw;
         object-fit: fill;

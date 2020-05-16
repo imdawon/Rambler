@@ -5,7 +5,8 @@ import Search from "../../pages/Search";
 import Auth from "../../pages/Auth";
 import Log from "../../pages/Log";
 import BucketList from "../../pages/BucketList";
-import PassportAuth from "../../pages/PassportAuth";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 function Main() {
     
