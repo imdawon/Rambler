@@ -13,6 +13,7 @@ function Main() {
     return (
         <Router>
             <Navbar />
+            <Header />
             <Switch>
                 <Route exact path="/">
                     <Search />
@@ -27,9 +28,10 @@ function Main() {
                     <Auth />
                 </Route>
                 <Route exact path="/google-auth/callback" >
-                    <PassportAuth />
+                    {/* <PassportAuth /> */}
                 </Route>
             </Switch>
+            <Footer />
         </Router>
     )
 }
