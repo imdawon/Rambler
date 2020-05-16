@@ -9,21 +9,21 @@ import BucketList from "../../pages/BucketList";
 function Main() {
     return (
         <Router>
-        <Navbar />
-        <Switch>
-        <Route exact path="/">
-        <Search />
-        </Route>
-        <Route exact path="/BucketList">
-        <BucketList />
-        </Route>
-        <Route exact path="/Log"> 
-        <Log />
-        </Route>
-        <Route exact path="/Auth"> 
-        <Auth />
-        </Route>
-        </Switch>
+                <Navbar />
+                <Switch>
+                    <Route exact path="/">
+                        <Search />
+                    </Route>
+                    <Route exact path="/BucketList">
+                        <BucketList />
+                    </Route>
+                    <Route exact path="/Log">
+                        <Log />
+                    </Route>
+                    <Route exact path="/Auth">
+                        <Auth />
+                    </Route>
+                </Switch>
         </Router>
     )
 }

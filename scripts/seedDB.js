@@ -12,22 +12,31 @@ const ramblerUserSeed = [
         user: "scuba_steve",
         bucketlist: [
           {
-            "id": "7027304",
-            "name": "Cougar Mountain Red Town Loop",
-            "location": "Newcastle, Washington",
-            "length": "5.1",
-            "ascent": "690",
-            "img": "https://cdn-files.apstatic.com/hike/7031970_small_1554932139.jpg"
+            "id": "7022574",
+            "name": "Bridle Trails State Park - Outer Loop",
+            "location": "Yarrow Point, Washington",
+            "length": "4.4",
+            "latitude": "47.6551",
+            "longitude": "-122.1847",
+            "ascent": "231",
+            "img": "https://cdn-files.apstatic.com/hike/7044485_small_1555530429.jpg",
+            "summary": "A great loop around Bridle Trails State Park, with rolling hills and green forests.",
+            "url": "https://www.hikingproject.com/trail/7022574/bridle-trails-state-park-outer-loop"
         }
       ],
     log: [
       {
-        "id": "7027304",
-        "name": "Cougar Mountain Red Town Loop",
-        "location": "Newcastle, Washington",
-        "length": "5.1",
-        "ascent": "690",
-        "img": "https://cdn-files.apstatic.com/hike/7031970_small_1554932139.jpg"
+        
+        "id": "7022574",
+        "name": "Bridle Trails State Park - Outer Loop",
+        "location": "Yarrow Point, Washington",
+        "length": "4.4",
+        "latitude": "47.6551",
+        "longitude": "-122.1847",
+        "ascent": "231",
+        "img": "https://cdn-files.apstatic.com/hike/7044485_small_1555530429.jpg",
+        "summary": "A great loop around Bridle Trails State Park, with rolling hills and green forests.",
+        "url": "https://www.hikingproject.com/trail/7022574/bridle-trails-state-park-outer-loop"
       }
     ]
   }
