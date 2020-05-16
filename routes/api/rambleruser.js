@@ -7,7 +7,8 @@ router
 
 router
     .route("/:id")
-    .get(ramblerUserController.findById)
+    .get(ramblerUserController.findUserList)
+
 
 router
     .route("/log/:id")
