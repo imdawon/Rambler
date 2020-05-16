@@ -3,9 +3,6 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { SET_USER_SEARCH, LOADING, UPDATE_LAT_LON, UPDATE_HIKES } from "../../utils/actions";
 import "./style.css";
 import API from "../../utils/API";
-import Search from "../../pages/Search";
-
-
 
 const SearchForm = () => {
     //user input

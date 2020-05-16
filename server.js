@@ -40,10 +40,6 @@ app.use(passport.session());
 // Define routes
 app.use(routes);
 
-// app.get('/', function (req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
-
 // want react to read the query code it sends ater google sign in is complete
 // do get or post to google to verify the code is valid
 // based on JWT validity, pass user either to the desired location, or back to login saying login failed
