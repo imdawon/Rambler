@@ -5,11 +5,14 @@ import Search from "../../pages/Search";
 import Auth from "../../pages/Auth";
 import Log from "../../pages/Log";
 import BucketList from "../../pages/BucketList";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 function Main() {
     return (
         <Router>
         <Navbar />
+        <Header />
         <Switch>
         <Route exact path="/">
         <Search />
@@ -24,6 +27,7 @@ function Main() {
         <Auth />
         </Route>
         </Switch>
+        <Footer />
         </Router>
     )
 }
