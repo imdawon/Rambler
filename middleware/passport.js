@@ -1,15 +1,26 @@
-var passport = require("passport");
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
-var RamblerUser = require('../models/rambler-users');
+const passport = require("passport");
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const RamblerUser = require('../models/rambler-users');
+
+// Set callbackURL route for google to send user to after being authenticated
+// for production env or dev
+let callbackURL;
+if (process.env.NODE_ENV === "production" ) {
+    callbackURL = 'https://shielded-reaches-07010.herokuapp.com/google-auth/callback';
+} else {
+    callbackURL = '/google-auth/callback';
+}
 
 // Generate cookie based off userid
 passport.serializeUser((user, done) => {
-    done(null, user.id)
+    console.log("SERIALIZED USER",user);
+    done(null, user._id)
 });
 
 passport.deserializeUser((id, done) => {
+    console.log("DESERIALIZED USER?",id);
     RamblerUser.findById(id).then((user) => {
-        done(null, user.id);
+        done(null, user);
     });
 });
 
@@ -17,7 +28,7 @@ passport.deserializeUser((id, done) => {
 passport.use(
     new GoogleStrategy({
         // options for google strat
-        callbackURL: '/google-auth/callback',
+        callbackURL: callbackURL,
         clientID: process.env.OAUTH_CLIENT_ID,
         clientSecret: process.env.OAUTH_CLIENT_SECRET
     },
