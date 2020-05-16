@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import { UPDATE_LOG } from "../utils/actions";
 import API from "../utils/API";
+import LogResults from "../components/LogResults";
 
 function Log() {
     const [state, dispatch] = useStoreContext();
@@ -9,6 +10,10 @@ function Log() {
     useEffect(() => {
         generateLogData();
     }, []);
+
+    useEffect(() => {
+        console.log(state.log)
+    }, [state]);
 
     const generateLogData = () => {
         API.getUserList(state.id)
@@ -24,8 +29,11 @@ function Log() {
     };
 
     return (
+        <div>
         <p>Log</p>
-        
+        <LogResults />
+        </div>
+
     );
 }
 
