@@ -29,7 +29,6 @@ const SearchForm = () => {
                 lon: ""
             });
         };
-           
      }, [state]);
 
     const handleFormSubmit = e => {
@@ -60,7 +59,6 @@ const SearchForm = () => {
                 lon: lon
             })
             console.log(state)
-        
         })
         .catch((err) => console.log(err));
     };
