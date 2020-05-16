@@ -3,6 +3,7 @@ const router = require("express").Router();
 const passport = require('passport');
 const passportSetup = require('../middleware/passport');
 const apiRoutes = require("./api");
+const axios = require('axios');
 
 // API Routes
 router.use("/api", apiRoutes);
@@ -20,8 +21,13 @@ router.get('/google-auth',
 
 router.get('/google-auth/callback', 
   passport.authenticate('google'), (req, res) => {
-   console.log(req);
-  res.redirect(`/?code=${req.query.code}`);
+  res.redirect(`/getUserInfo`);
+  console.log(`req.user values: ${req.user}`);
 });
+
+router.get('/getUserInfo',
+  (req,res)=>{
+    res.send(`Passport Session Data: ${req.user}`);
+  });
 
 module.exports = router;

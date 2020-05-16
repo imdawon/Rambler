@@ -9,25 +9,29 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 
 function Main() {
+    
     return (
         <Router>
-        <Navbar />
-        <Header />
-        <Switch>
-        <Route exact path="/">
-        <Search />
-        </Route>
-        <Route exact path="/BucketList">
-        <BucketList />
-        </Route>
-        <Route exact path="/Log"> 
-        <Log />
-        </Route>
-        <Route exact path="/Auth"> 
-        <Auth />
-        </Route>
-        </Switch>
-        <Footer />
+            <Navbar />
+            <Header />
+            <Switch>
+                <Route exact path="/">
+                    <Search />
+                </Route>
+                <Route exact path="/BucketList">
+                    <BucketList />
+                </Route>
+                <Route exact path="/Log">
+                    <Log />
+                </Route>
+                <Route exact path="/Auth">
+                    <Auth />
+                </Route>
+                <Route exact path="/google-auth/callback" >
+                    {/* <PassportAuth /> */}
+                </Route>
+            </Switch>
+            <Footer />
         </Router>
     )
 }
