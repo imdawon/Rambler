@@ -21,7 +21,7 @@ router.get('/google-auth',
 
 router.get('/google-auth/callback', 
   passport.authenticate('google'), (req, res) => {
-  res.redirect(`/getUserInfo`);
+  res.redirect(`/`);
   console.log(`req.user values: ${req.user}`);
 });
 
