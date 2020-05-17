@@ -19,14 +19,11 @@ function BucketList() {
     const generateBucketListData = () => {
         API.getUserList(state.id)
             .then((hikes) => {
-                console.log(hikes.data.bucketlist)
                 let bucketListHikes = hikes.data.bucketlist
                 dispatch({
                     type: UPDATE_BUCKETLIST,
                     bucketList: bucketListHikes
                 });
-                console.log(state.bucketList)
-                console.log(state.bucketList[0])
             })
             .catch(err => console.log(err));
     };
@@ -36,7 +33,6 @@ function BucketList() {
             <p>BucketList</p>
             <BucketResults />
         </div>
-
     )
 }
 
