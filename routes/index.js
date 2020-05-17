@@ -27,7 +27,7 @@ router.get('/google-auth/callback',
 
 router.get('/getUserInfo',
   (req,res)=>{
-    res.send(`Passport Session Data: ${req.user}`);
+    res.send(req.user);
   });
 
 module.exports = router;
