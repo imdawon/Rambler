@@ -60,7 +60,7 @@ case ADD_LOG:
     case UPDATE_LOG:
       return {
         ...state,
-        bucketList: [...action.log],
+        log: [...action.log],
         loading: false
       };
  
@@ -72,12 +72,12 @@ case ADD_LOG:
 //         return hike._id !== action._id; 
 //       })
 //     };
-      case UPDATE_LOG:
-        return {
-          ...state,
-          log: [action.log, ...state.log],
-          loading: false
-        };
+      // case UPDATE_LOG:
+      //   return {
+      //     ...state,
+      //     log: [action.log, ...state.log],
+      //     loading: false
+      //   };
     
     //   case REMOVE_LOG:
     //     return {
