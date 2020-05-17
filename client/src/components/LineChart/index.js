@@ -16,7 +16,7 @@ function LineChart() {
 
   useEffect(() => {
     processData(state.log);
-  });
+  }, [state.log]);
   const processData = (data) => {
     let stateData = data.map((e) => ({
       x: e.length,
@@ -26,7 +26,6 @@ function LineChart() {
       type: UPDATE_LINE_CHART,
       lineChart: stateData,
     });
-    console.log(stateData, state.lineChart);
     return stateData;
   };
 
@@ -38,7 +37,7 @@ function LineChart() {
       <YAxis title="Elevation Gain (Feet)" />
       {state.lineChart.map((hike) => {
         let hikeData = [{ x: 0, y: 0 }, hike];
-        return <LineSeries data={hikeData} />;
+        return <LineSeries key={hike._id} data={hikeData} />;
       })}
     </XYPlot>
   );
