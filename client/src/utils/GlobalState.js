@@ -45,20 +45,25 @@ case ADD_BUCKETLIST:
       bucketList: [action.bucketList, ...state.bucketList],
       loading: false
     };
-
+    case UPDATE_BUCKETLIST:
+      return {
+        ...state,
+        bucketList: [...action.bucketList],
+        loading: false
+      };
 case ADD_LOG:
     return {
         ...state,
         log: [action.log, ...state.log],
         loading: false
     };
-
-  case UPDATE_BUCKETLIST:
-    return {
-      ...state,
-      bucketList: [action.bucketlist, state.bucketlist],
-      loading: false
-    };
+    case UPDATE_LOG:
+      return {
+        ...state,
+        log: [...action.log],
+        loading: false
+      };
+ 
 
 //   case REMOVE_BUCKETLIST:
 //     return {
@@ -67,12 +72,7 @@ case ADD_LOG:
 //         return hike._id !== action._id; 
 //       })
 //     };
-      case UPDATE_LOG:
-        return {
-          ...state,
-          log: [action.log, ...state.log],
-          loading: false
-        };
+ 
     
     //   case REMOVE_LOG:
     //     return {
@@ -125,7 +125,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     },
     bucketList: [],
     log: [],
-    id: "5ebe087940f9312c70f77494",
+    id: "5ec055166746f2044c1031e1",
     loading: false
   });
 

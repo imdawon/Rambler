@@ -29,7 +29,6 @@ const SearchForm = () => {
                 lon: ""
             });
         };
-           
      }, [state]);
 
     const handleFormSubmit = e => {
@@ -60,7 +59,6 @@ const SearchForm = () => {
                 lon: lon
             })
             console.log(state)
-        
         })
         .catch((err) => console.log(err));
     };
@@ -80,19 +78,28 @@ const SearchForm = () => {
         };
 
     return (
+        <div class="search-area">
         <form className="searchForm" onSubmit={handleFormSubmit}>
-        <div>
-        <label htmlFor="location">Location Search:</label>
-        <input 
-        ref={search_input}
+        <div class="field">
+         <p class="control has-icons-left has-icons-right">
+           <input class="input is-success" 
+           ref={search_input}
         type="text"
         placeholder="Where is the next adventure?"
-        />
-        <button type="submit" disabled={state.loading}>
+        id="location"
+        /> 
+        <span class="icon is-small is-left">
+            <i class="fa fa-tree"></i>
+        </span> 
+        
+         </p><button id="searchButton" className="button is-success is-light" type="submit" disabled={state.loading}>
         Search</button>
+        
+        
         </div>
         </form>
-
+        </div>
+    
     )
 }
 
