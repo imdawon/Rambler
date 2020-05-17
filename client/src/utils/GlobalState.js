@@ -10,6 +10,8 @@ import {
   UPDATE_LOG,
   REMOVE_LOG,
   LOADING,
+  UPDATE_BAR_CHART,
+  UPDATE_LINE_CHART
 } from "./actions";
 
 const StoreContext = createContext();
@@ -63,6 +65,18 @@ case ADD_LOG:
         log: [...action.log],
         loading: false
       };
+      case UPDATE_LINE_CHART:
+      return {
+        ...state,
+        lineChart: [...action.lineChart],
+        loading: false
+      };
+      case UPDATE_BAR_CHART:
+        return {
+          ...state,
+          barChart: [...action.barChart],
+          loading: false
+        };
  
 
   case REMOVE_BUCKETLIST:
@@ -126,6 +140,8 @@ const StoreProvider = ({ value = [], ...props }) => {
     bucketList: [],
     log: [],
     id: "5ec1a6d2b7942608a0cf2d61",
+    barChart: [],
+    lineChart: [],
     loading: false
   });
 

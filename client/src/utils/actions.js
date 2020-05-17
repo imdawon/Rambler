@@ -13,3 +13,6 @@ export const REMOVE_LOG = "ROMOVE_LOG";
 export const UPDATE_LOG= "UPDATE_LOG";
 
 export const LOADING = "LOADING";
+
+export const UPDATE_LINE_CHART = "UPDATE_LINE_CHART";
+export const UPDATE_BAR_CHART = "UPDATE_BAR_CHART";
