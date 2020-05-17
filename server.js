@@ -21,7 +21,8 @@ mongoose.connect( "mongodb://localhost/rambler", {
   // use mongodb v4 connection settings
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useFindAndModify: false
 });
 
 app.use(require('express-session')({

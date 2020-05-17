@@ -65,22 +65,22 @@ case ADD_LOG:
       };
  
 
-//   case REMOVE_BUCKETLIST:
-//     return {
-//       ...state,
-//       favorites: state.bucketlist.filter((hike) => {
-//         return hike._id !== action._id; 
-//       })
-//     };
+  case REMOVE_BUCKETLIST:
+    return {
+      ...state,
+      bucketList: state.bucketList.filter((hike) => {
+        return hike.id !== action.bucketList; 
+      })
+    };
  
     
-    //   case REMOVE_LOG:
-    //     return {
-    //       ...state,
-    //       favorites: state.log.filter((hike) => {
-    //         return hike._id !== action._id; 
-    //       })
-    //     };
+      case REMOVE_LOG:
+        return {
+          ...state,
+          log: state.log.filter((hike) => {
+            return hike.id !== action.log; 
+          })
+        };
 
   case LOADING:
     return {
@@ -125,7 +125,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     },
     bucketList: [],
     log: [],
-    id: "5ec055166746f2044c1031e1",
+    id: "5ec1a6d2b7942608a0cf2d61",
     loading: false
   });
 
