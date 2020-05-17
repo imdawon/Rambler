@@ -27,7 +27,7 @@ function Main() {
                     <Auth />
                 </Route>
                 <Route exact path="/google-auth/callback" >
-                    <PassportAuth />
+                    {/*<PassportAuth /> */}
                 </Route>
             </Switch>
         </Router>

@@ -13,6 +13,7 @@ client/build
 
 # production
 /build
+~/client/debug.log
 
 # misc
 .DS_Store
