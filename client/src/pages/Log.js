@@ -1,7 +1,10 @@
+import LineChart from "../components/LineChart";
+import BarChart from "../components/BarChart";
 import React, { useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import { UPDATE_LOG } from "../utils/actions";
 import API from "../utils/API";
+import LogResults from "../components/LogResults";
 
 function Log() {
     const [state, dispatch] = useStoreContext();
@@ -10,10 +13,14 @@ function Log() {
         generateLogData();
     }, []);
 
+    useEffect(() => {
+        console.log("state", state.log)
+    }, [state]);
+
     const generateLogData = () => {
         API.getUserList(state.id)
             .then((hikes) => {
-                console.log(hikes.data.log);
+                console.log("mongo", hikes.data.log);
                 let logListHikes = hikes.data.log;
                 dispatch({
                     type: UPDATE_LOG,
@@ -24,8 +31,13 @@ function Log() {
     };
 
     return (
+        <div>
         <p>Log</p>
-        
+        <LineChart />
+        <BarChart />
+        <LogResults />
+        </div>
+
     );
 }
 

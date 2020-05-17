@@ -33,35 +33,35 @@ function Navbar() {
     return (
 
 
-  <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-      <img class="is-rounded" src="https://i.imgur.com/RPFOwRL.png" width="112" height="28" />
+  <nav className="navbar is-transparent" role="navigation" aria-label="main navigation">
+  <div className="navbar-brand">
+    <a className="navbar-item" href="/">
+      <img className="is-rounded" src="https://i.imgur.com/RPFOwRL.png" width="112" height="28" />
     </a>
 
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <div class="navbar-item">
-        <div class="buttons">
+  <div id="navbarBasicExample" className="navbar-menu">
+    <div className="navbar-start">
+      <div className="navbar-item">
+        <div className="buttons">
           <Link to="/">
-          <a class="navbar-item">
+          <a className="navbar-item">
             Search Hikes
           </a>
         </Link>
         <Link to="/bucketList">
-          <a class="navbar-item">
+          <a className="navbar-item">
             Bucket List
           </a>
         </Link>
         <Link to="/log">
-          <a class="navbar-item">
+          <a className="navbar-item">
             Hike Log
           </a>
         </Link>
@@ -69,11 +69,11 @@ function Navbar() {
       </div> 
     </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
+    <div className="navbar-end">
+      <div className="navbar-item">
+        <div className="buttons">
           <Link to="/Auth">
-            <a class="button is-light">
+            <a className="button is-light">
               Log in
             </a>
           </Link>
