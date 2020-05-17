@@ -72,12 +72,7 @@ case ADD_LOG:
 //         return hike._id !== action._id; 
 //       })
 //     };
-      // case UPDATE_LOG:
-      //   return {
-      //     ...state,
-      //     log: [action.log, ...state.log],
-      //     loading: false
-      //   };
+ 
     
     //   case REMOVE_LOG:
     //     return {
