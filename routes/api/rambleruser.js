@@ -7,7 +7,16 @@ router
 
 router
     .route("/:id")
-    .get(ramblerUserController.findById)
-    .put(ramblerUserController.update)
+    .get(ramblerUserController.findUserList)
+
+
+router
+    .route("/log/:id")
+    .put(ramblerUserController.updateLog)
+
+router
+    .route("/bucketlist/:id")
+    .put(ramblerUserController.updateBucketList)
+
 
 module.exports = router;

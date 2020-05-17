@@ -6,10 +6,13 @@ export default {
     getTrails: function(lat, lon) {
         return axios.get("https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=10&key=" + process.env.REACT_APP_REI_API_KEY)
     },
-    getBucketList: function(id) {
-        return axios.get("/rambler/bucketlist/" + id);
+    getUserList: function(id) {
+        return axios.get("/api/user/" + id);
     },
     addToBucketList: function(id, bucketListHike) {
-        return axios.put('/api/user/' + id, bucketListHike)
+        return axios.put('/api/user/bucketlist/' + id, bucketListHike)
+    },
+    addToLog: function(id, logHike) {
+        return axios.put('/api/user/log/' + id, logHike)
     }
 }

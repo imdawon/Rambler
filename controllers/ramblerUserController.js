@@ -2,9 +2,9 @@ const db = require('../models/rambler-users');
 
 module.exports = {
     //find all data for user logged in
-    findById: function(req, res) {
+    findUserList: function(req, res) {
         db
-        .findById(req.params.id)
+        .findOne({ _id : req.params.id })
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
@@ -14,10 +14,17 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     }, 
-    update: function(req, res) {
+    updateBucketList: function(req, res) {
         db
         .findOneAndUpdate(req.params.id, 
         {$push: {bucketlist: req.body}})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => console.log(err));
+    },
+    updateLog: function(req, res) {
+        db
+        .findOneAndUpdate(req.params.id, 
+        {$push: {log: req.body}})
         .then(dbModel => res.json(dbModel))
         .catch(err => console.log(err));
     }
