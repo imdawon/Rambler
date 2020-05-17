@@ -1,3 +1,5 @@
+import LineChart from "../components/LineChart";
+import BarChart from "../components/BarChart";
 import React, { useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
 import { UPDATE_LOG } from "../utils/actions";
@@ -30,6 +32,8 @@ function Log() {
     return (
         <div>
         <p>Log</p>
+        <LineChart />
+        <BarChart />
         <LogResults />
         </div>
     );
