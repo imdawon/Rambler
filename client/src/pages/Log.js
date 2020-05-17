@@ -20,7 +20,6 @@ function Log() {
     const generateLogData = () => {
         API.getUserList(state.id)
             .then((hikes) => {
-                console.log("mongo", hikes.data.log);
                 let logListHikes = hikes.data.log;
                 dispatch({
                     type: UPDATE_LOG,
@@ -37,7 +36,6 @@ function Log() {
         <BarChart />
         <LogResults />
         </div>
-
     );
 }
 

@@ -1,34 +1,37 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 import "./style.css";
-import { ADD_LOG } from "../../utils/actions";
+import { ADD_LOG, REMOVE_BUCKETLIST } from "../../utils/actions";
 
 function BucketResults() {
     const [state, dispatch] = useStoreContext();
 
-    useEffect(() => {
-        console.log(state.bucketList[0])
-    })
-
     const setLog = (logHike) => {
-        console.log(logHike)
-
         API.addToLog(state.id, logHike)
-            .then(res => console.log("Updated log", res.data))
+            .then(() => {
+                dispatch({
+                    type: ADD_LOG,
+                    log: logHike
+                });
+            })
             .catch(err => console.log(err));
+    };
 
-        dispatch({
-            type: ADD_LOG,
-            log: logHike
-        });
+    const removeHike = (hikeToRemoveID, hikeToRemove) => {
+        API.removeBucketlistHike(state.id, hikeToRemove)
+            .then(() => {
+                dispatch({
+                    type: REMOVE_BUCKETLIST,
+                    bucketList: hikeToRemoveID
+                });
+            })
+            .catch(err => console.log(err));
     };
 
     return (
-
         <div>
             <ul className="hikeResultList cards">
-
                 {state.bucketList.length > 0 && state.bucketList.map((hike, index) => (
                     <li key={index} className="hikeListItem cards_item">
                         <div className="card">
@@ -50,12 +53,15 @@ function BucketResults() {
                                             longitude: hike.longitude,
                                             length: hike.length,
                                             ascent: hike.ascent,
-                                            img: hike.imgMedium,
+                                            img: hike.img,
                                             summary: hike.summary,
                                             url: hike.url
                                         }
                                     )
                                 }}>Add to Log</button>
+                                <button className="btn card_btn remove-hike" onClick={() => removeHike(hike.id, hike)
+                                }> Remove Hike </button>
+
                             </div>
                         </div>
                     </li>
