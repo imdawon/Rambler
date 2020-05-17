@@ -27,5 +27,19 @@ module.exports = {
         {$push: {log: req.body}})
         .then(dbModel => res.json(dbModel))
         .catch(err => console.log(err));
-    }
+    },
+    removeBucketList: function(req, res) {
+        db
+        .findOneAndUpdate(req.params.id, 
+        {$pull: {bucketlist: {id : req.body.id}}})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+      },
+      removeLog: function(req, res) {
+        db
+        .findOneAndUpdate(req.params.id, 
+        {$pull: {log: {id : req.body.id}}})
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+      },
 };
