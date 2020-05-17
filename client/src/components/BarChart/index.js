@@ -16,7 +16,7 @@ function BarChart() {
 
   useEffect(() => {
     processData(state.log);
-  });
+  }, [state.log]);
   const processData = (data) => {
     let stateData = data.map((e, index) => ({
       x: index + 2,
@@ -29,7 +29,6 @@ function BarChart() {
       type: UPDATE_BAR_CHART,
       barChart: stateData,
     });
-    console.log(stateData, state.barChart);
     return stateData;
   };
 
@@ -42,7 +41,7 @@ function BarChart() {
 
       {state.barChart.map((hike) => {
         let hikeData = [hike];
-        return <VerticalRectSeries data={hikeData} />;
+        return <VerticalRectSeries key={hike._id} data={hikeData} />;
       })}
     </XYPlot>
   );
