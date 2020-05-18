@@ -13,11 +13,12 @@ export default class GetUserInfo extends React.Component {
             .then(res => {
                 const userSessionData = res.data;
                 this.setState({ userSessionData });
+                    console.log(this.state.userSessionData)
             })
     }
 
     render() {
         return (
-            <h6>GetUserInfo Component Successfully Loaded. Log in & check console for logged user session data!</h6>)
+            <h6>GetUserInfo Component Successfully Loaded. Check console for logged user session data!</h6>)
     }
 }
