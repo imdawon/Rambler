@@ -11,8 +11,14 @@ export default {
     },
     addToBucketList: function(id, bucketListHike) {
         return axios.put('/api/user/bucketlist/' + id, bucketListHike)
+    }, 
+    removeBucketlistHike: function(id, hikeToRemove) {
+        return axios.put("/api/user/bucketlist/remove/" + id, hikeToRemove);
     },
     addToLog: function(id, logHike) {
         return axios.put('/api/user/log/' + id, logHike)
+    },
+    removeLogHike: function(id, hikeToRemove) {
+        return axios.put("/api/user/log/remove/" + id, hikeToRemove);
     }
-}
+};
