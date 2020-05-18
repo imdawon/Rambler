@@ -1,23 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 import "./style.css";
-import { ADD_LOG } from "../../utils/actions";
+import { REMOVE_LOG } from "../../utils/actions";
 
 function LogResults() {
     const [state, dispatch] = useStoreContext();
 
-    useEffect(() => {
-        console.log(state.log)
-    })
-
-
+    const removeHike = (hikeToRemoveID, hikeToRemove ) => {
+        API.removeLogHike(state.id, hikeToRemove)
+            .then(() => {
+                dispatch({
+                    type: REMOVE_LOG,
+                    log: hikeToRemoveID
+                });
+            })
+            .catch(err => console.log(err));
+    };
 
     return (
-
         <div>
             <ul className="hikeResultList cards">
-
                 {state.log.length > 0 && state.log.map((hike, index) => (
                     <li key={index} className="hikeListItem cards_item">
                         <div className="card">
@@ -29,6 +32,8 @@ function LogResults() {
                                 <p className="card_text">Location: {hike.location} </p>
                                 <p className="card_text">Distance: {hike.length} miles</p>
                                 <p className="card_text">Elevation Gain: {hike.ascent} feet</p>
+                                <button className="btn card_btn remove-hike" onClick={() => removeHike(hike.id, hike)
+                                }> Remove Hike </button>
                             </div>
                         </div>
                     </li>
