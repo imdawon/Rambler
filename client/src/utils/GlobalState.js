@@ -11,7 +11,9 @@ import {
   REMOVE_LOG,
   LOADING,
   UPDATE_BAR_CHART,
-  UPDATE_LINE_CHART
+  UPDATE_LINE_CHART,
+  SET_GOOGLE_ID,
+  SET_NAME
 } from "./actions";
 
 const StoreContext = createContext();
@@ -102,6 +104,21 @@ case ADD_LOG:
       loading: true
     };
 
+    case SET_GOOGLE_ID:
+      return {
+        ...state,
+        googleId: action.googleId,
+        loading: false
+      };
+
+      case SET_NAME:
+      return {
+        ...state,
+        user: action.user,
+        loading: false
+      };
+  
+
   default:
     return state;
   }
@@ -113,6 +130,8 @@ const StoreProvider = ({ value = [], ...props }) => {
     searchLat: "",
     searchLon: "",
     hikes: [],
+    googleId: "",
+    user: "",
     currentAddBucket: {
         id: "",
         name: "",
