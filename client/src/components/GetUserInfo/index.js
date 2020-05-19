@@ -20,7 +20,7 @@ function GetUserInfo() {
                     user: res.data.user
                  })
             })
-    }), []
+    }, [])
     return (
         (state.googleId)
             ? <h6>Happy hiking, { state.user }</h6>
