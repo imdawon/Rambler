@@ -5,9 +5,6 @@ import DistanceBar from '../DistanceBar';
 import "./style.css";
 import API from "../../utils/API";
 
-const cheerio = require('cheerio');
-
-
 const SearchForm = () => {
     //user input
     const search_input = useRef();
