@@ -18,3 +18,6 @@ export const LOADING = "LOADING";
 
 export const UPDATE_LINE_CHART = "UPDATE_LINE_CHART";
 export const UPDATE_BAR_CHART = "UPDATE_BAR_CHART";
+
+export const SET_GOOGLE_ID = "SET_GOOGLE_ID";
+export const SET_NAME = "SET_NAME"

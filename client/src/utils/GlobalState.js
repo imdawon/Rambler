@@ -12,7 +12,9 @@ import {
   REMOVE_LOG,
   LOADING,
   UPDATE_BAR_CHART,
-  UPDATE_LINE_CHART
+  UPDATE_LINE_CHART,
+  SET_GOOGLE_ID,
+  SET_NAME
 } from "./actions";
 
 const StoreContext = createContext();
@@ -20,11 +22,6 @@ const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case SET_GOOGLE_ID:
-      return {
-        ...state,
-        googleId: action.googleId
-      };
     case SET_USER_SEARCH:
       return {
         ...state,
@@ -74,33 +71,54 @@ const reducer = (state, action) => {
         lineChart: [...action.lineChart],
         loading: false
       };
-    case UPDATE_BAR_CHART:
+      case UPDATE_BAR_CHART:
+        return {
+          ...state,
+          barChart: [...action.barChart],
+          loading: false
+        };
+ 
+
+  case REMOVE_BUCKETLIST:
+    return {
+      ...state,
+      bucketList: state.bucketList.filter((hike) => {
+        return hike.id !== action.bucketList; 
+      })
+    };
+ 
+    
+      case REMOVE_LOG:
+        return {
+          ...state,
+          log: state.log.filter((hike) => {
+            return hike.id !== action.log; 
+          })
+        };
+
+  case LOADING:
+    return {
+      ...state,
+      loading: true
+    };
+
+    case SET_GOOGLE_ID:
       return {
         ...state,
-        barChart: [...action.barChart],
+        googleId: action.googleId,
         loading: false
       };
-    case REMOVE_BUCKETLIST:
+
+      case SET_NAME:
       return {
         ...state,
-        bucketList: state.bucketList.filter((hike) => {
-          return hike.id !== action.bucketList;
-        })
+        user: action.user,
+        loading: false
       };
-    case REMOVE_LOG:
-      return {
-        ...state,
-        log: state.log.filter((hike) => {
-          return hike.id !== action.log;
-        })
-      };
-    case LOADING:
-      return {
-        ...state,
-        loading: true
-      };
-    default:
-      return state;
+  
+
+  default:
+    return state;
   }
 };
 
@@ -111,6 +129,8 @@ const StoreProvider = ({ value = [], ...props }) => {
     searchLat: "",
     searchLon: "",
     hikes: [],
+    googleId: "",
+    user: "",
     currentAddBucket: {
       id: "",
       name: "",
