@@ -17,7 +17,7 @@ function BucketList() {
     }, [state]);
 
     const generateBucketListData = () => {
-        API.getUserList(state.id)
+        API.getUserList(state.googleId)
             .then((hikes) => {
                 let bucketListHikes = hikes.data.bucketlist
                 dispatch({

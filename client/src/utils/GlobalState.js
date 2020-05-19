@@ -1,5 +1,6 @@
 import React, { createContext, useReducer, useContext } from "react";
 import {
+  SET_GOOGLE_ID,
   SET_USER_SEARCH,
   UPDATE_HIKES,
   UPDATE_LAT_LON,
@@ -19,6 +20,13 @@ const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
   switch (action.type) {
+
+  case SET_GOOGLE_ID: 
+    return {
+      ...state,
+      googleId: action.googleId
+    };
+  
   case SET_USER_SEARCH:
     return {
       ...state,
@@ -109,6 +117,7 @@ case ADD_LOG:
 
 const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
+    googleId: "",
     userSearch: "",
     searchLat: "",
     searchLon: "",
@@ -139,7 +148,6 @@ const StoreProvider = ({ value = [], ...props }) => {
     },
     bucketList: [],
     log: [],
-    id: "5ec1a6d2b7942608a0cf2d61",
     barChart: [],
     lineChart: [],
     loading: false

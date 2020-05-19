@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bulma": "^0.8.2",
+    "cheerio": "^1.0.0-rc.3",
     "dotenv": "^8.2.0",
     "mongoose": "^5.9.11",
     "query-string": "^6.12.1",

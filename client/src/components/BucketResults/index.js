@@ -8,7 +8,7 @@ function BucketResults() {
     const [state, dispatch] = useStoreContext();
 
     const setLog = (logHike) => {
-        API.addToLog(state.id, logHike)
+        API.addToLog(state.googleId, logHike)
             .then(() => {
                 dispatch({
                     type: ADD_LOG,
@@ -19,7 +19,7 @@ function BucketResults() {
     };
 
     const removeHike = (hikeToRemoveID, hikeToRemove) => {
-        API.removeBucketlistHike(state.id, hikeToRemove)
+        API.removeBucketlistHike(state.googleId, hikeToRemove)
             .then(() => {
                 dispatch({
                     type: REMOVE_BUCKETLIST,
