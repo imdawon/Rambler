@@ -4,6 +4,9 @@ import { SET_USER_SEARCH, LOADING, UPDATE_LAT_LON, UPDATE_HIKES } from "../../ut
 import "./style.css";
 import API from "../../utils/API";
 
+const cheerio = require('cheerio');
+
+
 const SearchForm = () => {
     //user input
     const search_input = useRef();
@@ -63,11 +66,16 @@ const SearchForm = () => {
         .catch((err) => console.log(err));
     };
     // Takes converted lat and lon to make REI API call to gather hike data
+
+
+   
+
         const loadHikes = () => {
           API.getTrails(state.lat, state.lon)
           .then((trails) => {
             let hikeResults = trails.data.trails
-            console.log(trails.data.trails);
+            console.log(trails.data.trails); 
+            // getMoreInfo(hikeResults);
             dispatch ({
                 type: UPDATE_HIKES,
                 hikes: hikeResults

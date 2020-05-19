@@ -8,7 +8,7 @@ function LogResults() {
     const [state, dispatch] = useStoreContext();
 
     const removeHike = (hikeToRemoveID, hikeToRemove ) => {
-        API.removeLogHike(state.id, hikeToRemove)
+        API.removeLogHike(state.googleId, hikeToRemove)
             .then(() => {
                 dispatch({
                     type: REMOVE_LOG,
