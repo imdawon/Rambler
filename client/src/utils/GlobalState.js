@@ -20,98 +20,87 @@ const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
   switch (action.type) {
-
-  case SET_GOOGLE_ID: 
-    return {
-      ...state,
-      googleId: action.googleId
-    };
-  
-  case SET_USER_SEARCH:
-    return {
-      ...state,
-      userSearch: action.userSearch,
-      loading: false
-    };
-
-    case UPDATE_HIKES: 
-    return {
+    case SET_GOOGLE_ID:
+      return {
+        ...state,
+        googleId: action.googleId
+      };
+    case SET_USER_SEARCH:
+      return {
+        ...state,
+        userSearch: action.userSearch,
+        loading: false
+      };
+    case UPDATE_HIKES:
+      return {
         ...state,
         hikes: [...action.hikes],
         loading: false
-    };
-
-    case UPDATE_LAT_LON: 
-    return {
+      };
+    case UPDATE_LAT_LON:
+      return {
         ...state,
         lat: action.lat,
         lon: action.lon,
         loading: false
-    };
-
-case ADD_BUCKETLIST:
-    return {
-      ...state,
-      bucketList: [action.bucketList, ...state.bucketList],
-      loading: false
-    };
+      };
+    case ADD_BUCKETLIST:
+      return {
+        ...state,
+        bucketList: [action.bucketList, ...state.bucketList],
+        loading: false
+      };
     case UPDATE_BUCKETLIST:
       return {
         ...state,
         bucketList: [...action.bucketList],
         loading: false
       };
-case ADD_LOG:
-    return {
+    case ADD_LOG:
+      return {
         ...state,
         log: [action.log, ...state.log],
         loading: false
-    };
+      };
     case UPDATE_LOG:
       return {
         ...state,
         log: [...action.log],
         loading: false
       };
-      case UPDATE_LINE_CHART:
+    case UPDATE_LINE_CHART:
       return {
         ...state,
         lineChart: [...action.lineChart],
         loading: false
       };
-      case UPDATE_BAR_CHART:
-        return {
-          ...state,
-          barChart: [...action.barChart],
-          loading: false
-        };
- 
-
-  case REMOVE_BUCKETLIST:
-    return {
-      ...state,
-      bucketList: state.bucketList.filter((hike) => {
-        return hike.id !== action.bucketList; 
-      })
-    };
- 
-    
-      case REMOVE_LOG:
-        return {
-          ...state,
-          log: state.log.filter((hike) => {
-            return hike.id !== action.log; 
-          })
-        };
-
-  case LOADING:
-    return {
-      ...state,
-      loading: true
-    };
-
-  default:
-    return state;
+    case UPDATE_BAR_CHART:
+      return {
+        ...state,
+        barChart: [...action.barChart],
+        loading: false
+      };
+    case REMOVE_BUCKETLIST:
+      return {
+        ...state,
+        bucketList: state.bucketList.filter((hike) => {
+          return hike.id !== action.bucketList;
+        })
+      };
+    case REMOVE_LOG:
+      return {
+        ...state,
+        log: state.log.filter((hike) => {
+          return hike.id !== action.log;
+        })
+      };
+    case LOADING:
+      return {
+        ...state,
+        loading: true
+      };
+    default:
+      return state;
   }
 };
 
@@ -123,28 +112,28 @@ const StoreProvider = ({ value = [], ...props }) => {
     searchLon: "",
     hikes: [],
     currentAddBucket: {
-        id: "",
-        name: "",
-        location: "",
-        latitude: "",
-        longitude: "",
-        length: "",
-        ascent: "",
-        img: "",
-        summary: "",
-        url: ""
+      id: "",
+      name: "",
+      location: "",
+      latitude: "",
+      longitude: "",
+      length: "",
+      ascent: "",
+      img: "",
+      summary: "",
+      url: ""
     },
     currentAddLog: {
-        id: "",
-        name: "",
-        location: "",
-        latitude: "",
-        longitude: "",
-        length: "",
-        ascent: "",
-        img: "",
-        summary: "",
-        url: ""
+      id: "",
+      name: "",
+      location: "",
+      latitude: "",
+      longitude: "",
+      length: "",
+      ascent: "",
+      img: "",
+      summary: "",
+      url: ""
     },
     bucketList: [],
     log: [],

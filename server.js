@@ -14,16 +14,22 @@ app.use(express.json());
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-}
+  mongoose.connect(process.env.MONGODB_URI, {
+    // use mongodb v4 connection settings
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  });
 
-// Connect to the Mongo DB
-mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/rambler", {
-  // use mongodb v4 connection settings
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false
-});
+} else {
+  // Connect to the Mongo DB
+  mongoose.connect("mongodb://localhost/rambler", {
+    // use mongodb v4 connection settings
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
+  });
+}
 
 app.use(require('express-session')({
   secret: process.env.SESSION_SECRET,
