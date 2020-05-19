@@ -1,5 +1,3 @@
-export const SET_GOOGLE_ID = "SET_GOOGLE_ID";
-
 export const SET_USER_SEARCH = "SET_USER_SEARCH";
 
 export const UPDATE_HIKES = "UPDATE_HIKES";

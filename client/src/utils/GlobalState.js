@@ -1,6 +1,5 @@
 import React, { createContext, useReducer, useContext } from "react";
 import {
-  SET_GOOGLE_ID,
   SET_USER_SEARCH,
   UPDATE_HIKES,
   UPDATE_LAT_LON,
@@ -124,7 +123,6 @@ const reducer = (state, action) => {
 
 const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
-    googleId: "",
     userSearch: "",
     searchLat: "",
     searchLon: "",

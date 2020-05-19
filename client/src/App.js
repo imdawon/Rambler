@@ -8,7 +8,6 @@ function App() {
   return (
     <div>
       <StoreProvider>
-      <GetUserInfo />
         <Wrapper>
           <Main>
           </Main>
