@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import GetUserInfo from "../../components/GetUserInfo";
 import bulma from "bulma";
 import "./style.css";
 
@@ -72,6 +73,7 @@ function Navbar() {
     <div className="navbar-end">
       <div className="navbar-item">
         <div className="buttons">
+        <GetUserInfo />
           <Link to="/Auth">
             <a className="button is-light">
               Log in

@@ -20,5 +20,9 @@ export default {
     },
     removeLogHike: function(id, hikeToRemove) {
         return axios.put("/api/user/log/remove/" + id, hikeToRemove);
+    },
+    getDetails: function(url) {
+        
+        return axios.get(url);
     }
 };

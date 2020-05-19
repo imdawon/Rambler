@@ -10,7 +10,7 @@ function SearchResults() {
     const setBucketList = (bucketListHike) => {
       console.log(bucketListHike)
 
-      API.addToBucketList(state.id, bucketListHike)
+      API.addToBucketList(state.googleId, bucketListHike)
       .then(res => console.log("Updated bucket list", res.data))
       .catch(err => console.log(err));
 
@@ -23,7 +23,7 @@ function SearchResults() {
     const setLog = (logHike) => {
         console.log(logHike)
 
-        API.addToLog(state.id, logHike)
+        API.addToLog(state.googleId, logHike)
         .then(res => console.log("Updated log", res.data))
         .catch(err => console.log(err));
         

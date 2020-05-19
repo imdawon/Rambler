@@ -18,7 +18,7 @@ function Log() {
     }, [state]);
 
     const generateLogData = () => {
-        API.getUserList(state.id)
+        API.getUserList(state.googleId)
             .then((hikes) => {
                 let logListHikes = hikes.data.log;
                 dispatch({

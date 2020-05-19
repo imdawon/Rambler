@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
+import { useStoreContext } from "../../utils/GlobalState";
+import { SET_GOOGLE_ID, SET_NAME } from "../../utils/actions";
 
-export default class GetUserInfo extends React.Component {
-    state = {
-        userSessionData: []
-    }
+function GetUserInfo() {
+    const [state, dispatch] = useStoreContext();
 
     // onMount, make GET request to our /getUserInfo route which returns current passport session data
     // for the current user
-    componentDidMount() {
+    useEffect(() => {
         axios.get('/getUserInfo')
             .then(res => {
-                const userSessionData = res.data;
-                this.setState({ userSessionData });
-                    console.log(this.state.userSessionData)
+                dispatch({ 
+                    type: SET_GOOGLE_ID,
+                    googleId: res.data.googleId
+                 })
+                 dispatch({
+                    type: SET_NAME,
+                    user: res.data.user
+                 })
             })
-    }
-
-    render() {
-        return (
-            <h6>GetUserInfo Component Successfully Loaded. Check console for logged user session data!</h6>)
-    }
+    }, [])
+    return (
+        (state.googleId)
+            ? <h6>Happy hiking, { state.user }</h6>
+            : <h6></h6>
+    )
 }
+
+export default GetUserInfo;
