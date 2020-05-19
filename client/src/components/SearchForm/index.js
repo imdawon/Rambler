@@ -1,6 +1,7 @@
 import React, {useRef, useEffect} from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { SET_USER_SEARCH, LOADING, UPDATE_LAT_LON, UPDATE_HIKES } from "../../utils/actions";
+import DistanceBar from '../DistanceBar';
 import "./style.css";
 import API from "../../utils/API";
 
@@ -66,10 +67,6 @@ const SearchForm = () => {
         .catch((err) => console.log(err));
     };
     // Takes converted lat and lon to make REI API call to gather hike data
-
-
-   
-
         const loadHikes = () => {
           API.getTrails(state.lat, state.lon)
           .then((trails) => {
@@ -85,6 +82,8 @@ const SearchForm = () => {
           .catch(err => console.log(err));
         };
 
+ 
+
     return (
         <div class="search-area">
         <form className="searchForm" onSubmit={handleFormSubmit}>
@@ -96,10 +95,12 @@ const SearchForm = () => {
         placeholder="Where is the next adventure?"
         id="location"
         /> 
-        <span class="icon is-small is-left">
-            <i class="fa fa-tree"></i>
+        <span className="icon is-small is-left">
+            <i className="fa fa-tree"></i>
         </span> 
-        
+
+        <DistanceBar />
+
          </p><button id="searchButton" className="button is-success is-light" type="submit" disabled={state.loading}>
         Search</button>
         
