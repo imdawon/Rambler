@@ -11,7 +11,9 @@ import {
   REMOVE_LOG,
   LOADING,
   UPDATE_BAR_CHART,
-  UPDATE_LINE_CHART
+  UPDATE_LINE_CHART,
+  SET_GOOGLE_ID,
+  SET_NAME
 } from "./actions";
 
 const StoreContext = createContext();
@@ -19,53 +21,50 @@ const { Provider } = StoreContext;
 
 const reducer = (state, action) => {
   switch (action.type) {
-  case SET_USER_SEARCH:
-    return {
-      ...state,
-      userSearch: action.userSearch,
-      loading: false
-    };
-
-    case UPDATE_HIKES: 
-    return {
+    case SET_USER_SEARCH:
+      return {
+        ...state,
+        userSearch: action.userSearch,
+        loading: false
+      };
+    case UPDATE_HIKES:
+      return {
         ...state,
         hikes: [...action.hikes],
         loading: false
-    };
-
-    case UPDATE_LAT_LON: 
-    return {
+      };
+    case UPDATE_LAT_LON:
+      return {
         ...state,
         lat: action.lat,
         lon: action.lon,
         loading: false
-    };
-
-case ADD_BUCKETLIST:
-    return {
-      ...state,
-      bucketList: [action.bucketList, ...state.bucketList],
-      loading: false
-    };
+      };
+    case ADD_BUCKETLIST:
+      return {
+        ...state,
+        bucketList: [action.bucketList, ...state.bucketList],
+        loading: false
+      };
     case UPDATE_BUCKETLIST:
       return {
         ...state,
         bucketList: [...action.bucketList],
         loading: false
       };
-case ADD_LOG:
-    return {
+    case ADD_LOG:
+      return {
         ...state,
         log: [action.log, ...state.log],
         loading: false
-    };
+      };
     case UPDATE_LOG:
       return {
         ...state,
         log: [...action.log],
         loading: false
       };
-      case UPDATE_LINE_CHART:
+    case UPDATE_LINE_CHART:
       return {
         ...state,
         lineChart: [...action.lineChart],
@@ -102,6 +101,21 @@ case ADD_LOG:
       loading: true
     };
 
+    case SET_GOOGLE_ID:
+      return {
+        ...state,
+        googleId: action.googleId,
+        loading: false
+      };
+
+      case SET_NAME:
+      return {
+        ...state,
+        user: action.user,
+        loading: false
+      };
+  
+
   default:
     return state;
   }
@@ -113,33 +127,34 @@ const StoreProvider = ({ value = [], ...props }) => {
     searchLat: "",
     searchLon: "",
     hikes: [],
+    googleId: "",
+    user: "",
     currentAddBucket: {
-        id: "",
-        name: "",
-        location: "",
-        latitude: "",
-        longitude: "",
-        length: "",
-        ascent: "",
-        img: "",
-        summary: "",
-        url: ""
+      id: "",
+      name: "",
+      location: "",
+      latitude: "",
+      longitude: "",
+      length: "",
+      ascent: "",
+      img: "",
+      summary: "",
+      url: ""
     },
     currentAddLog: {
-        id: "",
-        name: "",
-        location: "",
-        latitude: "",
-        longitude: "",
-        length: "",
-        ascent: "",
-        img: "",
-        summary: "",
-        url: ""
+      id: "",
+      name: "",
+      location: "",
+      latitude: "",
+      longitude: "",
+      length: "",
+      ascent: "",
+      img: "",
+      summary: "",
+      url: ""
     },
     bucketList: [],
     log: [],
-    id: "5ec1a6d2b7942608a0cf2d61",
     barChart: [],
     lineChart: [],
     loading: false
