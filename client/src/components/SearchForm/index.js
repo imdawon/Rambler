@@ -96,8 +96,6 @@ const SearchForm = () => {
             <i className="fa fa-tree"></i>
         </span> 
 
-        <DistanceBar />
-
          </p><button id="searchButton" className="button is-success is-light" type="submit" disabled={state.loading}>
         Search</button>
         
