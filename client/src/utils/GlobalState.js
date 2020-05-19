@@ -139,7 +139,9 @@ const StoreProvider = ({ value = [], ...props }) => {
       ascent: "",
       img: "",
       summary: "",
-      url: ""
+      url: "",
+      trailType: "",
+      description: ""
     },
     currentAddLog: {
       id: "",
@@ -151,7 +153,9 @@ const StoreProvider = ({ value = [], ...props }) => {
       ascent: "",
       img: "",
       summary: "",
-      url: ""
+      url: "",
+      trailType: "",
+      description: ""
     },
     bucketList: [],
     log: [],

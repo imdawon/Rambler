@@ -55,7 +55,9 @@ function BucketResults() {
                                             ascent: hike.ascent,
                                             img: hike.img,
                                             summary: hike.summary,
-                                            url: hike.url
+                                            url: hike.url, 
+                                            trailType: hike.trailType, 
+                                            description: hike.description
                                         }
                                     )
                                 }}>Add to Log</button>

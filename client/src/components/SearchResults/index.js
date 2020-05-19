@@ -45,7 +45,7 @@ function SearchResults() {
                         <div className="card_content is-centered">
                             <h2 className="card_title">{hike.name}</h2>
                             <p className="card_text">Location: {hike.location} </p>
-                            <p className="card_text">Distance: {hike.length} miles</p>
+                            <p className="card_text">Distance: {hike.length} miles {hike.trailType}</p>
                             <p className="card_text">Elevation Gain: {hike.ascent} feet</p>
                             <button className="btn card_btn bucketlist-add" onClick={() => {setBucketList(
                                 {
@@ -58,7 +58,9 @@ function SearchResults() {
                                     ascent: hike.ascent, 
                                     img: hike.imgMedium,
                                     summary: hike.summary,
-                                    url: hike.url
+                                    url: hike.url,
+                                    trailType: hike.trailType,
+                                    description: hike.description
                                 }
                             )}}>Add to Bucket List</button>
                             <button className="btn card_btn bucketlist-add" onClick={() => {setLog(
@@ -72,7 +74,9 @@ function SearchResults() {
                                     ascent: hike.ascent, 
                                     img: hike.imgMedium,
                                     summary: hike.summary,
-                                    url: hike.url
+                                    url: hike.url,
+                                    trailType: hike.trailType,
+                                    description: hike.description
                                 }
                             )}}>Add to Log</button>
                         </div>
