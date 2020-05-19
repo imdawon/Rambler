@@ -19,6 +19,6 @@ export default class GetUserInfo extends React.Component {
 
     render() {
         return (
-            <h6>GetUserInfo Component Successfully Loaded. Check console for logged user session data!</h6>)
+            <h6>Happy hiking, { this.state.userSessionData.user }</h6>)
     }
 }
