@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { SET_USER_SEARCH, LOADING, UPDATE_LAT_LON, UPDATE_HIKES } from "../../utils/actions";
-import DistanceBar from '../DistanceBar';
 import "./style.css";
 import API from "../../utils/API";
 import { Collection } from "mongoose";
@@ -9,8 +8,10 @@ import { Collection } from "mongoose";
 const cheerio = require('cheerio');
 
 const SearchForm = () => {
-    //user input
+    //user search input
     const search_input = useRef();
+    // user max distance
+    const max_distance = useRef();
     // global state and actions
     const [state, dispatch] = useStoreContext();
     // if user search is in state, generate the coordinates
@@ -44,6 +45,7 @@ const SearchForm = () => {
             userSearch: searchValue
         });
         search_input.current.value = "";
+        max_distance.current.value = "";
         generateCoordinates();
     };
 
@@ -64,7 +66,8 @@ const SearchForm = () => {
     };
     // Takes converted lat and lon to make REI API call to gather hike data
     const loadHikes = () => {
-        API.getTrails(state.lat, state.lon)
+        let maxDistance = max_distance.current.value
+        API.getTrails(state.lat, state.lon, maxDistance)
             .then((trails) => {
                 let hikeResults = trails.data.trails
                 getMoreInfo(hikeResults);
@@ -74,24 +77,24 @@ const SearchForm = () => {
 
     const getMoreInfo = (hikeResults) => {
         let hikesWithDetails = []
-            hikeResults.map((hike, i) => {
-                API.getDetails(hike.url)
-                    .then((res) => {
-                        const $ = cheerio.load(res.data);
-                        let type = $('.mb-quarter').html();
-                        let summary = $('h3:contains("Description")').next().text();
-                        let hikeData = { ...hike,  trailType : type, description : summary };
-                        hikesWithDetails.push(hikeData);
-                    })
-                    .then(() => {
-                        console.log(hikesWithDetails);
-                        dispatch({
-                            type: UPDATE_HIKES,
-                            hikes: hikesWithDetails
-                        });
-                    })
-                    .catch(err => console.log(err));
-            });
+        hikeResults.map((hike, i) => {
+            API.getDetails(hike.url)
+                .then((res) => {
+                    const $ = cheerio.load(res.data);
+                    let type = $('.mb-quarter').html();
+                    let summary = $('h3:contains("Description")').next().text();
+                    let hikeData = { ...hike, trailType: type, description: summary };
+                    hikesWithDetails.push(hikeData);
+                })
+                .then(() => {
+                    console.log(hikesWithDetails);
+                    dispatch({
+                        type: UPDATE_HIKES,
+                        hikes: hikesWithDetails
+                    });
+                })
+                .catch(err => console.log(err));
+        });
     };
 
     return (
@@ -108,15 +111,25 @@ const SearchForm = () => {
                         <span className="icon is-small is-left">
                             <i className="fa fa-tree"></i>
                         </span>
-
-                    </p><button id="searchButton" className="button is-success is-light" type="submit" disabled={state.loading}>
+                    </p>
+                </div>
+                <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input is-success"
+                            ref={max_distance}
+                            type="text"
+                            placeholder="Max Distance"
+                            id="location"
+                        />
+                        <span className="icon is-small is-left">
+                            <i className="fa fa-tree"></i>
+                        </span>
+                    </p>
+                    <button id="searchButton" className="button is-success is-light" type="submit" disabled={state.loading}>
                         Search</button>
-
-
                 </div>
             </form>
         </div>
-
     )
 }
 
