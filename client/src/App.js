@@ -8,7 +8,6 @@ import './App.css';
 function App() {
   return (
     <div>
-    <GetUserInfo />
       <StoreProvider>
         <Wrapper>
           <Main>
