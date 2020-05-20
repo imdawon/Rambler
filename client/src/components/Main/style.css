@@ -1,4 +1,4 @@
-*,
+/* *,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -7,6 +7,7 @@
 html {
     background-color: #ecf9ff;
     height: 100%;
+    
   }
   
   body {
@@ -121,4 +122,4 @@ html {
     line-height: 1.5;
     margin-bottom: 1.25rem;    
     font-weight: 400;
-  }
+  } */
