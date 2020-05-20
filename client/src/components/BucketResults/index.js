@@ -1,8 +1,9 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
+import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import "./style.css";
-import { ADD_LOG, REMOVE_BUCKETLIST } from "../../utils/actions";
+import { ADD_LOG, REMOVE_BUCKETLIST, SET_CURRENT_HIKE } from "../../utils/actions";
 
 function BucketResults() {
     const [state, dispatch] = useStoreContext();
@@ -29,6 +30,14 @@ function BucketResults() {
             .catch(err => console.log(err));
     };
 
+    const setCurrentHike = (hike) => {
+        console.log(hike);
+        dispatch({
+            type: SET_CURRENT_HIKE,
+            currentHike: hike
+        });
+    };
+    
     return (
         <div>
             <ul className="hikeResultList cards">
@@ -43,6 +52,23 @@ function BucketResults() {
                                 <p className="card_text">Location: {hike.location} </p>
                                 <p className="card_text">Distance: {hike.length} miles</p>
                                 <p className="card_text">Elevation Gain: {hike.ascent} feet</p>
+                                <Link to={"/hike_details/" + hike.id}><button className="btn card_btn bucketlist-add" 
+                            onClick={() => {setCurrentHike( 
+                                {
+                                    id: hike.id, 
+                                    name: hike.name, 
+                                    location: hike.location,  
+                                    latitude: hike.latitude,
+                                    longitude: hike.longitude,
+                                    length: hike.length, 
+                                    ascent: hike.ascent, 
+                                    img: hike.imgMedium,
+                                    summary: hike.summary,
+                                    url: hike.url,
+                                    trailType: hike.trailType,
+                                    description: hike.description
+                                }
+                            )}}>Details</button></Link>
                                 <button className="btn card_btn bucketlist-add" onClick={() => {
                                     setLog(
                                         {
