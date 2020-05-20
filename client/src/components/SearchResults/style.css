@@ -135,7 +135,7 @@ html {
 
  .card_content {
     padding: 1rem;
-    background: linear-gradient(to bottom left, rgb(58, 104, 47) 40%, rgb(117, 146, 243) 100%);
+    background: linear-gradient(to bottom left, #50ca7a 10%, #455c47 80%);
   }
   
   .card_title {
