@@ -118,11 +118,11 @@ const SearchForm = () => {
                         <input class="input is-success"
                             ref={max_distance}
                             type="text"
-                            placeholder="Max Distance"
+                            placeholder="How far will you travel? (max 200 miles)"
                             id="location"
                         />
                         <span className="icon is-small is-left">
-                            <i className="fa fa-tree"></i>
+                            <i className="fa fa-road"></i>
                         </span>
                     </p>
                     <button id="searchButton" className="button is-success is-light" type="submit" disabled={state.loading}>
