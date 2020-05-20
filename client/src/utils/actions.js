@@ -1,5 +1,7 @@
 export const SET_USER_SEARCH = "SET_USER_SEARCH";
 
+export const SET_CURRENT_HIKE = "SET_CURRENT_HIKE";
+
 export const UPDATE_HIKES = "UPDATE_HIKES";
 
 export const UPDATE_LAT_LON = "UPDATE_LAT_LON"
@@ -18,4 +20,4 @@ export const UPDATE_LINE_CHART = "UPDATE_LINE_CHART";
 export const UPDATE_BAR_CHART = "UPDATE_BAR_CHART";
 
 export const SET_GOOGLE_ID = "SET_GOOGLE_ID";
-export const SET_NAME = "SET_NAME"
+export const SET_NAME = "SET_NAME";
