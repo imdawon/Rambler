@@ -16,3 +16,13 @@ code {
   width: 50%;
   margin: 20px 25% 0;
 }
+
+#detailImage {
+  width: 70%;
+  margin: 0 15%;
+}
+
+#detailButton{
+  margin: 20px;
+  width: 40%;
+}

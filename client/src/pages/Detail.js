@@ -4,6 +4,7 @@ import { useStoreContext } from "../utils/GlobalState";
 import API from "../utils/API";
 import { ADD_BUCKETLIST, ADD_LOG } from "../utils/actions";
 import Weather from '../components/Weather';
+import "../index.css";
 
 
 const Detail = () => {
@@ -39,16 +40,15 @@ const Detail = () => {
         (state.currentHike.id)
         ?
         <div>
-            <p>Details</p>
-            <div className="card_image">
-                <img className="card-img-top" src={state.currentHike.img} alt={state.currentHike.name} />
-            </div>
+            <h2>Details</h2>
+                <img id="detailImage" src={state.currentHike.img} alt={state.currentHike.name} />
+            
             <h2>{state.currentHike.name}</h2>
             <p>Location: {state.currentHike.location} </p>
             <p>Distance: {state.currentHike.length} miles {state.currentHike.trailType}</p>
             <p>Elevation Gain: {state.currentHike.ascent} feet</p>
             <h6>{state.currentHike.description}</h6>
-            <button className="btn card_btn bucketlist-add" onClick={() => {setBucketList(
+            <button id="detailButton" className="btn bucketlist-add button is-success is-light" onClick={() => {setBucketList(
                 {
                     id: state.currentHike.id, 
                     name: state.currentHike.name, 
@@ -63,8 +63,10 @@ const Detail = () => {
                     trailType: state.currentHike.trailType,
                     description: state.currentHike.description
                 }
-            )}}>Add to Bucket List</button>
-            <button className="btn card_btn bucketlist-add" onClick={() => {setLog(
+            )}}><span class="icon is-small">
+      <i class="fa fa-check"></i>
+    </span>Add to Bucket List</button>
+            <button id="detailButton" className="bucketlist-add button is-success is-light" onClick={() => {setLog(
                 {
                     id: state.currentHike.id, 
                     name: state.currentHike.name, 
@@ -79,7 +81,12 @@ const Detail = () => {
                     trailType: state.currentHike.trailType,
                     description: state.currentHike.description
                 }
-            )}}>Add to Log</button>
+            )}}>
+            <span class="icon is-small">
+            <i class="fa fa-check"></i>
+            </span>
+            <span>Add to Log</span>
+            </button>
             <Weather />
         </div>
         : 
