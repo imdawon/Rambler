@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#emptyLog {
+  width: 50%;
+  margin: 20px 25% 0;
+}
