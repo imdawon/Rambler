@@ -21,3 +21,6 @@ export const UPDATE_BAR_CHART = "UPDATE_BAR_CHART";
 
 export const SET_GOOGLE_ID = "SET_GOOGLE_ID";
 export const SET_NAME = "SET_NAME";
+
+export const CATCH_FORECAST = "CATCH_FORECASE";
+export const SET_FORECAST_LOCATION = "SET_FORECAST_LOCATION";

@@ -50,7 +50,7 @@ const Detail = () => {
             <p>Elevation Gain: {state.currentHike.ascent} feet</p>
             <h6>{state.currentHike.description}</h6>
             <ButtonBucketAdd
-            detail={true}
+            detail={"true"}
             hike={state.currentHike}
             onClick={() => {
                 setBucketList(
@@ -71,7 +71,7 @@ const Detail = () => {
                 )
             }} />
             <ButtonLogAdd 
-            detail={true}
+            detail={"true"}
             hike={state.currentHike}
             onClick={() => {
                 setLog(
