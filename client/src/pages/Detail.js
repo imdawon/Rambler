@@ -1,14 +1,40 @@
 import React, { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useStoreContext } from "../utils/GlobalState";
+import API from "../utils/API";
+import { ADD_BUCKETLIST, ADD_LOG } from "../utils/actions";
+import Weather from '../components/Weather';
 
 
 const Detail = () => {
     const [state, dispatch] = useStoreContext();
-    const { id } = useParams()
-
-
-
+    
+    const setBucketList = (bucketListHike) => {
+        console.log(bucketListHike)
+  
+        API.addToBucketList(state.googleId, bucketListHike)
+        .then(res => console.log("Updated bucket list", res.data))
+        .catch(err => console.log(err));
+  
+          dispatch({
+              type: ADD_BUCKETLIST,
+              bucketList: bucketListHike
+          });
+      };
+  
+      const setLog = (logHike) => {
+          console.log(logHike)
+  
+          API.addToLog(state.googleId, logHike)
+          .then(res => console.log("Updated log", res.data))
+          .catch(err => console.log(err));
+          
+          dispatch({
+              type: ADD_LOG,
+              log: logHike
+          });
+      };
+  
     return (
         <div>
             <p>Details</p>
@@ -19,8 +45,40 @@ const Detail = () => {
             <p>Location: {state.currentHike.location} </p>
             <p>Distance: {state.currentHike.length} miles {state.currentHike.trailType}</p>
             <p>Elevation Gain: {state.currentHike.ascent} feet</p>
-            <p>{state.currentHike.description}</p>
-            <Link to="/"><span>← Back to Search</span></Link>
+            <h6>{state.currentHike.description}</h6>
+            <button className="btn card_btn bucketlist-add" onClick={() => {setBucketList(
+                {
+                    id: state.currentHike.id, 
+                    name: state.currentHike.name, 
+                    location: state.currentHike.location,  
+                    latitude: state.currentHike.latitude,
+                    longitude: state.currentHike.longitude,
+                    length: state.currentHike.length, 
+                    ascent: state.currentHike.ascent, 
+                    img: state.currentHike.img,
+                    summary: state.currentHike.summary,
+                    url: state.currentHike.url,
+                    trailType: state.currentHike.trailType,
+                    description: state.currentHike.description
+                }
+            )}}>Add to Bucket List</button>
+            <button className="btn card_btn bucketlist-add" onClick={() => {setLog(
+                {
+                    id: state.currentHike.id, 
+                    name: state.currentHike.name, 
+                    location: state.currentHike.location,  
+                    latitude: state.currentHike.latitude,
+                    longitude: state.currentHike.longitude,
+                    length: state.currentHike.length, 
+                    ascent: state.currentHike.ascent, 
+                    img: state.currentHike.img,
+                    summary: state.currentHike.summary,
+                    url: state.currentHike.url,
+                    trailType: state.currentHike.trailType,
+                    description: state.currentHike.description
+                }
+            )}}>Add to Log</button>
+            <Weather />
         </div>
     );
 }

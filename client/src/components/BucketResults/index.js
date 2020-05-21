@@ -37,7 +37,7 @@ function BucketResults() {
             currentHike: hike
         });
     };
-    
+
     return (
         <div>
             <ul className="hikeResultList cards">
@@ -62,7 +62,7 @@ function BucketResults() {
                                     longitude: hike.longitude,
                                     length: hike.length, 
                                     ascent: hike.ascent, 
-                                    img: hike.imgMedium,
+                                    img: hike.img,
                                     summary: hike.summary,
                                     url: hike.url,
                                     trailType: hike.trailType,
