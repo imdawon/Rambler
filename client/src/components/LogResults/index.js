@@ -51,7 +51,7 @@ function LogResults() {
                                         longitude: hike.longitude,
                                         length: hike.length, 
                                         ascent: hike.ascent, 
-                                        img: hike.imgMedium,
+                                        img: hike.img,
                                         summary: hike.summary,
                                         url: hike.url,
                                         trailType: hike.trailType,
