@@ -14,7 +14,9 @@ import {
   UPDATE_LINE_CHART,
   SET_GOOGLE_ID,
   SET_NAME,
-  SET_CURRENT_HIKE
+  SET_CURRENT_HIKE,
+  CATCH_FORECAST,
+  SET_FORECAST_LOCATION
 } from "./actions";
 
 const StoreContext = createContext();
@@ -112,6 +114,16 @@ const reducer = (state, action) => {
         ...state,
         currentHike: action.currentHike
       };
+    case CATCH_FORECAST:
+      return {
+        ...state,
+        weather: action.weather
+      };
+    case SET_FORECAST_LOCATION: 
+      return {
+        ...state,
+        forecastLocation: action.forecastLocation
+      };
     default:
       return state;
   };
@@ -132,6 +144,8 @@ const StoreProvider = ({ value = [], ...props }) => {
     log: [],
     barChart: [],
     lineChart: [],
+    weather: [],
+    forecastLocation: "",
     loading: false
   });
 
