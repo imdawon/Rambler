@@ -38,8 +38,11 @@ function Log() {
         <BarChart /> 
         <LogResults />
         </div>
-        : 
-        <h3>Get out on the trail and log some hikes!</h3>
+        : <div>
+        <h2>Get out on the trail and log some hikes!</h2>
+        <img id="emptyLog" src="https://i.imgur.com/270Ayuj.png" />
+        </div>
+        
         
     );
 }
