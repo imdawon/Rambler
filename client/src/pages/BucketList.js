@@ -36,7 +36,7 @@ function BucketList() {
             <BucketResults />
         </div>
         :
-        <h3>You don't have any hikes in your bucket list.</h3>
+        <h2>You don't have any hikes <br /> in your bucket list.</h2>
     )
 }
 
