@@ -39,7 +39,6 @@ const reducer = (state, action) => {
         ...state,
         lat: action.lat,
         lon: action.lon,
-        loading: false
       };
     case ADD_BUCKETLIST:
       return {
@@ -127,34 +126,8 @@ const StoreProvider = ({ value = [], ...props }) => {
     googleId: "",
     user: "",
     currentHike: {},
-    currentAddBucket: {
-      id: "",
-      name: "",
-      location: "",
-      latitude: "",
-      longitude: "",
-      length: "",
-      ascent: "",
-      img: "",
-      summary: "",
-      url: "",
-      trailType: "",
-      description: ""
-    },
-    currentAddLog: {
-      id: "",
-      name: "",
-      location: "",
-      latitude: "",
-      longitude: "",
-      length: "",
-      ascent: "",
-      img: "",
-      summary: "",
-      url: "",
-      trailType: "",
-      description: ""
-    },
+    currentAddBucket: {},
+    currentAddLog: {},
     bucketList: [],
     log: [],
     barChart: [],
