@@ -12,7 +12,7 @@ function ButtonLogAdd(props) {
             <span>Add to Log</span>
         </button>
         :
-         <button className="btn log-add button " {...props}>
+         <button className="log-add btn card_btn " {...props}>
             Add to Log</button>
     );
 };
