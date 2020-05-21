@@ -5,6 +5,8 @@ import API from "../utils/API";
 import { ADD_BUCKETLIST, ADD_LOG } from "../utils/actions";
 import Weather from '../components/Weather';
 import ButtonLogAdd from '../components/ButtonLogAdd';
+import ButtonBucketAdd from '../components/ButtonBucketAdd';
+import "../index.css";
 
 
 const Detail = () => {
@@ -39,32 +41,37 @@ const Detail = () => {
         (state.currentHike.id)
         ?
         <div>
-            <p>Details</p>
-            <div className="card_image">
-                <img className="card-img-top" src={state.currentHike.imgMedium} alt={state.currentHike.name} />
-            </div>
+            <h2>Details</h2>
+                <img id="detailImage" src={state.currentHike.imgMedium} alt={state.currentHike.name} />
+            
             <h2>{state.currentHike.name}</h2>
             <p>Location: {state.currentHike.location} </p>
             <p>Distance: {state.currentHike.length} miles {state.currentHike.trailType}</p>
             <p>Elevation Gain: {state.currentHike.ascent} feet</p>
             <h6>{state.currentHike.description}</h6>
-            <button className="btn card_btn bucketlist-add" onClick={() => {setBucketList(
-                {
-                    id: state.currentHike.id, 
-                    name: state.currentHike.name, 
-                    location: state.currentHike.location,  
-                    latitude: state.currentHike.latitude,
-                    longitude: state.currentHike.longitude,
-                    length: state.currentHike.length, 
-                    ascent: state.currentHike.ascent, 
-                    img: state.currentHike.img,
-                    summary: state.currentHike.summary,
-                    url: state.currentHike.url,
-                    trailType: state.currentHike.trailType,
-                    description: state.currentHike.description
-                }
-            )}}>Add to Bucket List</button>
+            <ButtonBucketAdd
+            detail={true}
+            hike={state.currentHike}
+            onClick={() => {
+                setBucketList(
+                    {
+                        id: state.currentHike.id,
+                        name: state.currentHike.name,
+                        location: state.currentHike.location,
+                        latitude: state.currentHike.latitude,
+                        longitude: state.currentHike.longitude,
+                        length: state.currentHike.length,
+                        ascent: state.currentHike.ascent,
+                        imgMedium: state.currentHike.imgMedium,
+                        summary: state.currentHike.summary,
+                        url: state.currentHike.url,
+                        trailType: state.currentHike.trailType,
+                        description: state.currentHike.description
+                    }
+                )
+            }} />
             <ButtonLogAdd 
+            detail={true}
             hike={state.currentHike}
             onClick={() => {
                 setLog(
