@@ -17,19 +17,30 @@ function BarChart() {
   useEffect(() => {
     processData(state.log);
   }, [state.log]);
+
   const processData = (data) => {
-    let stateData = data.map((e, index) => ({
+    let updatedDistance = state.log.map((e) => {
+      if (e.trailType === "point to point" && e.length < 12.5) {
+        const newHike = { ...e, length: e.length * 2 };
+        return newHike;
+      } else {
+        return e;
+      }
+    });
+    getDataPoints(updatedDistance);
+  };
+
+  const getDataPoints = (updatedDistance) => {
+    let stateDataPoints = updatedDistance.map((e, index) => ({
       x: index + 2,
       x0: index + 1,
       y: 0,
       y0: e.length,
     }));
-
     dispatch({
       type: UPDATE_BAR_CHART,
-      barChart: stateData,
+      barChart: stateDataPoints,
     });
-    return stateData;
   };
 
   return (
