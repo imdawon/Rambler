@@ -15,7 +15,7 @@ const Detail = () => {
         API.addToBucketList(state.googleId, bucketListHike)
         .then(res => console.log("Updated bucket list", res.data))
         .catch(err => console.log(err));
-  
+
           dispatch({
               type: ADD_BUCKETLIST,
               bucketList: bucketListHike
@@ -36,6 +36,8 @@ const Detail = () => {
       };
   
     return (
+        (state.currentHike.id)
+        ?
         <div>
             <p>Details</p>
             <div className="card_image">
@@ -80,6 +82,8 @@ const Detail = () => {
             )}}>Add to Log</button>
             <Weather />
         </div>
+        : 
+        <h3>Hike Not Found</h3>
     );
 }
 
