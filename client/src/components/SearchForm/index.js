@@ -17,7 +17,7 @@ const SearchForm = () => {
     // if user search is in state, generate the coordinates
     useEffect(() => {
         if (state.userSearch) {
-            generateCoordinates()
+            generateCoordinates();
             dispatch({
                 type: SET_USER_SEARCH,
                 userSearch: ""
