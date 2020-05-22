@@ -21,3 +21,5 @@ export const UPDATE_BAR_CHART = "UPDATE_BAR_CHART";
 
 export const SET_GOOGLE_ID = "SET_GOOGLE_ID";
 export const SET_NAME = "SET_NAME";
+
+export const SET_ACTION_NOTIFICATION = "SET_ACTION_NOTIFICATION"

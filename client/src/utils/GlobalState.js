@@ -14,7 +14,8 @@ import {
   UPDATE_LINE_CHART,
   SET_GOOGLE_ID,
   SET_NAME,
-  SET_CURRENT_HIKE
+  SET_CURRENT_HIKE,
+  SET_ACTION_NOTIFICATION
 } from "./actions";
 
 const StoreContext = createContext();
@@ -113,6 +114,11 @@ const reducer = (state, action) => {
         ...state,
         currentHike: action.currentHike
       };
+      case SET_ACTION_NOTIFICATION:
+        return {
+          ...state,
+          actionNotification: action.actionNotification
+        }
     default:
       return state;
   };
@@ -123,6 +129,7 @@ const StoreProvider = ({ value = [], ...props }) => {
     userSearch: "",
     searchLat: "",
     searchLon: "",
+    actionNotification: "",
     hikes: [],
     googleId: "",
     user: "",
