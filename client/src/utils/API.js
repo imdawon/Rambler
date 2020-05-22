@@ -6,6 +6,9 @@ export default {
     getTrails: function(lat, lon, maxDistance) {
         return axios.get("https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=" + maxDistance + "&key=" + process.env.REACT_APP_REI_API_KEY)
     },
+    getWeather: function(lat, lon) {
+        return axios.get("https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=metric&appid=" + process.env.REACT_APP_OPENWEATHER_API_KEY)
+    },
     getUserList: function(id) {
         return axios.get("/api/user/" + id);
     },

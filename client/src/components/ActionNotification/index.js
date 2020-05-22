@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import "./index.css"
 import { useStoreContext } from "../../utils/GlobalState";
 import { SET_ACTION_NOTIFICATION } from '../../utils/actions';
