@@ -2,13 +2,22 @@ import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
-import ActionNotification from '../ActionNotification';
 import "./style.css";
-import { ADD_BUCKETLIST, ADD_LOG, SET_CURRENT_HIKE } from "../../utils/actions";
+import ButtonLogAdd from "../ButtonLogAdd";
+import ButtonBucketAdd from '../ButtonBucketAdd';
+import ButtonDetail from '../ButtonDetails';
+import { SET_CURRENT_HIKE, ADD_BUCKETLIST, ADD_LOG } from "../../utils/actions";
 
 function SearchResults() {
     const [state, dispatch] = useStoreContext();
 
+    const setCurrentHike = (hike) => {
+        console.log(hike);
+        dispatch({
+            type: SET_CURRENT_HIKE,
+            currentHike: hike
+        });
+    };
     const setBucketList = (bucketListHike) => {
         // Create text for ActionNotication popup
         const bucketListSuccessNotification = new CustomEvent('runNotification', {detail: "Added hike to bucketlist!" });
@@ -25,7 +34,6 @@ function SearchResults() {
             bucketList: bucketListHike
         });
     };
-
     const setLog = (logHike) => {
         const event = new Event('runNotification');
         window.dispatchEvent(event);
@@ -38,14 +46,6 @@ function SearchResults() {
         dispatch({
             type: ADD_LOG,
             log: logHike
-        });
-    };
-
-    const setCurrentHike = (hike) => {
-        console.log(hike);
-        dispatch({
-            type: SET_CURRENT_HIKE,
-            currentHike: hike
         });
     };
 
@@ -63,9 +63,10 @@ function SearchResults() {
                                 <p className="card_text">Location: {hike.location} </p>
                                 <p className="card_text">Distance: {hike.length} miles {hike.trailType}</p>
                                 <p className="card_text">Elevation Gain: {hike.ascent} feet</p>
-                                <Link to={"/hike_details/" + hike.id}><button className="btn card_btn bucketlist-add"
-                                    onClick={() => {
-                                        setCurrentHike(
+                                <Link to={"/hike_details/" + hike.id}>
+                                    <ButtonDetail
+                                        hike={hike}
+                                        onClick={() => setCurrentHike(
                                             {
                                                 id: hike.id,
                                                 name: hike.name,
@@ -74,56 +75,63 @@ function SearchResults() {
                                                 longitude: hike.longitude,
                                                 length: hike.length,
                                                 ascent: hike.ascent,
-                                                img: hike.imgMedium,
+                                                imgMedium: hike.imgMedium,
                                                 summary: hike.summary,
                                                 url: hike.url,
                                                 trailType: hike.trailType,
                                                 description: hike.description
                                             }
                                         )
-                                    }}>Details</button></Link>
-                                <button className="btn card_btn bucketlist-add" onClick={() => {
-                                    setBucketList(
-                                        {
-                                            id: hike.id,
-                                            name: hike.name,
-                                            location: hike.location,
-                                            latitude: hike.latitude,
-                                            longitude: hike.longitude,
-                                            length: hike.length,
-                                            ascent: hike.ascent,
-                                            img: hike.imgMedium,
-                                            summary: hike.summary,
-                                            url: hike.url,
-                                            trailType: hike.trailType,
-                                            description: hike.description
                                         }
-                                    )
-                                }}>Add to Bucket List</button>
-                                <button className="btn card_btn bucketlist-add" onClick={() => {
-                                    setLog(
-                                        {
-                                            id: hike.id,
-                                            name: hike.name,
-                                            location: hike.location,
-                                            latitude: hike.latitude,
-                                            longitude: hike.longitude,
-                                            length: hike.length,
-                                            ascent: hike.ascent,
-                                            img: hike.imgMedium,
-                                            summary: hike.summary,
-                                            url: hike.url,
-                                            trailType: hike.trailType,
-                                            description: hike.description
-                                        }
-                                    )
-                                }}>Add to Log</button>
+                                    />
+                                </Link>
+                                <ButtonBucketAdd
+                                    hike={hike}
+                                    onClick={() => {
+                                        setBucketList(
+                                            {
+                                                id: hike.id,
+                                                name: hike.name,
+                                                location: hike.location,
+                                                latitude: hike.latitude,
+                                                longitude: hike.longitude,
+                                                length: hike.length,
+                                                ascent: hike.ascent,
+                                                imgMedium: hike.imgMedium,
+                                                summary: hike.summary,
+                                                url: hike.url,
+                                                trailType: hike.trailType,
+                                                description: hike.description
+                                            }
+                                        )
+                                    }} />
+                                <ButtonLogAdd
+                                    hike={hike}
+                                    onClick={() => {
+                                        setLog(
+                                            {
+                                                id: hike.id,
+                                                name: hike.name,
+                                                location: hike.location,
+                                                latitude: hike.latitude,
+                                                longitude: hike.longitude,
+                                                length: hike.length,
+                                                ascent: hike.ascent,
+                                                imgMedium: hike.imgMedium,
+                                                summary: hike.summary,
+                                                url: hike.url,
+                                                trailType: hike.trailType,
+                                                description: hike.description
+                                            }
+                                        )
+                                    }}/>
                             </div>
                         </div>
                     </li>
                 ))}
             </ul>
-        </div>)
+        </div>
+    )
 };
 
 export default SearchResults;

@@ -30,12 +30,21 @@ function Log() {
     };
 
     return (
+        
+        (state.log.length > 0) 
+        ? 
         <div>
         <p>Log</p>
-        <LineChart />
-        <BarChart />
+         <LineChart /> 
+        <BarChart /> 
         <LogResults />
         </div>
+        : <div>
+        <h2>Get out on the trail and log some hikes!</h2>
+        <img id="emptyLog" src="https://i.imgur.com/270Ayuj.png" />
+        </div>
+        
+        
     );
 }
 

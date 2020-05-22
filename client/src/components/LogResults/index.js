@@ -1,14 +1,23 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Link } from "react-router-dom";
-import API from "../../utils/API";
+import API from '../../utils/API';
 import "./style.css";
-import { REMOVE_LOG, SET_CURRENT_HIKE } from "../../utils/actions";
+import ButtonDetail from "../ButtonDetails";
+import ButtonDeleteLog from '../ButtonDeleteLog';
+import { SET_CURRENT_HIKE, REMOVE_LOG } from "../../utils/actions";
 
 function LogResults() {
     const [state, dispatch] = useStoreContext();
 
-    const removeHike = (hikeToRemoveID, hikeToRemove ) => {
+    const setCurrentHike = (hike) => {
+        console.log(hike);
+        dispatch({
+            type: SET_CURRENT_HIKE,
+            currentHike: hike
+        });
+    };
+    const removeHike = (hikeToRemoveID, hikeToRemove) => {
         API.removeLogHike(state.googleId, hikeToRemove)
             .then(() => {
                 dispatch({
@@ -19,14 +28,6 @@ function LogResults() {
             .catch(err => console.log(err));
     };
 
-    const setCurrentHike = (hike) => {
-        console.log(hike);
-        dispatch({
-            type: SET_CURRENT_HIKE,
-            currentHike: hike
-        });
-    };
-
     return (
         <div>
             <ul className="hikeResultList cards">
@@ -34,32 +35,37 @@ function LogResults() {
                     <li key={index} className="hikeListItem cards_item">
                         <div className="card">
                             <div className="card_image">
-                                <img className="card-img-top" src={hike.img} alt={hike.name} />
+                                <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
                             </div>
                             <div className="card_content is-centered">
                                 <h2 className="card_title">{hike.name}</h2>
                                 <p className="card_text">Location: {hike.location} </p>
                                 <p className="card_text">Distance: {hike.length} miles</p>
                                 <p className="card_text">Elevation Gain: {hike.ascent} feet</p>
-                                <Link to={"/hike_details/" + hike.id}><button className="btn card_btn bucketlist-add" 
-                                onClick={() => {setCurrentHike( 
-                                    {
-                                        id: hike.id, 
-                                        name: hike.name, 
-                                        location: hike.location,  
-                                        latitude: hike.latitude,
-                                        longitude: hike.longitude,
-                                        length: hike.length, 
-                                        ascent: hike.ascent, 
-                                        img: hike.imgMedium,
-                                        summary: hike.summary,
-                                        url: hike.url,
-                                        trailType: hike.trailType,
-                                        description: hike.description
-                                    }
-                                )}}>Details</button></Link>
-                                <button className="btn card_btn remove-hike" onClick={() => removeHike(hike.id, hike)
-                                }> Remove Hike </button>
+                                <Link to={"/hike_details/" + hike.id}>
+                                    <ButtonDetail
+                                        hike={hike}
+                                        onClick={() => setCurrentHike(
+                                            {
+                                                id: hike.id,
+                                                name: hike.name,
+                                                location: hike.location,
+                                                latitude: hike.latitude,
+                                                longitude: hike.longitude,
+                                                length: hike.length,
+                                                ascent: hike.ascent,
+                                                imgMedium: hike.imgMedium,
+                                                summary: hike.summary,
+                                                url: hike.url,
+                                                trailType: hike.trailType,
+                                                description: hike.description
+                                            }
+                                    )}/>
+                                </Link>
+                                <ButtonDeleteLog
+                                    hike={hike}
+                                    onClick={() => removeHike(hike.id, hike)
+                                    } />
                             </div>
                         </div>
                     </li>
