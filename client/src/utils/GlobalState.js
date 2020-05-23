@@ -12,6 +12,8 @@ import {
   LOADING,
   UPDATE_BAR_CHART,
   UPDATE_LINE_CHART,
+  UPDATE_BAR_CHART_LABELS,
+  UPDATE_LINE_CHART_LABELS,
   SET_GOOGLE_ID,
   SET_NAME,
   SET_CURRENT_HIKE
@@ -75,6 +77,18 @@ const reducer = (state, action) => {
       return {
         ...state,
         barChart: [...action.barChart],
+        loading: false
+      };
+      case UPDATE_BAR_CHART_LABELS:
+      return {
+        ...state,
+        barChartLabels: [...action.barChartLabels],
+        loading: false
+      };
+      case UPDATE_LINE_CHART_LABELS:
+      return {
+        ...state,
+        lineChart: [...action.lineChartLabels],
         loading: false
       };
     case REMOVE_BUCKETLIST:
@@ -159,6 +173,8 @@ const StoreProvider = ({ value = [], ...props }) => {
     log: [],
     barChart: [],
     lineChart: [],
+    lineChartLabels: [],
+    barChartLabels: [],
     loading: false
   });
 
