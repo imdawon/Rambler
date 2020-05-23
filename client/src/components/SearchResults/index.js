@@ -27,7 +27,7 @@ function SearchResults() {
         });
     };
     const setBucketList = (bucketListHike) => {
-        createNotificationEvent('Added hike to Bucket List!')
+        createNotificationEvent('Added to Bucket List!')
 
         console.log(`bucketListHike value: ${bucketListHike}`);
 
@@ -41,10 +41,7 @@ function SearchResults() {
         });
     };
     const setLog = (logHike) => {
-        createNotificationEvent('Added hike to Hike Log!')
-        const event = new Event('runNotification');
-        window.dispatchEvent(event);
-        console.log(logHike)
+        createNotificationEvent('Added to Hike Log!')
 
         API.addToLog(state.googleId, logHike)
             .then(res => console.log("Updated log", res.data))

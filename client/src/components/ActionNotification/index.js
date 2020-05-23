@@ -11,20 +11,19 @@ function ActionNotification() {
             type: SET_ACTION_NOTIFICATION,
             actionNotification: JSON.stringify(event.detail)
         })
-        // set state.message to e.detail
-        // setTimeout(//set state to false ,3000)
-     }, false);
+    }, false);
 
     useEffect(() => {
         console.log("ActionNotification Enabled!")
     }, [])
     return (
+        (state.actionNotification === "")
+            ? <h6></h6>
 
-        <div className="notification is-primary">
+            : <div className="notification is-primary">
             <button className="delete"></button>
-           { state.actionNotification }
+            {state.actionNotification}
         </div>
-    
     )
-    }
+}
 export default ActionNotification;
