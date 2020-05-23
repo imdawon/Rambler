@@ -3,7 +3,6 @@ import "./index.css"
 import { useStoreContext } from "../../utils/GlobalState";
 import { SET_ACTION_NOTIFICATION } from '../../utils/actions';
 
-
 function ActionNotification() {
 
     const [state, dispatch] = useStoreContext();
@@ -15,16 +14,9 @@ function ActionNotification() {
         // after 3 seconds, clear the notification message value from state
         setTimeout(function () {
             executeDispatch('');
-            console.log('**CLEARED NOTIFICATION**')
-            clearTimeout();
-        }, 3000)
+        }, 5000)
     },
-
     );
-
-    useEffect(() => {
-        console.log("loaded ActionNotification!")
-    }, [])
     return (
         (state.actionNotification === "")
             ? <h6></h6>
