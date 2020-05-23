@@ -6,11 +6,10 @@ import { SET_ACTION_NOTIFICATION } from '../../utils/actions';
 function ActionNotification() {
     const [state, dispatch] = useStoreContext();
     // Listen for the event.
-    window.addEventListener('runNotification', function (eventMessage) {
-        console.log(`eventMessage.detail: ${JSON.stringify(eventMessage)}`);
+    window.addEventListener('runNotification', function (event) {
         dispatch({
             type: SET_ACTION_NOTIFICATION,
-            actionNotification: JSON.stringify(eventMessage.detail)
+            actionNotification: JSON.stringify(event.detail)
         })
         // set state.message to e.detail
         // setTimeout(//set state to false ,3000)
