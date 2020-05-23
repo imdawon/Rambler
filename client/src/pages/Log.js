@@ -32,7 +32,8 @@ function Log() {
     return (
         
         (state.log.length > 0) 
-        ? <div>
+        ? 
+        <div>
         <p>Log</p>
          <LineChart /> 
         <BarChart /> 
