@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { UPDATE_LINE_CHART } from "../../utils/actions";
+import { UPDATE_LINE_CHART, UPDATE_LINE_CHART_LABELS } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
 import {
   XYPlot,
@@ -8,6 +8,7 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   LineSeries,
+  LabelSeries,
 } from "react-vis";
 import "../../../node_modules/react-vis/dist/style.css";
 function LineChart() {
@@ -33,11 +34,26 @@ function LineChart() {
       x: e.length,
       y: e.ascent,
     }));
+    
     dispatch({
       type: UPDATE_LINE_CHART,
       lineChart: stateDataPoints,
     });
+    getLabels(updatedDistance)
   };
+
+  const getLabels = (updatedDistance) => {
+let stateDataLabels = updatedDistance.map((e) => ({
+  x: e.length,
+  y: e.ascent,
+  label: e.name
+}));
+console.log("STATE DATA LABELS", stateDataLabels);
+dispatch({
+  type: UPDATE_LINE_CHART_LABELS,
+  lineChartLabels: stateDataLabels
+})
+  }
   return (
     <XYPlot width={300} height={300}>
       <VerticalGridLines />
@@ -48,6 +64,12 @@ function LineChart() {
         let hikeData = [{ x: 0, y: 0 }, hike];
         return <LineSeries key={hike.id} data={hikeData} />;
       })}
+      {state.lineChartLabels.map((hike) => {
+        console.log(hike);
+        let labelData = [hike]
+        return <LabelSeries data={labelData} />
+      })}
+       
     </XYPlot>
   );
 }

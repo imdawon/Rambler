@@ -1,4 +1,5 @@
 import React from 'react';
+import "./style.css"
 
 function ButtonLogAdd(props) {
 
@@ -6,8 +7,8 @@ function ButtonLogAdd(props) {
         (props.detail)
         ?
         <button id="detailButton" className="log-add button is-success is-light"  {...props}>
-            <span class="icon is-small">
-                <i class="fa fa-check"></i>
+            <span id="log-icon" class="icon is-small">
+                <i class="fa fa-book-open"></i>
             </span>
             <span>Add to Log</span>
         </button>
