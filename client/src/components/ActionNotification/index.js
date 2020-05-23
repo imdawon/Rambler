@@ -3,27 +3,43 @@ import "./index.css"
 import { useStoreContext } from "../../utils/GlobalState";
 import { SET_ACTION_NOTIFICATION } from '../../utils/actions';
 
+
 function ActionNotification() {
+
     const [state, dispatch] = useStoreContext();
     // Listen for the event.
     window.addEventListener('runNotification', function (event) {
-        dispatch({
-            type: SET_ACTION_NOTIFICATION,
-            actionNotification: JSON.stringify(event.detail)
-        })
-    }, false);
+        // update state value of actionNotification to the message generated from the button that was clicked on SearchResults
+        executeDispatch(JSON.stringify(event.detail))
+
+        // after 3 seconds, clear the notification message value from state
+        setTimeout(function () {
+            executeDispatch('');
+            console.log('**CLEARED NOTIFICATION**')
+            clearTimeout();
+        }, 3000)
+    },
+
+    );
 
     useEffect(() => {
-        console.log("ActionNotification Enabled!")
+        console.log("loaded ActionNotification!")
     }, [])
     return (
         (state.actionNotification === "")
             ? <h6></h6>
 
             : <div className="notification is-primary">
-            <button className="delete"></button>
-            {state.actionNotification}
-        </div>
+                <button className="delete"></button>
+                {state.actionNotification}
+            </div>
     )
+
+    function executeDispatch(actionNotificationValue) {
+        dispatch({
+            type: SET_ACTION_NOTIFICATION,
+            actionNotification: actionNotificationValue
+        })
+    }
 }
 export default ActionNotification;
