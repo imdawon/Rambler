@@ -7,6 +7,7 @@ import ButtonLogAdd from "../ButtonLogAdd";
 import ButtonBucketAdd from '../ButtonBucketAdd';
 import ButtonDetail from '../ButtonDetails';
 import { SET_CURRENT_HIKE, ADD_BUCKETLIST, ADD_LOG } from "../../utils/actions";
+import emptyImage from "../../assets/emptyTrailImage.jpg";
 
 function SearchResults() {
     const [state, dispatch] = useStoreContext();
@@ -61,9 +62,17 @@ function SearchResults() {
                 {state.hikes.map(hike => (
                     <li key={hike.id} className="hikeListItem cards_item">
                         <div className="card">
-                            <div className="card_image">
-                                <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
+                        <div className="card_image">
+                            {(hike.imgMedium !== "" 
+                            ? 
+                            <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
+                            : 
+                            <img className="card-img-top" src={emptyImage} alt={hike.name} />
+                            )}
                             </div>
+                            {/* <div className="card_image">
+                                <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
+                            </div> */}
                             <div className="card_content is-centered">
                                 <h2 className="card_title">{hike.name}</h2>
                                 <p className="card_text">Location: {hike.location} </p>

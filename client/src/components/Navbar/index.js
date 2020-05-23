@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import GetUserInfo from "../../components/GetUserInfo";
 import bulma from "bulma";
 import "./style.css";
+import logo from "../../assets/logo.png"
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -37,7 +38,7 @@ function Navbar() {
   <nav className="navbar is-transparent" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
     <a className="navbar-item" href="/">
-      <img className="is-rounded" src="https://i.imgur.com/RPFOwRL.png" width="112" height="28" />
+      <img className="is-rounded" src={logo} width="112" height="28" />
     </a>
 
     <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">

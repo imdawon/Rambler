@@ -3,6 +3,7 @@ import { useStoreContext } from "../utils/GlobalState";
 import { UPDATE_BUCKETLIST } from "../utils/actions";
 import API from '../utils/API';
 import BucketResults from "../components/BucketResults";
+import takeAHike from "../assets/takeAHike.png";
 
 function BucketList() {
     const [state, dispatch] = useStoreContext();
@@ -38,7 +39,7 @@ function BucketList() {
         :
         <div>
         <h2>Add some hikes to your bucketlist!</h2>
-        <img id="emptyLog" src="https://i.imgur.com/Wy229lq.png" />
+        <img id="emptyLog" src={takeAHike} />
         </div>
     )
 }
