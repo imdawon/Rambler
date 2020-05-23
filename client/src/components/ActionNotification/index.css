@@ -1,0 +1,6 @@
+.notification.is-primary {
+    position: fixed;
+    bottom: 20px;
+    z-index: 10;
+    left: 50%;
+}

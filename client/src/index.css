@@ -7,6 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h2 {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -17,12 +22,36 @@ code {
   margin: 20px 25% 0;
 }
 
-#detailImage {
+/* #detailImage {
   width: 70%;
   margin: 0 15%;
-}
+} */
+
 
 #detailButton{
-  margin: 20px;
+  margin: 20px 30%;
   width: 40%;
+}
+
+#detail_card {
+  width: 80%;
+  margin: 0 10%;
+  text-align: justify;
+}
+
+#detail_name {
+  margin-bottom: 1.25rem;
+}
+#detailImage {
+  width: 100%;
+  height: auto;
+}
+
+/* .detail_card{
+  width: 60%;
+  margin: 0 20%;
+} */
+
+.button {
+  height: auto;
 }
