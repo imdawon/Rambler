@@ -11,6 +11,13 @@ import { SET_CURRENT_HIKE, ADD_BUCKETLIST, ADD_LOG } from "../../utils/actions";
 function SearchResults() {
     const [state, dispatch] = useStoreContext();
 
+    const createNotificationEvent = (notificationMessage) => {
+        // Create text for ActionNotication popup
+        const bucketListSuccessNotification = new CustomEvent('runNotification', {detail: notificationMessage });
+        // Run our newly created event
+        window.dispatchEvent(bucketListSuccessNotification);
+    }
+
     const setCurrentHike = (hike) => {
         console.log(hike);
         dispatch({
@@ -19,10 +26,8 @@ function SearchResults() {
         });
     };
     const setBucketList = (bucketListHike) => {
-        // Create text for ActionNotication popup
-        const bucketListSuccessNotification = new CustomEvent('runNotification', {detail: "Added hike to bucketlist!" });
-        // Run our newly created event
-        window.dispatchEvent(bucketListSuccessNotification);
+        createNotificationEvent('Added hike to Bucket List!')
+
         console.log(`bucketListHike value: ${bucketListHike}`);
 
         API.addToBucketList(state.googleId, bucketListHike)
@@ -35,6 +40,7 @@ function SearchResults() {
         });
     };
     const setLog = (logHike) => {
+        createNotificationEvent('Added hike to Hike Log!')
         const event = new Event('runNotification');
         window.dispatchEvent(event);
         console.log(logHike)
