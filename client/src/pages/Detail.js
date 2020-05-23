@@ -41,14 +41,19 @@ const Detail = () => {
         (state.currentHike.id)
         ?
         <div>
-            <h2>Details</h2>
-                <img id="detailImage" src={state.currentHike.imgMedium} alt={state.currentHike.name} />
-            
-            <h2>{state.currentHike.name}</h2>
-            <p>Location: {state.currentHike.location} </p>
-            <p>Distance: {state.currentHike.length} miles {state.currentHike.trailType}</p>
-            <p>Elevation Gain: {state.currentHike.ascent} feet</p>
-            <h6>{state.currentHike.description}</h6>
+        <div className="card" id="detail_card">
+        <div className="card_image">
+            <img className="card-img-top" id="detailImage" src={state.currentHike.imgMedium} alt={state.currentHike.name} />
+        </div>
+        <div className="card_content is-centered">
+            <h2 id="detail_name" className="detail_card card_title">{state.currentHike.name}</h2>
+            <p className="detail_card card_text">Location: {state.currentHike.location} </p>
+            <p className="detail_card card_text">Distance: {state.currentHike.length} miles {state.currentHike.trailType}</p>
+            <p className="detail_card card_text">Elevation Gain: {state.currentHike.ascent} feet</p>
+            <h6 className="detail_card card_text">{state.currentHike.description}</h6>
+            </div>
+            </div>
+
             <ButtonBucketAdd
             detail={"true"}
             hike={state.currentHike}
@@ -70,6 +75,7 @@ const Detail = () => {
                     }
                 )
             }} />
+            <br />
             <ButtonLogAdd 
             detail={"true"}
             hike={state.currentHike}
@@ -92,7 +98,8 @@ const Detail = () => {
                 )
             }}/>
             <Weather />
-        </div>
+        
+            </div>
         : 
         <h3>Hike Not Found</h3>
     );
