@@ -6,6 +6,7 @@ import "./style.css";
 import ButtonDetail from "../ButtonDetails";
 import ButtonDeleteLog from '../ButtonDeleteLog';
 import { SET_CURRENT_HIKE, REMOVE_LOG } from "../../utils/actions";
+import emptyImage from "../../assets/emptyTrailImage.jpg";
 
 function LogResults() {
     const [state, dispatch] = useStoreContext();
@@ -35,7 +36,12 @@ function LogResults() {
                     <li key={index} className="hikeListItem cards_item">
                         <div className="card">
                             <div className="card_image">
-                                <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
+                                {(hike.imgMedium !== ""
+                                    ?
+                                    <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
+                                    :
+                                    <img className="card-img-top" src={emptyImage} alt={hike.name} />
+                                )}
                             </div>
                             <div className="card_content is-centered">
                                 <h2 className="card_title">{hike.name}</h2>
@@ -60,7 +66,7 @@ function LogResults() {
                                                 trailType: hike.trailType,
                                                 description: hike.description
                                             }
-                                    )}/>
+                                        )} />
                                 </Link>
                                 <ButtonDeleteLog
                                     hike={hike}
