@@ -9,7 +9,7 @@ function ActionNotification() {
     window.addEventListener('runNotification', function (event) {
         dispatch({
             type: SET_ACTION_NOTIFICATION,
-            actionNotification: JSON.stringify(event.message)
+            actionNotification: JSON.stringify(event.detail)
         })
         // set state.message to e.detail
         // setTimeout(//set state to false ,3000)
