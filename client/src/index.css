@@ -51,3 +51,7 @@ code {
   width: 60%;
   margin: 0 20%;
 } */
+
+.button {
+  height: auto;
+}

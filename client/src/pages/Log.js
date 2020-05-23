@@ -41,7 +41,7 @@ function Log() {
         </div>
         : <div>
         <h2>Get out on the trail and log some hikes!</h2>
-        <img id="emptyLog" src="https://i.imgur.com/270Ayuj.png" />
+        <img id="emptyLog" src="https://i.imgur.com/Wy229lq.png" />
         </div>
         
         

@@ -36,7 +36,10 @@ function BucketList() {
             <BucketResults />
         </div>
         :
-        <h2>You don't have any hikes <br /> in your bucket list.</h2>
+        <div>
+        <h2>Add some hikes to your bucketlist!</h2>
+        <img id="emptyLog" src="https://i.imgur.com/Wy229lq.png" />
+        </div>
     )
 }
 
