@@ -29,10 +29,14 @@ function BucketList() {
     };
 
     return (
+        (state.bucketList.length > 0) 
+        ? 
         <div>
             <p>BucketList</p>
             <BucketResults />
         </div>
+        :
+        <h2>You don't have any hikes <br /> in your bucket list.</h2>
     )
 }
 

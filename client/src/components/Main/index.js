@@ -8,6 +8,7 @@ import BucketList from "../../pages/BucketList";
 import Detail from "../../pages/Detail";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import ActionNotification from '../../components/ActionNotification';
 
 function Main() {
 
@@ -15,6 +16,7 @@ function Main() {
         <Router>
             <Navbar />
             <Header />
+             <ActionNotification />
             <Switch>
                 <Route exact path="/">
                     <Search />

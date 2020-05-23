@@ -16,7 +16,10 @@ import {
   UPDATE_LINE_CHART_LABELS,
   SET_GOOGLE_ID,
   SET_NAME,
-  SET_CURRENT_HIKE
+  SET_CURRENT_HIKE,
+  SET_ACTION_NOTIFICATION,
+  CATCH_FORECAST,
+  SET_FORECAST_LOCATION
 } from "./actions";
 
 const StoreContext = createContext();
@@ -41,7 +44,6 @@ const reducer = (state, action) => {
         ...state,
         lat: action.lat,
         lon: action.lon,
-        loading: false
       };
     case ADD_BUCKETLIST:
       return {
@@ -127,6 +129,21 @@ const reducer = (state, action) => {
         ...state,
         currentHike: action.currentHike
       };
+      case SET_ACTION_NOTIFICATION:
+        return {
+          ...state,
+          actionNotification: action.actionNotification
+        }
+    case CATCH_FORECAST:
+      return {
+        ...state,
+        weather: action.weather
+      };
+    case SET_FORECAST_LOCATION: 
+      return {
+        ...state,
+        forecastLocation: action.forecastLocation
+      };
     default:
       return state;
   };
@@ -137,44 +154,21 @@ const StoreProvider = ({ value = [], ...props }) => {
     userSearch: "",
     searchLat: "",
     searchLon: "",
+    actionNotification: "",
     hikes: [],
     googleId: "",
     user: "",
     currentHike: {},
-    currentAddBucket: {
-      id: "",
-      name: "",
-      location: "",
-      latitude: "",
-      longitude: "",
-      length: "",
-      ascent: "",
-      img: "",
-      summary: "",
-      url: "",
-      trailType: "",
-      description: ""
-    },
-    currentAddLog: {
-      id: "",
-      name: "",
-      location: "",
-      latitude: "",
-      longitude: "",
-      length: "",
-      ascent: "",
-      img: "",
-      summary: "",
-      url: "",
-      trailType: "",
-      description: ""
-    },
+    currentAddBucket: {},
+    currentAddLog: {},
     bucketList: [],
     log: [],
     barChart: [],
     lineChart: [],
     lineChartLabels: [],
     barChartLabels: [],
+    weather: [],
+    forecastLocation: "",
     loading: false
   });
 
