@@ -8,6 +8,10 @@ const passport = require('passport');
 const passportSetup = require('./middleware/passport');
 const routes = require('./routes');
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*')
+})
+
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
