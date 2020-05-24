@@ -7,8 +7,12 @@ const path = require('path');
 const passport = require('passport');
 const passportSetup = require('./middleware/passport');
 const routes = require('./routes');
-const cors = require('cors');
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://shielded-reaches-07010.herokuapp.com');
+  res.header('Access-Control-Allow-Header', 'Origin, Content-Type, Accept');
+  next();
+})
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -45,7 +49,6 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(cors());
 
 // Define routes
 app.use(routes);
