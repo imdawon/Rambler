@@ -10,6 +10,7 @@ const routes = require('./routes');
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Header', 'Origin, Content-Type, Accept');
   next();
 })
 
