@@ -7,12 +7,9 @@ const path = require('path');
 const passport = require('passport');
 const passportSetup = require('./middleware/passport');
 const routes = require('./routes');
+const cors = require('cors');
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Header', 'Origin, Content-Type, Accept');
-  next();
-})
+app.use(cors());
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
