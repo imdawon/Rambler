@@ -6,7 +6,7 @@ function Footer() {
 
         <div>
             <footer class="rambler-footer">
-                           <p id="copyright">&copy; Rambler</p> {/* <img className="footer-image" src="https://i.imgur.com/ZRhg6RD.png" /> */}
+                <p id="copyright">&copy; Rambler</p>
             </footer>
         </div>
     )

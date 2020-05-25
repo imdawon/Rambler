@@ -7,17 +7,11 @@ import ButtonLogAdd from "../ButtonLogAdd";
 import ButtonBucketAdd from '../ButtonBucketAdd';
 import ButtonDetail from '../ButtonDetails';
 import { SET_CURRENT_HIKE, ADD_BUCKETLIST, ADD_LOG } from "../../utils/actions";
+import emptyImage from "../../assets/emptyTrailImage.jpg";
+import createNotificationEvent from "../../utils/createNotificationEvent";
 
 function SearchResults() {
     const [state, dispatch] = useStoreContext();
-
-    const createNotificationEvent = (notificationMessage) => {
-        // Create text for ActionNotication popup
-        const bucketListSuccessNotification = new CustomEvent('runNotification', {detail: notificationMessage });
-        // Run our newly created event
-        window.dispatchEvent(bucketListSuccessNotification);
-    }
-
     const setCurrentHike = (hike) => {
         console.log(hike);
         dispatch({
@@ -26,7 +20,7 @@ function SearchResults() {
         });
     };
     const setBucketList = (bucketListHike) => {
-        createNotificationEvent('Added hike to Bucket List!')
+        createNotificationEvent('Added to Bucket List!')
 
         console.log(`bucketListHike value: ${bucketListHike}`);
 
@@ -40,10 +34,7 @@ function SearchResults() {
         });
     };
     const setLog = (logHike) => {
-        createNotificationEvent('Added hike to Hike Log!')
-        const event = new Event('runNotification');
-        window.dispatchEvent(event);
-        console.log(logHike)
+        createNotificationEvent('Added to Hike Log!')
 
         API.addToLog(state.googleId, logHike)
             .then(res => console.log("Updated log", res.data))
@@ -61,9 +52,17 @@ function SearchResults() {
                 {state.hikes.map(hike => (
                     <li key={hike.id} className="hikeListItem cards_item">
                         <div className="card">
-                            <div className="card_image">
-                                <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
+                        <div className="card_image">
+                            {(hike.imgMedium !== "" 
+                            ? 
+                            <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
+                            : 
+                            <img className="card-img-top" src={emptyImage} alt={hike.name} />
+                            )}
                             </div>
+                            {/* <div className="card_image">
+                                <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
+                            </div> */}
                             <div className="card_content is-centered">
                                 <h2 className="card_title">{hike.name}</h2>
                                 <p className="card_text">Location: {hike.location} </p>

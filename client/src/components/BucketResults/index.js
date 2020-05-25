@@ -6,8 +6,9 @@ import "./style.css";
 import ButtonLogAdd from '../ButtonLogAdd';
 import ButtonDeleteBucket from '../ButtonDeleteBucket';
 import ButtonDetail from '../ButtonDetails';
+import createNotificationEvent from "../../utils/createNotificationEvent";
 import { SET_CURRENT_HIKE, ADD_LOG, REMOVE_BUCKETLIST } from "../../utils/actions";
-
+import emptyImage from "../../assets/emptyTrailImage.jpg"
 function BucketResults() {
     const [state, dispatch] = useStoreContext();
 
@@ -31,6 +32,7 @@ function BucketResults() {
         });
     };
     const removeHike = (hikeToRemoveID, hikeToRemove) => {
+        createNotificationEvent('Removed from Bucket List!')
         API.removeBucketlistHike(state.googleId, hikeToRemove)
             .then(() => {
                 dispatch({
@@ -48,7 +50,12 @@ function BucketResults() {
                     <li key={index} className="hikeListItem cards_item">
                         <div className="card">
                             <div className="card_image">
-                                <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
+                                {(hike.imgMedium !== ""
+                                    ?
+                                    <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
+                                    :
+                                    <img className="card-img-top" src={emptyImage} alt={hike.name} />
+                                )}
                             </div>
                             <div className="card_content is-centered">
                                 <h2 className="card_title">{hike.name}</h2>

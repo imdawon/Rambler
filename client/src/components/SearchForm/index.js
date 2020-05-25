@@ -66,8 +66,12 @@ const SearchForm = () => {
     };
     // Takes converted lat and lon to make REI API call to gather hike data
     const loadHikes = () => {
-        let maxDistance = max_distance.current.value
-        API.getTrails(state.lat, state.lon, maxDistance)
+
+        let maxDistance =  max_distance.current.value
+        console.log(maxDistance)    
+        let maxResults = "12";
+      
+        API.getTrails(state.lat, state.lon, maxDistance, maxResults)
             .then((trails) => {
                 let hikeResults = trails.data.trails
                 getMoreInfo(hikeResults);
@@ -106,7 +110,6 @@ const SearchForm = () => {
                             ref={search_input}
                             type="text"
                             placeholder="Where is the next adventure?"
-                            id="location"
                         />
                         <span className="icon is-small is-left">
                             <i className="fa fa-tree"></i>
@@ -119,7 +122,6 @@ const SearchForm = () => {
                             ref={max_distance}
                             type="text"
                             placeholder="How far will you travel? (max 200 miles)"
-                            id="location"
                         />
                         <span className="icon is-small is-left">
                             <i className="fa fa-road"></i>
