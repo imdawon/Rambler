@@ -36,8 +36,8 @@ function Log() {
         ? 
         <div>
         <p>Log</p>
-         <LineChart /> 
         <BarChart /> 
+        <LineChart /> 
         <LogResults />
         </div>
         : <div>

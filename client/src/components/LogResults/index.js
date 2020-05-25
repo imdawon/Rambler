@@ -5,6 +5,7 @@ import API from '../../utils/API';
 import "./style.css";
 import ButtonDetail from "../ButtonDetails";
 import ButtonDeleteLog from '../ButtonDeleteLog';
+import createNotificationEvent from "../../utils/createNotificationEvent";
 import { SET_CURRENT_HIKE, REMOVE_LOG } from "../../utils/actions";
 import emptyImage from "../../assets/emptyTrailImage.jpg";
 
@@ -19,6 +20,7 @@ function LogResults() {
         });
     };
     const removeHike = (hikeToRemoveID, hikeToRemove) => {
+        createNotificationEvent('Removed from Hike Log!')
         API.removeLogHike(state.googleId, hikeToRemove)
             .then(() => {
                 dispatch({

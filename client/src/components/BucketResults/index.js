@@ -6,6 +6,7 @@ import "./style.css";
 import ButtonLogAdd from '../ButtonLogAdd';
 import ButtonDeleteBucket from '../ButtonDeleteBucket';
 import ButtonDetail from '../ButtonDetails';
+import createNotificationEvent from "../../utils/createNotificationEvent";
 import { SET_CURRENT_HIKE, ADD_LOG, REMOVE_BUCKETLIST } from "../../utils/actions";
 import emptyImage from "../../assets/emptyTrailImage.jpg"
 function BucketResults() {
@@ -31,6 +32,7 @@ function BucketResults() {
         });
     };
     const removeHike = (hikeToRemoveID, hikeToRemove) => {
+        createNotificationEvent('Removed from Bucket List!')
         API.removeBucketlistHike(state.googleId, hikeToRemove)
             .then(() => {
                 dispatch({

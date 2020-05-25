@@ -8,17 +8,10 @@ import ButtonBucketAdd from '../ButtonBucketAdd';
 import ButtonDetail from '../ButtonDetails';
 import { SET_CURRENT_HIKE, ADD_BUCKETLIST, ADD_LOG } from "../../utils/actions";
 import emptyImage from "../../assets/emptyTrailImage.jpg";
+import createNotificationEvent from "../../utils/createNotificationEvent";
 
 function SearchResults() {
     const [state, dispatch] = useStoreContext();
-
-    const createNotificationEvent = (notificationMessage) => {
-        // Create text for ActionNotication popup
-        const bucketListSuccessNotification = new CustomEvent('runNotification', {detail: notificationMessage });
-        // Run our newly created event
-        window.dispatchEvent(bucketListSuccessNotification);
-    }
-
     const setCurrentHike = (hike) => {
         console.log(hike);
         dispatch({
