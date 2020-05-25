@@ -1,29 +1,37 @@
-# Create React Express App
+![Rambler Header](./client/src/assets/header.png)
 
-## About This Boilerplate
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## User Story
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+As an avid or aspiring hiker I want to be able to access and organize hiking trail data so that I can track and display my previously completed and future hikes. 
 
-## Starting the app locally
+## Motivation
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+Rambler is an app that we built with the average person in mind. This app is designed not only as a resource for searching new hiking trail destinations, but also serves as a visual dashboard displaying previously completed and future user generated hike data. No special equipment or skill set required.  Rambler’s versatility is what sets it apart from the competition.
 
-```
-npm install
-```
+ Many hiking/fitness apps require the user to track their trips using GPS through either their phone or another third party device. Rambler is unique in that users don’t need to worry about forgetting to start their “trip” or their device running out of battery. Rambler users can relax, enjoy the outdoors and update completed hikes at their own convenience when they have returned from their adventure. Whether a seasoned or first time hiker, Rambler strives to provide a little of something for everyone.
 
-This should install node modules within the server and the client folder.
 
-After both installations complete, run the following command in your terminal:
+"In every walk with nature, one receives far more than he seeks." - John Muir
 
-```
-npm start
-```
+## Pages
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+## Utilized Technologies
 
-## Deployment (Heroku)
+* [React](https://reactjs.org/)
+* [Express](https://www.npmjs.com/package/express)
+* [MongoDb](https://www.npmjs.com/package/mongodb)
+* [Mongoose](https://www.npmjs.com/package/mongoose)
+* [Passport](https://www.npmjs.com/package/passport)
+* [Google OAuth](https://www.npmjs.com/package/passport-google-oauth20)
+* [Axios](https://www.npmjs.com/package/axios)
+* [Bulma CSS](https://bulma.io/)
+* [React-vis](https://www.npmjs.com/package/react-vis)
+* [Moment](https://www.npmjs.com/package/moment)
+* [Cheerio](https://www.npmjs.com/package/cheerio)
+* [LocationIQ API](https://locationiq.com/docs)
+* [Hiking Project API](https://www.hikingproject.com/)
+* [OpenWeather API](https://openweathermap.org/)
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+
+  
