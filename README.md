@@ -1,6 +1,5 @@
 ![Rambler Header](./client/src/assets/header.png)
 
-
 ## User Story
 
 As an avid or aspiring hiker I want to be able to access and organize hiking trail data so that I can track and display my previously completed and future hikes. 
@@ -32,6 +31,8 @@ Rambler is an app that we built with the average person in mind. This app is des
 * [LocationIQ API](https://locationiq.com/docs)
 * [Hiking Project API](https://www.hikingproject.com/)
 * [OpenWeather API](https://openweathermap.org/)
+
+![Rambler Footer](./client/src/assets/footer_no_text.png)
 
 
   
