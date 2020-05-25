@@ -32,12 +32,6 @@ code {
   margin: 0 25%;
 }
 
-/* #detailImage {
-  width: 70%;
-  margin: 0 15%;
-} */
-
-
 #detailButton{
   margin: 20px 30%;
   width: 40%;
@@ -57,11 +51,18 @@ code {
   height: auto;
 }
 
-/* .detail_card{
-  width: 60%;
-  margin: 0 20%;
-} */
-
 .button {
   height: auto;
+}
+
+@media (max-width: 539px){
+  #navLogo {
+    width: 58px;
+}
+}
+
+@media (min-width: 540px){
+  #navLogo {
+    width: 80px
+  }
 }

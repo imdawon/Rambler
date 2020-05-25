@@ -39,7 +39,7 @@ function BucketList() {
         </div>
         :
         <div>
-        <h2>Add some hikes to your bucketlist!</h2>
+        <h2>Add some hikes to your Bucket List!</h2>
         <img id="emptyLog" src={takeAHike} />
         </div>
     )
