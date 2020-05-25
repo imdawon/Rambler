@@ -25,7 +25,7 @@ function SearchResults() {
         console.log(`bucketListHike value: ${bucketListHike}`);
 
         API.addToBucketList(state.googleId, bucketListHike)
-            .then(res => console.log("Updated bucket list", res.data))
+            .then(res => console.log("Updated Bucket List", res.data))
             .catch(err => console.log(err));
 
         dispatch({
