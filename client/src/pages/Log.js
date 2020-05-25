@@ -5,6 +5,7 @@ import { useStoreContext } from "../utils/GlobalState";
 import { UPDATE_LOG } from "../utils/actions";
 import API from "../utils/API";
 import LogResults from "../components/LogResults";
+import takeAHike from "../assets/takeAHike.png"
 
 function Log() {
     const [state, dispatch] = useStoreContext();
@@ -41,7 +42,7 @@ function Log() {
         </div>
         : <div>
         <h2>Get out on the trail and log some hikes!</h2>
-        <img id="emptyLog" src="https://i.imgur.com/270Ayuj.png" />
+        <img id="emptyLog" src={takeAHike} />
         </div>
         
         
