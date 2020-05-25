@@ -1,10 +1,13 @@
 ![Rambler Header](./client/src/assets/header.png)
 
-## User Story
+
+## User Story 
+<img src="./client/src/assets/logo.png" width="5%" height="5%"></img>
 
 As an avid or aspiring hiker I want to be able to access and organize hiking trail data so that I can track and display my previously completed and future hikes. 
 
-## Motivation
+## Motivation 
+<img src="./client/src/assets/logo.png" width="5%" height="5%"></img>
 
 Rambler is an app that we built with the average person in mind. This app is designed not only as a resource for searching new hiking trail destinations, but also serves as a visual dashboard displaying previously completed and future user generated hike data. No special equipment or skill set required.  Rambler’s versatility is what sets it apart from the competition.
 
@@ -13,9 +16,11 @@ Rambler is an app that we built with the average person in mind. This app is des
 
 "In every walk with nature, one receives far more than he seeks." - John Muir
 
-## Pages
+## Pages 
+<img src="./client/src/assets/logo.png" width="5%" height="5%"></img>
 
-## Utilized Technologies
+## Utilized Technologies 
+<img src="./client/src/assets/logo.png" width="5%" height="5%"></img>
 
 * [React](https://reactjs.org/)
 * [Express](https://www.npmjs.com/package/express)
