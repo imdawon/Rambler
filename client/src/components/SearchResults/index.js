@@ -142,6 +142,8 @@ function SearchResults() {
                     </li>
                 ))}
             </ul>
+            <br />
+            <br /><br /><br /><br /><br />
         </div>
     )
 };
