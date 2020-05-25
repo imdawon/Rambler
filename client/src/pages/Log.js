@@ -5,7 +5,8 @@ import { useStoreContext } from "../utils/GlobalState";
 import { UPDATE_LOG } from "../utils/actions";
 import API from "../utils/API";
 import LogResults from "../components/LogResults";
-import takeAHike from "../assets/takeAHike.png"
+import takeAHike from "../assets/takeAHike.png";
+import log from "../assets/log.jpg";
 
 function Log() {
     const [state, dispatch] = useStoreContext();
@@ -35,7 +36,7 @@ function Log() {
         (state.log.length > 0) 
         ? 
         <div>
-        <p>Log</p>
+        <img id="logImage" src={log} />
         <BarChart /> 
         <LineChart /> 
         <LogResults />
