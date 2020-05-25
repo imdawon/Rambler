@@ -6,6 +6,7 @@ import { ADD_BUCKETLIST, ADD_LOG } from "../utils/actions";
 import Weather from '../components/Weather';
 import ButtonLogAdd from '../components/ButtonLogAdd';
 import ButtonBucketAdd from '../components/ButtonBucketAdd';
+import createNotificationEvent from "../utils/createNotificationEvent";
 import "../index.css";
 import emptyImage from "../assets/emptyTrailImage.jpg"
 
@@ -15,7 +16,8 @@ const Detail = () => {
 
     const setBucketList = (bucketListHike) => {
         console.log(bucketListHike)
-
+        createNotificationEvent('Added to Bucket List!')
+  
         API.addToBucketList(state.googleId, bucketListHike)
             .then(res => console.log("Updated bucket list", res.data))
             .catch(err => console.log(err));
@@ -27,6 +29,8 @@ const Detail = () => {
     };
     const setLog = (logHike) => {
         console.log(logHike)
+
+        createNotificationEvent('Added to your Hike Log!')
 
         API.addToLog(state.googleId, logHike)
             .then(res => console.log("Updated log", res.data))
