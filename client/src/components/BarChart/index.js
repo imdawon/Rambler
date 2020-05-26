@@ -16,6 +16,7 @@ import {
 } from "react-vis";
 import "../../../node_modules/react-vis/dist/style.css";
 
+
 function BarChart() {
   const [state, dispatch] = useStoreContext();
 
