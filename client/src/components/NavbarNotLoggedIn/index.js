@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function NavbarNotLoggedIn() {
     const [state, dispatch] = useStoreContext();
-
     return (
 
   <nav className="navbar is-transparent" role="navigation" aria-label="main navigation">
