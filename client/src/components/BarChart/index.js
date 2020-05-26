@@ -6,6 +6,8 @@ import {
 } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
 import {
+  FlexibleXYPlot,
+  FlexibleWidthXYPlot,
   XYPlot,
   XAxis,
   YAxis,
@@ -15,6 +17,7 @@ import {
   LabelSeries,
 } from "react-vis";
 import "../../../node_modules/react-vis/dist/style.css";
+
 
 function BarChart() {
   const [state, dispatch] = useStoreContext();
@@ -65,7 +68,13 @@ function BarChart() {
   };
 
   return (
-    <XYPlot xType="linear" width={500} height={500}>
+    <div style={{
+      height: "45%",
+      width: "45%",
+      minWidth: "300px",
+      minHeight: "300px"
+    }}>
+    <FlexibleWidthXYPlot xType="linear" height={300}>
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis title="Hike Index" />
@@ -104,7 +113,8 @@ function BarChart() {
           />
         );
       })}
-    </XYPlot>
+    </FlexibleWidthXYPlot>
+    </div>
   );
 }
 
