@@ -13,7 +13,7 @@ function Logout() {
     useEffect(() => {
         axios.get('/logout')
             .then(res => {
-                console.log('Loggin you out.')
+                res.redirect('/logout')
             })
     }, [])
     return (
