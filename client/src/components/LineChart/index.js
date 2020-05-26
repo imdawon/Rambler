@@ -6,6 +6,8 @@ import {
 } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
 import {
+  FlexibleXYPlot,
+  FlexibleWidthXYPlot,
   XYPlot,
   XAxis,
   YAxis,
@@ -62,7 +64,13 @@ function LineChart() {
     });
   };
   return (
-    <XYPlot width={500} height={500}>
+    <div style={{ 
+      height: "45%",
+      width: "45%",
+      minWidth: "300px",
+      minHeight: "300px"
+    }}>
+    <FlexibleWidthXYPlot height={300}>
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis title="Distance (Miles)" />
@@ -100,7 +108,8 @@ function LineChart() {
           />
         );
       })}
-    </XYPlot>
+    </FlexibleWidthXYPlot>
+    </div>
   );
 }
 export default LineChart;

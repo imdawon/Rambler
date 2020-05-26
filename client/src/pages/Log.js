@@ -7,7 +7,6 @@ import API from "../utils/API";
 import LogResults from "../components/LogResults";
 import takeAHike from "../assets/takeAHike.png";
 import log from "../assets/log.jpg";
-import AutoSizer from "react-virtualized-auto-sizer";
 
 function Log() {
     const [state, dispatch] = useStoreContext();
@@ -38,17 +37,7 @@ function Log() {
         ? 
         <div>
         <img id="logImage" src={log} />
-        <div style={{height:"100%", width: "100%"}} className={"mb-4"}>
-        <AutoSizer>
-        {({height, width}) => (
-          <BarChart
-          height={height}
-          width={width}
-          className={"mb-4"}
-           />   
-        )}
-        </AutoSizer>
-        </div>
+        <BarChart/>   
         <LineChart /> 
         <LogResults />
         </div>

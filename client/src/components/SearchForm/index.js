@@ -92,24 +92,6 @@ const SearchForm = () => {
             });
         })
         .catch(err => console.log(err));
-        // hikeResults.map((hike, i) => {
-        //     API.getDetails( hike.url)
-        //         .then((res) => {
-        //             const $ = cheerio.load(res.data);
-        //             let type = $('.mb-quarter').html();
-        //             let summary = $('h3:contains("Description")').next().text();
-        //             let hikeData = { ...hike, trailType: type, description: summary };
-        //             hikesWithDetails.push(hikeData);
-        //         })
-        //         .then(() => {
-        //             console.log(hikesWithDetails);
-        //             dispatch({
-        //                 type: UPDATE_HIKES,
-        //                 hikes: hikesWithDetails
-        //             });
-        //         })
-        //         .catch(err => console.log(err));
-        // });
     };
 
     return (
