@@ -68,7 +68,8 @@ function LineChart() {
       height: "45%",
       width: "45%",
       minWidth: "300px",
-      minHeight: "300px"
+      minHeight: "300px",
+      margin: "0 auto"
     }}>
     <FlexibleWidthXYPlot height={300}>
       <VerticalGridLines />
