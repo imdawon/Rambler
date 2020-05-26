@@ -72,7 +72,9 @@ function NavbarLoggedIn() {
     <div className="navbar-end">
       <div className="navbar-item">
         <div className="buttons">
-        <h6>Happy hiking, { state.user }!</h6>
+        <a className="navbar-item">
+          Happy hiking, { state.user }!
+        </a>
           <Link to="/Logout">
             <a className="button is-light">
               Log Out
