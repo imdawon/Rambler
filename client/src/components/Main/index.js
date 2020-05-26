@@ -9,12 +9,13 @@ import Detail from "../../pages/Detail";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ActionNotification from '../../components/ActionNotification';
+import GetUserInfo from "../GetUserInfo";
 
 function Main() {
 
     return (
         <Router>
-            <Navbar />
+            <GetUserInfo />
             <Header />
              <ActionNotification />
             <Switch>

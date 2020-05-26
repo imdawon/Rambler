@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useStoreContext } from "../../utils/GlobalState";
 import { SET_GOOGLE_ID, SET_NAME } from "../../utils/actions";
+import NavbarNotLoggedIn from "../NavbarNotLoggedIn"
+import NavbarLoggedIn from "../NavbarLoggedIn"
 
 function GetUserInfo() {
     const [state, dispatch] = useStoreContext();
@@ -23,8 +25,8 @@ function GetUserInfo() {
     }, [])
     return (
         (state.googleId)
-            ? <h6>Happy hiking, { state.user }</h6>
-            : <h6></h6>
+            ? <NavbarLoggedIn />
+            : <NavbarNotLoggedIn />
     )
 }
 
