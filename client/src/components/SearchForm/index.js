@@ -132,7 +132,7 @@ const SearchForm = () => {
                         <input class="input is-success"
                             ref={max_distance}
                             type="text"
-                            placeholder="How far will you travel? (max 200 miles)"
+                            placeholder="Travel Distance (default 30 miles)"
                         />
                         <span className="icon is-small is-left">
                             <i className="fa fa-road"></i>
