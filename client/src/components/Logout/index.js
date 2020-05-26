@@ -5,7 +5,7 @@ import { SET_GOOGLE_ID, SET_NAME } from "../../utils/actions";
 import NavbarNotLoggedIn from "../NavbarNotLoggedIn"
 import NavbarLoggedIn from "../NavbarLoggedIn"
 
-function GetUserInfo() {
+function Logout() {
     const [state, dispatch] = useStoreContext();
 
     // onMount, make GET request to our /getUserInfo route which returns current passport session data
@@ -22,4 +22,4 @@ function GetUserInfo() {
     )
 }
 
-export default GetUserInfo;
+export default Logout;
