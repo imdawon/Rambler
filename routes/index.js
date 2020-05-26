@@ -4,6 +4,14 @@ const passport = require('passport');
 const passportSetup = require('../middleware/passport');
 const apiRoutes = require("./api");
 const axios = require('axios');
+const cheerio = require('cheerio');
+
+
+
+router.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin: *");
+  next();
+});
 
 // API Routes
 router.use("/api", apiRoutes);
@@ -28,6 +36,27 @@ router.get('/google-auth/callback',
 router.get('/getUserInfo',
   (req,res)=>{
     res.send(req.user);
+  });
+
+  router.post('/hikeDetails', (req, res) => {
+   console.log(req.body)
+   let hikesWithDetails = [];
+   const hikeResults = req.body;
+      hikeResults.map((hike, i) => {
+            axios.get( hike.url)
+                .then((res) => {
+                    const $ = cheerio.load(res.data);
+                    let type = $('.mb-quarter').html();
+                    let summary = $('h3:contains("Description")').next().text();
+                    let hikeData = { ...hike, trailType: type, description: summary };
+                    hikesWithDetails.push(hikeData);
+                })
+                .then((hikesWithDetails) => {
+                    console.log(hikesWithDetails);
+                    res.send(hikesWithDetails)
+                })
+                .catch(err => console.log(err));
+        });
   });
 
 module.exports = router;
