@@ -1,6 +1,6 @@
 import React from "react";
-import { useStoreContext } from "../../utils/GlobalState";
 import { Link } from "react-router-dom";
+import GetUserInfo from "../../components/GetUserInfo";
 import bulma from "bulma";
 import "./style.css";
 import logo from "../../assets/logo.png"
@@ -29,8 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function NavbarLoggedIn() {
-    const [state, dispatch] = useStoreContext();
+function Navbar() {
     return (
 
   <nav className="navbar is-transparent" role="navigation" aria-label="main navigation">
@@ -72,12 +71,10 @@ function NavbarLoggedIn() {
     <div className="navbar-end">
       <div className="navbar-item">
         <div className="buttons">
-        <a className="navbar-item">
-          Happy hiking, { state.user }!
-        </a>
-          <Link to="/Logout">
+        <GetUserInfo />
+          <Link to="/Auth">
             <a className="button is-light">
-              Log Out
+              Log in
             </a>
           </Link>
         </div>
@@ -88,4 +85,4 @@ function NavbarLoggedIn() {
     );
 }
 
-export default NavbarLoggedIn;
+export default Navbar;
