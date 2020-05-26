@@ -44,7 +44,6 @@ router.get('/getUserInfo',
   });
   
   router.post('/hikeDetails', (req, res) => {
-   console.log(req.body)
    let hikesWithDetails = [];
    const hikeResults = req.body;
       hikeResults.map((hike, i) => {
@@ -57,7 +56,6 @@ router.get('/getUserInfo',
                     hikesWithDetails.push(hikeData);
                 })
                 .then((hikesWithDetails) => {
-                    console.log(hikesWithDetails);
                     res.send(hikesWithDetails)
                 })
                 .catch(err => console.log(err));
