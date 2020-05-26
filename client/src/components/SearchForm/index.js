@@ -4,6 +4,7 @@ import { SET_USER_SEARCH, LOADING, UPDATE_LAT_LON, UPDATE_HIKES } from "../../ut
 import "./style.css";
 import API from "../../utils/API";
 import { Collection } from "mongoose";
+import axios from "axios";
 
 const cheerio = require('cheerio');
 
@@ -53,7 +54,6 @@ const SearchForm = () => {
     const generateCoordinates = () => {
         API.getLocation(state.userSearch)
             .then((res) => {
-                console.log(res.data[0].lat, res.data[0].lon);
                 let lat = parseFloat(res.data[0].lat).toFixed(3);
                 let lon = parseFloat(res.data[0].lon).toFixed(3);
                 dispatch({
@@ -80,25 +80,36 @@ const SearchForm = () => {
     };
 
     const getMoreInfo = (hikeResults) => {
-        let hikesWithDetails = []
-        hikeResults.map((hike, i) => {
-            API.getDetails(hike.url)
-                .then((res) => {
-                    const $ = cheerio.load(res.data);
-                    let type = $('.mb-quarter').html();
-                    let summary = $('h3:contains("Description")').next().text();
-                    let hikeData = { ...hike, trailType: type, description: summary };
-                    hikesWithDetails.push(hikeData);
-                })
-                .then(() => {
-                    console.log(hikesWithDetails);
-                    dispatch({
-                        type: UPDATE_HIKES,
-                        hikes: hikesWithDetails
-                    });
-                })
-                .catch(err => console.log(err));
-        });
+        let hikesWithDetails;
+
+        axios.post('/hikeDetails', hikeResults)
+        .then(res => {
+            hikesWithDetails = JSON.parse(res.config.data);
+            console.log("!!!",hikesWithDetails);
+            dispatch({
+                type: UPDATE_HIKES,
+                hikes: hikesWithDetails
+            });
+        })
+        .catch(err => console.log(err));
+        // hikeResults.map((hike, i) => {
+        //     API.getDetails( hike.url)
+        //         .then((res) => {
+        //             const $ = cheerio.load(res.data);
+        //             let type = $('.mb-quarter').html();
+        //             let summary = $('h3:contains("Description")').next().text();
+        //             let hikeData = { ...hike, trailType: type, description: summary };
+        //             hikesWithDetails.push(hikeData);
+        //         })
+        //         .then(() => {
+        //             console.log(hikesWithDetails);
+        //             dispatch({
+        //                 type: UPDATE_HIKES,
+        //                 hikes: hikesWithDetails
+        //             });
+        //         })
+        //         .catch(err => console.log(err));
+        // });
     };
 
     return (
