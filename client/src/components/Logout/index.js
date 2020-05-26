@@ -12,8 +12,9 @@ function GetUserInfo() {
     // for the current user
     useEffect(() => {
         axios.get('/logout')
-            .then(res => {
-                res.send('Logging you out...')
+            .then(function (req,res) {
+                req.logout();
+                res.redirect('/');
             })
     }, [])
     return (
