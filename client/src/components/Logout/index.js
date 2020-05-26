@@ -5,7 +5,7 @@ import { SET_GOOGLE_ID, SET_NAME } from "../../utils/actions";
 import NavbarNotLoggedIn from "../NavbarNotLoggedIn"
 import NavbarLoggedIn from "../NavbarLoggedIn"
 
-function Logout() {
+function GetUserInfo() {
     const [state, dispatch] = useStoreContext();
 
     // onMount, make GET request to our /getUserInfo route which returns current passport session data
@@ -13,12 +13,12 @@ function Logout() {
     useEffect(() => {
         axios.get('/logout')
             .then(res => {
-                res.redirect('/logout')
+                res.send('Logging you out...')
             })
     }, [])
     return (
-        <h6>Logging you out...</h6>
+        <h1>Logging you out</h1>
     )
 }
 
-export default Logout;
+export default GetUserInfo;
