@@ -11,11 +11,7 @@ function Logout() {
     // onMount, make GET request to our /getUserInfo route which returns current passport session data
     // for the current user
     useEffect(() => {
-        axios.get('/logout')
-            .then(function (req,res) {
-                req.logout();
-                res.redirect('/');
-            })
+        window.location = 'https://shielded-reaches-07010.herokuapp.com/logout';
     }, [])
     return (
         <h1>Logging you out</h1>
