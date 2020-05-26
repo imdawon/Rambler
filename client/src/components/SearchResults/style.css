@@ -133,10 +133,19 @@ html {
     flex-direction: column;
     overflow: hidden;
     transition: box-shadow 0.3s ease-in-out;
+    transition: transform .5s;
+  }
+
+  .card:hover {
+    -ms-transform: scale(1.05); /* IE 9 */
+    -webkit-transform: scale(1.05); /* Safari 3-8 */
+    transform: scale(1.05); 
+    z-index: 10;
+    
   }
 
   .card:hover{
-    box-shadow: 0 20px 40px -14px rgb(25,34,50, 1);
+    box-shadow: 0 20px 40px -14px rgba(25, 34, 50, 0.795);
   }
 
  .card_content {
