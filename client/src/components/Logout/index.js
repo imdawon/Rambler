@@ -8,12 +8,17 @@ import NavbarLoggedIn from "../NavbarLoggedIn"
 function Logout() {
     const [state, dispatch] = useStoreContext();
 
+    // onMount, make GET request to our /getUserInfo route which returns current passport session data
+    // for the current user
     useEffect(() => {
         axios.get('/logout')
             .then(res => {
-                res.send('Logging you out...')
+                console.log('Loggin you out.')
             })
     }, [])
+    return (
+        <h6>Logging you out...</h6>
+    )
 }
 
 export default Logout;
