@@ -20,7 +20,7 @@ function BarChart() {
   const [state, dispatch] = useStoreContext();
 
   useEffect(() => {
-    processData(state.log);
+    processData();
   }, [state.log]);
 
   const processData = () => {
