@@ -49,5 +49,4 @@ router.post('/hikeDetails', (req, res) => {
     .catch(err => console.log(err));
 });
 
-
 module.exports = router;
