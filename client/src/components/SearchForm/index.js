@@ -1,12 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { SET_USER_SEARCH, LOADING, UPDATE_LAT_LON, UPDATE_HIKES } from "../../utils/actions";
+import { SET_USER_SEARCH, UPDATE_LAT_LON, UPDATE_HIKES } from "../../utils/actions";
 import "./style.css";
 import API from "../../utils/API";
-import { Collection } from "mongoose";
 import axios from "axios";
 
-const cheerio = require('cheerio');
 
 const SearchForm = () => {
     //user search input
@@ -81,10 +79,9 @@ const SearchForm = () => {
 
     const getMoreInfo = (hikeResults) => {
         let hikesWithDetails;
-
         axios.post('/hikeDetails', hikeResults)
         .then(res => {
-            hikesWithDetails = JSON.parse(res.config.data);
+            hikesWithDetails = res.data;
             console.log("!!!",hikesWithDetails);
             dispatch({
                 type: UPDATE_HIKES,
