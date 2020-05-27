@@ -63,7 +63,8 @@ const Detail = () => {
                         <h6 className="detail_card card_text">{state.currentHike.description}</h6>
                     </div>
                 </div>
-
+                <br />
+                <br/>
                 <ButtonBucketAdd
                     detail={"true"}
                     hike={state.currentHike}
@@ -111,7 +112,7 @@ const Detail = () => {
 
             </div>
             :
-            <h3>Hike Not Found</h3>
+            <h1 style={{textAlign: "center",}}>Hike Not Found</h1>
     );
 }
 
