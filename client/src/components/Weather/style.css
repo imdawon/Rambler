@@ -1,0 +1,16 @@
+.weather_icon {
+    display: block;
+    margin: 0 auto;
+}
+
+.card{
+    background-color: transparent;
+}
+
+.no_white {
+    margin-bottom: -20px;
+}
+
+#display {
+    display: grid;
+}

@@ -19,7 +19,7 @@ const ramblerUserSeed = [
             "latitude": "47.6551",
             "longitude": "-122.1847",
             "ascent": "231",
-            "img": "https://cdn-files.apstatic.com/hike/7044485_small_1555530429.jpg",
+            "imgMedium": "https://cdn-files.apstatic.com/hike/7044485_small_1555530429.jpg",
             "summary": "A great loop around Bridle Trails State Park, with rolling hills and green forests.",
             "url": "https://www.hikingproject.com/trail/7022574/bridle-trails-state-park-outer-loop"
         }
@@ -34,14 +34,14 @@ const ramblerUserSeed = [
         "latitude": "47.6551",
         "longitude": "-122.1847",
         "ascent": "231",
-        "img": "https://cdn-files.apstatic.com/hike/7044485_small_1555530429.jpg",
+        "imgMedium": "https://cdn-files.apstatic.com/hike/7044485_small_1555530429.jpg",
         "summary": "A great loop around Bridle Trails State Park, with rolling hills and green forests.",
         "url": "https://www.hikingproject.com/trail/7022574/bridle-trails-state-park-outer-loop"
       }
     ]
   }
 ];
-
+// removes everything from db and adds only this seed user, scuba steve. 
 db
 .remove({})
 .then(() => db.collection.insertMany(ramblerUserSeed))

@@ -2,7 +2,6 @@ import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Link } from "react-router-dom";
 import API from '../../utils/API';
-import "./style.css";
 import ButtonDetail from "../ButtonDetails";
 import ButtonDeleteLog from '../ButtonDeleteLog';
 import createNotificationEvent from "../../utils/createNotificationEvent";
@@ -38,12 +37,12 @@ function LogResults() {
                     <li key={index} className="hikeListItem cards_item">
                         <div className="card">
                             <div className="card_image">
-                                {(hike.imgMedium !== ""
+                                {(hike.imgMedium !== "")
                                     ?
                                     <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
                                     :
                                     <img className="card-img-top" src={emptyImage} alt={hike.name} />
-                                )}
+                               }
                             </div>
                             <div className="card_content is-centered">
                                 <h2 className="card_title">{hike.name}</h2>
@@ -80,7 +79,7 @@ function LogResults() {
                 ))}
             </ul>
         </div>
-    )
+    );
 };
 
 export default LogResults;

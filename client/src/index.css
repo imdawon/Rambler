@@ -54,7 +54,11 @@ code {
 .button {
   height: auto;
 }
-
+.loading{
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
 @media (max-width: 539px){
   #navLogo {
     width: 58px;
