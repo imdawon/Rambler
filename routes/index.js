@@ -26,6 +26,10 @@ router.get('/getUserInfo',
   (req, res) => {
     res.send(req.user);
   });
+router.get('/logout', function (req, res) {
+  req.logout();
+  res.redirect('/');
+});
 router.post('/hikeDetails', (req, res) => {
   let hikesWithDetails = [];
   const hikeResults = req.body;
