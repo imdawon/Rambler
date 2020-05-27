@@ -9,17 +9,19 @@ const Search = () => {
   const [state, dispatch] = useStoreContext();
 
   return (
-        (state.loading) 
-        ?
-        <div>
+    (state.loading)
+      ?
+      <div>
         <SearchForm />
-        <img id="loading" src={loading} alt="Loading"/>
+        <div classname="loading">
+          <img  id="loading" src={loading} alt="Loading" />
         </div>
-        :
-        <div>
+      </div>
+      :
+      <div>
         <SearchForm />
         <SearchResults />
-        </div>
+      </div>
   );
 }
 
