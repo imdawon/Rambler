@@ -2,7 +2,7 @@ import LineChart from "../components/LineChart";
 import BarChart from "../components/BarChart";
 import React, { useEffect } from "react";
 import { useStoreContext } from "../utils/GlobalState";
-import { UPDATE_LOG } from "../utils/actions";
+import { UPDATE_LOG, UPDATE_LINE_CHART, UPDATE_BAR_CHART } from "../utils/actions";
 import API from "../utils/API";
 import LogResults from "../components/LogResults";
 import takeAHike from "../assets/takeAHike.png";
@@ -15,10 +15,6 @@ function Log() {
         generateLogData();
     }, []);
 
-    useEffect(() => {
-        console.log("state", state.log)
-    }, [state]);
-
     const generateLogData = () => {
         API.getUserList(state.googleId)
             .then((hikes) => {
@@ -26,6 +22,14 @@ function Log() {
                 dispatch({
                     type: UPDATE_LOG,
                     log: logListHikes
+                });
+                dispatch({
+                    type: UPDATE_LINE_CHART,
+                    lineChart: logListHikes
+                });
+                dispatch({
+                    type: UPDATE_BAR_CHART,
+                    barChart: logListHikes
                 });
             })
             .catch(err => console.log(err));
