@@ -15,10 +15,6 @@ function Log() {
         generateLogData();
     }, []);
 
-    useEffect(() => {
-        console.log("state", state.log)
-    }, [state]);
-
     const generateLogData = () => {
         API.getUserList(state.googleId)
             .then((hikes) => {

@@ -6,6 +6,7 @@ import "./style.css";
 import ButtonLogAdd from "../ButtonLogAdd";
 import ButtonBucketAdd from '../ButtonBucketAdd';
 import ButtonDetail from '../ButtonDetails';
+import ButtonLoadMore from '../ButtonLoadMore';
 import { SET_CURRENT_HIKE, ADD_BUCKETLIST, ADD_LOG } from "../../utils/actions";
 import emptyImage from "../../assets/emptyTrailImage.jpg";
 import createNotificationEvent from "../../utils/createNotificationEvent";
@@ -13,7 +14,7 @@ import createNotificationEvent from "../../utils/createNotificationEvent";
 function SearchResults() {
     const [state, dispatch] = useStoreContext();
     const setCurrentHike = (hike) => {
-        console.log(hike);
+        console.log("details!!!", hike);
         dispatch({
             type: SET_CURRENT_HIKE,
             currentHike: hike
@@ -49,8 +50,8 @@ function SearchResults() {
     return (
         <div>
             <ul className="hikeResultList cards">
-                {state.hikes.map(hike => (
-                    <li key={hike.id} className="hikeListItem cards_item">
+                {state.hikes.slice(0, state.visibleIndex).map((hike, i) => (
+                    <li key={i} className="hikeListItem cards_item">
                         <div className="card">
                         <div className="card_image">
                             {(hike.imgMedium !== "" 
@@ -71,23 +72,24 @@ function SearchResults() {
                                 <Link to={"/hike_details/" + hike.id}>
                                     <ButtonDetail
                                         hike={hike}
-                                        onClick={() => setCurrentHike(
-                                            {
-                                                id: hike.id,
-                                                name: hike.name,
-                                                location: hike.location,
-                                                latitude: hike.latitude,
-                                                longitude: hike.longitude,
-                                                length: hike.length,
-                                                ascent: hike.ascent,
-                                                imgMedium: hike.imgMedium,
-                                                summary: hike.summary,
-                                                url: hike.url,
-                                                trailType: hike.trailType,
-                                                description: hike.description
-                                            }
-                                        )
-                                        }
+                                        onClick={() => {
+                                            setCurrentHike(
+                                                {
+                                                    id: hike.id,
+                                                    name: hike.name,
+                                                    location: hike.location,
+                                                    latitude: hike.latitude,
+                                                    longitude: hike.longitude,
+                                                    length: hike.length,
+                                                    ascent: hike.ascent,
+                                                    imgMedium: hike.imgMedium,
+                                                    summary: hike.summary,
+                                                    url: hike.url,
+                                                    trailType: hike.trailType,
+                                                    description: hike.description
+                                                }
+                                            )
+                                        }}
                                     />
                                 </Link>
                                 <ButtonBucketAdd
@@ -134,7 +136,11 @@ function SearchResults() {
                         </div>
                     </li>
                 ))}
+                
             </ul>
+            {state.visibleIndex < state.paginationHikes.length  &&
+                <ButtonLoadMore />
+             }
             <br />
             <br /><br /><br /><br /><br />
         </div>
