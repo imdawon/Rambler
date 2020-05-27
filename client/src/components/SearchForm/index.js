@@ -53,7 +53,6 @@ const SearchForm = () => {
     const generateCoordinates = () => {
         API.getLocation(state.userSearch)
             .then((res) => {
-                console.log(res.data[0].lat, res.data[0].lon);
                 let lat = parseFloat(res.data[0].lat).toFixed(3);
                 let lon = parseFloat(res.data[0].lon).toFixed(3);
                 dispatch({
@@ -95,8 +94,10 @@ const SearchForm = () => {
                 type: UPDATE_HIKES,
                 hikes: hikesWithDetails
             });
-        });
+        })
+        .catch(err => console.log(err));
     };
+    
     return (
         <div class="search-area">
             <form className="searchForm" onSubmit={handleFormSubmit}>
@@ -117,7 +118,7 @@ const SearchForm = () => {
                         <input class="input is-success"
                             ref={max_distance}
                             type="text"
-                            placeholder="How far will you travel? (max 200 miles)"
+                            placeholder="Travel Distance (default 30 miles)"
                         />
                         <span className="icon is-small is-left">
                             <i className="fa fa-road"></i>

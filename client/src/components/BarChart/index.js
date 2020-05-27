@@ -1,16 +1,23 @@
 import React, { useEffect } from "react";
-import { UPDATE_BAR_CHART, UPDATE_BAR_CHART_LABELS } from "../../utils/actions";
+import {
+  UPDATE_BAR_CHART,
+  UPDATE_BAR_CHART_LABELS,
+  UPDATE_BAR_LABEL_STYLE,
+} from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
 import {
+  FlexibleXYPlot,
+  FlexibleWidthXYPlot,
   XYPlot,
   XAxis,
   YAxis,
   VerticalGridLines,
   HorizontalGridLines,
   VerticalRectSeries,
-  LabelSeries
+  LabelSeries,
 } from "react-vis";
 import "../../../node_modules/react-vis/dist/style.css";
+
 
 function BarChart() {
   const [state, dispatch] = useStoreContext();
@@ -32,46 +39,83 @@ function BarChart() {
   };
 
   const getDataPoints = (updatedDistance) => {
-    let stateDataPoints = updatedDistance.map((e, index) => ({
-      x: index + 2,
-      x0: index + 1,
-      y: 0,
-      y0: e.length,
-    }));
+    let stateDataPoints = updatedDistance
+      .slice(updatedDistance.length - 10, updatedDistance.length)
+      .map((e, index) => ({
+        x: index + 2,
+        x0: index + 1,
+        y: 0,
+        y0: e.length,
+      }));
     dispatch({
       type: UPDATE_BAR_CHART,
       barChart: stateDataPoints,
     });
-    getLabels(updatedDistance)
+    getLabels(updatedDistance);
   };
   const getLabels = (updatedDistance) => {
-    let stateDataLabels = updatedDistance.map((e, index) => ({
-      x: index +2,
-      y: 0,
-      label: e.name
-    }));
-    console.log("STATE DATA LABELS", stateDataLabels);
+    let stateDataLabels = updatedDistance
+      .slice(updatedDistance.length - 10, updatedDistance.length)
+      .map((e, index) => ({
+        x: index + 1,
+        y: 0,
+        label: e.name,
+      }));
     dispatch({
       type: UPDATE_BAR_CHART_LABELS,
-      barChartLabels: stateDataLabels
-    })
-      }
+      barChartLabels: stateDataLabels,
+    });
+  };
 
   return (
-    <XYPlot width={500} height={500}>
+    <div style={{
+      height: "45%",
+      width: "45%",
+      minWidth: "300px",
+      minHeight: "300px",
+      margin: "0 auto"
+    }}>
+    <FlexibleWidthXYPlot xType="linear" height={300}>
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis title="Hike Index" />
       <YAxis title="Distance (Miles)" />
-      {state.barChart.map((hike) => {
+      {state.barChart.map((hike, index) => {
         let hikeData = [hike];
-        return <VerticalRectSeries key={hike._id} data={hikeData} />;
+        return (
+          <VerticalRectSeries
+            key={index}
+            data={hikeData}
+            onValueMouseOver={() => {
+              dispatch({
+                type: UPDATE_BAR_LABEL_STYLE,
+                barLabelStyle: { visibility: "visible" },
+              });
+            }}
+            onValueMouseOut={() => {
+              dispatch({
+                type: UPDATE_BAR_LABEL_STYLE,
+                barLabelStyle: { visibility: "hidden" },
+              });
+            }}
+          />
+        );
       })}
-      {state.barChartLabels.map((hike) => {
-        let labelData = [{...hike, rotation: -45, xOffset: -100}]
-        return <LabelSeries allowOffsetToBeResversed labelAnchorX="start" labelAnchorY="top" data={labelData} />
+      {state.barChartLabels.map((hike, index) => {
+        let labelData = [{ ...hike, rotation: -45, xOffset: 5 }];
+        return (
+          <LabelSeries
+            key={index}
+            allowOffsetToBeResversed
+            labelAnchorX="start"
+            labelAnchorY="top"
+            data={labelData}
+            style={state.barLabelStyle}
+          />
+        );
       })}
-    </XYPlot>
+    </FlexibleWidthXYPlot>
+    </div>
   );
 }
 
