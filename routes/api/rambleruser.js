@@ -4,7 +4,7 @@ const ramblerUserController = require('../../controllers/ramblerUserController')
 router
     .route("/")
         // DO WE NEED THIS?? I DONT THINK SO!
-    // .post(ramblerUserController.create)
+    .post(ramblerUserController.create)
 //get user saved hikes
 router
     .route("/:id")
