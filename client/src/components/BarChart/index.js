@@ -6,9 +6,7 @@ import {
 } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
 import {
-  FlexibleXYPlot,
   FlexibleWidthXYPlot,
-  XYPlot,
   XAxis,
   YAxis,
   VerticalGridLines,
@@ -73,12 +71,14 @@ function BarChart() {
       width: "45%",
       minWidth: "300px",
       minHeight: "300px",
-      margin: "0 auto"
+      margin: "0 auto",
+      display: "inline-block",
+      textAlign: "center"
     }}>
-    <FlexibleWidthXYPlot xType="linear" height={300}>
+    <FlexibleWidthXYPlot xType="linear" style={{textAlign: "center"}} height={300}>
       <VerticalGridLines />
       <HorizontalGridLines />
-      <XAxis title="Hike Index" />
+      <XAxis tickValues={[1,2,3,4,5,6,7,8,9,10]} title="Hike Index" />
       <YAxis title="Distance (Miles)" />
       {state.barChart.map((hike, index) => {
         let hikeData = [hike];

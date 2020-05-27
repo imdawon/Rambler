@@ -6,11 +6,6 @@ const apiRoutes = require("./api");
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-// router.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin: *");
-//   next();
-// });
-
 // API Routes
 router.use("/api", apiRoutes);
 // If no API routes are hit, send the React app
@@ -50,12 +45,5 @@ router.post('/hikeDetails', (req, res) => {
     .catch(err => console.log(err));
 });
 
-
-
-
-
- 
-  
-  
 
 module.exports = router;
