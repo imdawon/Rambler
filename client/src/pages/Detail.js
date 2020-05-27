@@ -48,7 +48,7 @@ const Detail = () => {
             <div>
                 <div className="card" id="detail_card">
                     <div className="card_image">
-                        {(state.currentHike.imgMedium !== "" )
+                        {(state.currentHike.imgMedium !== "")
                             ?
                             <img className="card-img-top" id="detailImage" src={state.currentHike.imgMedium} alt={state.currentHike.name} />
                             :
