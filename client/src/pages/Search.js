@@ -10,18 +10,18 @@ const Search = () => {
 
   return (
     (state.loading)
-      ?
-      <div>
-        <SearchForm />
-        <div classname="loading">
-          <img  id="loading" src={loading} alt="Loading" />
-        </div>
+    ?
+    <div>
+      <SearchForm />
+      <div className="loading">
+        <img  id="loading" src={loading} alt="Loading" />
       </div>
-      :
-      <div>
-        <SearchForm />
-        <SearchResults />
-      </div>
+    </div>
+    :
+    <div>
+      <SearchForm />
+      <SearchResults />
+    </div>
   );
 }
 
