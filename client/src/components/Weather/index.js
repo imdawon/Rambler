@@ -9,6 +9,7 @@ function Weather() {
     const [state, dispatch] = useStoreContext();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         generateWeather();
     }, []);
 
@@ -37,24 +38,29 @@ function Weather() {
     }
 
     return (
-        <div className="main_weather">
-            <div>
-                <p>Conditions</p>
-                <p>{state.forecastLocation}</p>
+        <div className='weather'>
+            <div className="main_weather">
+                <div className='weather_title'>
+                    <p className='weather_title'>Conditions</p>
+                    <p className='weather_city'>{state.forecastLocation}</p>
+                </div>
             </div>
-            {state.weather.map((day, i) => (
-                <div className="weather_card" key={i}>
-                    <p>Date:
+            <div className='weather_cards_div'>
+                {state.weather.map((day, i) => (
+                    <div className="weather_card" key={i}>
+                        <p>Date:
                 <Moment format="MM/DD h:mm">{day.dt_txt}</Moment>
-            </p>
-            <img src={`https://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="wthr img" />
-             <p>Temp: {(Math.floor((day.main.temp * 9 / 5) + 32))} °F</p>
-             <p>Humidity: {day.main.humidity} %</p>
-             <p>Wind: {day.wind.speed} MPH</p>
-             <p>Expect {day.weather[0].description}</p>
-           </div>
-        ))}
+                        </p>
+                        <img src={`https://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="wthr img" />
+                        <p>Temp: {(Math.floor((day.main.temp * 9 / 5) + 32))} °F</p>
+                        <p>Humidity: {day.main.humidity} %</p>
+                        <p>Wind: {day.wind.speed} MPH</p>
+                        <p>Expect {day.weather[0].description}</p>
+                    </div>
+                ))}
+            </div>
         </div>
+
     )
 };
 
