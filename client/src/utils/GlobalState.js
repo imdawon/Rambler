@@ -14,6 +14,8 @@ import {
   UPDATE_LINE_CHART,
   UPDATE_BAR_CHART_LABELS,
   UPDATE_LINE_CHART_LABELS,
+  UPDATE_BAR_LABEL_STYLE,
+  UPDATE_LINE_LABEL_STYLE,
   SET_GOOGLE_ID,
   SET_NAME,
   SET_CURRENT_HIKE,
@@ -105,9 +107,21 @@ const reducer = (state, action) => {
       case UPDATE_LINE_CHART_LABELS:
       return {
         ...state,
-        lineChart: [...action.lineChartLabels],
+        lineChartLabels: [...action.lineChartLabels],
         loading: false
       };
+      case UPDATE_BAR_LABEL_STYLE:
+        return {
+          ...state,
+          barLabelStyle: action.barLabelStyle,
+          loading: false
+        };
+        case UPDATE_LINE_LABEL_STYLE:
+          return {
+            ...state,
+            lineLabelStyle: action.lineLabelStyle,
+            loading: false
+          };
     case REMOVE_BUCKETLIST:
       return {
         ...state,
@@ -197,6 +211,8 @@ const StoreProvider = ({ value = [], ...props }) => {
     lineChart: [],
     lineChartLabels: [],
     barChartLabels: [],
+    barLabelStyle: {visibility: "hidden"},
+    lineLabelStyle: {visibility: "hidden"},
     weather: [],
     forecastLocation: "",
     loading: false

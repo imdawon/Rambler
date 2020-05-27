@@ -43,10 +43,8 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // Define routes
 app.use(routes);
-
 // want react to read the query code it sends ater google sign in is complete
 // do get or post to google to verify the code is valid
 // based on JWT validity, pass user either to the desired location, or back to login saying login failed

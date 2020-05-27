@@ -9,12 +9,14 @@ import Detail from "../../pages/Detail";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ActionNotification from '../../components/ActionNotification';
+import GetUserInfo from "../GetUserInfo";
+import Logout from "../Logout";
 
 function Main() {
 
     return (
         <Router>
-            <Navbar />
+            <GetUserInfo />
             <Header />
              <ActionNotification />
             <Switch>
@@ -32,6 +34,9 @@ function Main() {
                 </Route>
                 <Route exact path="/hike_details/:id">
                     <Detail />
+                </Route>
+                <Route exact path="/Logout">
+                    <Logout />
                 </Route>
             </Switch>
             <Footer />

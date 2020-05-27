@@ -24,21 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
         el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
-
       });
     });
   }
-
 });
 
 function Navbar() {
     return (
 
-
   <nav className="navbar is-transparent" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
     <a className="navbar-item" href="/">
-      <img className="is-rounded" src={logo} width="112" height="28" />
+      <img id="navLogo" className="is-rounded" src={logo} width="112" height="28" />
     </a>
 
     <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">

@@ -9,17 +9,10 @@ import ButtonDetail from '../ButtonDetails';
 import ButtonLoadMore from '../ButtonLoadMore';
 import { SET_CURRENT_HIKE, ADD_BUCKETLIST, ADD_LOG } from "../../utils/actions";
 import emptyImage from "../../assets/emptyTrailImage.jpg";
+import createNotificationEvent from "../../utils/createNotificationEvent";
 
 function SearchResults() {
     const [state, dispatch] = useStoreContext();
-
-    const createNotificationEvent = (notificationMessage) => {
-        // Create text for ActionNotication popup
-        const bucketListSuccessNotification = new CustomEvent('runNotification', {detail: notificationMessage });
-        // Run our newly created event
-        window.dispatchEvent(bucketListSuccessNotification);
-    }
-
     const setCurrentHike = (hike) => {
         console.log(hike);
         dispatch({
@@ -33,7 +26,7 @@ function SearchResults() {
         console.log(`bucketListHike value: ${bucketListHike}`);
 
         API.addToBucketList(state.googleId, bucketListHike)
-            .then(res => console.log("Updated bucket list", res.data))
+            .then(res => console.log("Updated Bucket List", res.data))
             .catch(err => console.log(err));
 
         dispatch({
@@ -147,6 +140,8 @@ function SearchResults() {
             {state.visibleIndex < state.paginationHikes.length &&
                 <ButtonLoadMore />
              }
+            <br />
+            <br /><br /><br /><br /><br />
         </div>
     )
 };

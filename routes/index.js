@@ -10,6 +10,7 @@ const cheerio = require('cheerio');
 //   res.header("Access-Control-Allow-Origin: *");
 //   next();
 // });
+
 // API Routes
 router.use("/api", apiRoutes);
 // If no API routes are hit, send the React app
@@ -30,39 +31,6 @@ router.get('/getUserInfo',
   (req, res) => {
     res.send(req.user);
   });
-
-
-// router.post('/hikeDetails', (req, res) => {
-//   console.log(req.body)
-//   let hikesWithDetails = [];
-//   const hikeResults = req.body;
-//   let promise = hikeResults.map((hike, i) => {
-//     axios.get(hike.url)
-//       .then((res) => {
-//         const $ = cheerio.load(res.data);
-//         let type = $('.mb-quarter').html();
-//         let summary = $('h3:contains("Description")').next().text();
-//         let hikeData = { ...hike, trailType: type, description: summary };
-//         hikesWithDetails.push(hikeData);
-//         console.log("###", hikesWithDetails);
-
-//         return hikesWithDetails;
-//       })
-//       // .then((hikesWithDetails) => {
-//       // })
-//       .catch(err => console.log(err));
-//   });
-
-//   Promise.all(promise)
-//   .then((res)=>{
-
-//   })
-//     console.log("@@@", hikesWithDetails)
-//   res.send(hikesWithDetails)
-
-  
-// });
-
 router.post('/hikeDetails', (req, res) => {
   let hikesWithDetails = [];
   const hikeResults = req.body;
@@ -74,11 +42,11 @@ router.post('/hikeDetails', (req, res) => {
         let summary = $('h3:contains("Description")').next().text();
         let hikeData = { ...hike, trailType: type, description: summary };
         hikesWithDetails.push(hikeData);
-        console.log("@@@",hikesWithDetails[1])
+        // console.log("@@@",hikesWithDetails[1])
       });
   }))
     .then(() => {
-      console.log("^^^",hikesWithDetails[1])
+      // console.log("^^^",hikesWithDetails[1])
       res.send(hikesWithDetails)
     })
     .catch(err => console.log(err));
@@ -87,5 +55,9 @@ router.post('/hikeDetails', (req, res) => {
 
 
 
+
+ 
+  
+  
 
 module.exports = router;

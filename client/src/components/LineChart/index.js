@@ -1,7 +1,13 @@
 import React, { useEffect } from "react";
-import { UPDATE_LINE_CHART, UPDATE_LINE_CHART_LABELS } from "../../utils/actions";
+import {
+  UPDATE_LINE_CHART,
+  UPDATE_LINE_CHART_LABELS,
+  UPDATE_LINE_LABEL_STYLE,
+} from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
 import {
+  FlexibleXYPlot,
+  FlexibleWidthXYPlot,
   XYPlot,
   XAxis,
   YAxis,
@@ -30,47 +36,81 @@ function LineChart() {
   };
 
   const getDataPoints = (updatedDistance) => {
-    let stateDataPoints = updatedDistance.map((e) => ({
-      x: e.length,
-      y: e.ascent,
-    }));
-    
+    let stateDataPoints = updatedDistance
+      .slice(updatedDistance.length - 10, updatedDistance.length)
+      .map((e) => ({
+        x: e.length,
+        y: e.ascent,
+      }));
+
     dispatch({
       type: UPDATE_LINE_CHART,
       lineChart: stateDataPoints,
     });
-    getLabels(updatedDistance)
+    getLabels(updatedDistance);
   };
 
   const getLabels = (updatedDistance) => {
-let stateDataLabels = updatedDistance.map((e) => ({
-  x: e.length,
-  y: e.ascent,
-  label: e.name
-}));
-console.log("STATE DATA LABELS", stateDataLabels);
-dispatch({
-  type: UPDATE_LINE_CHART_LABELS,
-  lineChartLabels: stateDataLabels
-})
-  }
+    let stateDataLabels = updatedDistance
+      .slice(updatedDistance.length - 10, updatedDistance.length)
+      .map((e) => ({
+        x: e.length,
+        y: e.ascent,
+        label: e.name,
+      }));
+    dispatch({
+      type: UPDATE_LINE_CHART_LABELS,
+      lineChartLabels: stateDataLabels,
+    });
+  };
   return (
-    <XYPlot width={300} height={300}>
+    <div style={{ 
+      height: "45%",
+      width: "45%",
+      minWidth: "300px",
+      minHeight: "300px",
+      margin: "0 auto"
+    }}>
+    <FlexibleWidthXYPlot height={300}>
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis title="Distance (Miles)" />
       <YAxis title="Elevation Gain (Feet)" />
-      {state.lineChart.map((hike) => {
+      {state.lineChart.map((hike, index) => {
         let hikeData = [{ x: 0, y: 0 }, hike];
-        return <LineSeries key={hike.id} data={hikeData} />;
+        return (
+          <LineSeries
+            key={index}
+            data={hikeData}
+            style={{ strokeWidth: 8 }}
+            onSeriesMouseOver={() => {
+              dispatch({
+                type: UPDATE_LINE_LABEL_STYLE,
+                lineLabelStyle: { visibility: "visible" },
+              });
+            }}
+            onSeriesMouseOut={() => {
+              dispatch({
+                type: UPDATE_LINE_LABEL_STYLE,
+                lineLabelStyle: { visibility: "hidden" },
+              });
+            }}
+          />
+        );
       })}
-      {state.lineChartLabels.map((hike) => {
-        console.log(hike);
-        let labelData = [hike]
-        return <LabelSeries data={labelData} />
+      {state.lineChartLabels.map((hike, index) => {
+        let labelData = [hike];
+        return (
+          <LabelSeries
+            key={index}
+            allowOffsetToBeResversed
+            data={labelData}
+            style={state.lineLabelStyle}
+          />
+        );
       })}
-       
-    </XYPlot>
+    </FlexibleWidthXYPlot>
+    </div>
   );
 }
 export default LineChart;
