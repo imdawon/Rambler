@@ -14,17 +14,17 @@ function Weather() {
 
     const generateWeather = () => {
         API.getWeather(state.currentHike.latitude, state.currentHike.longitude)
-        .then((res) => {
-            compileData(res.data);
-        })
-        .catch(err => console.log(err));
+            .then((res) => {
+                compileData(res.data);
+            })
+            .catch(err => console.log(err));
     };
 
     const compileData = (data) => {
-        const dailyData = data.list.filter(reading => {   
+        const dailyData = data.list.filter(reading => {
             return reading.dt_txt.includes("12:00:00")
-            }
-          )
+        }
+        )
         let city = data.city.name
         dispatch({
             type: CATCH_FORECAST,
@@ -37,23 +37,25 @@ function Weather() {
     }
 
     return (
-        <div>
-        <p>Conditions</p>
-        <p>{state.forecastLocation}</p>
-        {state.weather.map((day, i) => (
-            <div key={i}>
-            <p>Date:  
+        <div className="main_weather">
+            <div>
+                <p>Conditions</p>
+                <p>{state.forecastLocation}</p>
+            </div>
+            {state.weather.map((day, i) => (
+                <div className="weather_card" key={i}>
+                    <p>Date:
                 <Moment format="MM/DD h:mm">{day.dt_txt}</Moment>
-            </p>
-            <img src={`http://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="wthr img" />
-             <p>Temp: {(Math.floor((day.main.temp * 9 / 5) + 32))} °F</p>
-             <p>Humidity: {day.main.humidity} %</p>
-             <p>Wind: {day.wind.speed} MPH</p>
-             <p>Expect {day.weather[0].description}</p>
-           </div>
-        ))}
+                    </p>
+                    <img src={`https://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="wthr img" />
+                    <p>Temp: {(Math.floor((day.main.temp * 9 / 5) + 32))} °F</p>
+                    <p>Humidity: {day.main.humidity} %</p>
+                    <p>Wind: {day.wind.speed} MPH</p>
+                    <p>Expect {day.weather[0].description}</p>
+                </div>
+            ))}
         </div>
     )
 };
- 
+
 export default Weather;
