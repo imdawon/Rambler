@@ -15,12 +15,15 @@ import {
   LabelSeries,
 } from "react-vis";
 import "../../../node_modules/react-vis/dist/style.css";
+
+//Set store context and then call processData when the state.log is updated.
 function LineChart() {
   const [state, dispatch] = useStoreContext();
   useEffect(() => {
     processData();
   }, [state.log]);
 
+//Checks if we need to manipulate the length data.
   const processData = () => {
     let updatedDistance = state.log.map((e) => {
       if (e.trailType === "point to point" && e.length < 12.5) {
