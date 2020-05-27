@@ -1,17 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useStoreContext } from "../../utils/GlobalState";
 import { SET_VISIBLE_INDEX, SET_PREV_INDEX, LOAD_MORE_HIKES } from "../../utils/actions";
 import "./style.css";
+import loading from '../../assets/loading.png'
 const axios = require('axios');
 
-function ButtonLoadMore(props) {
+function ButtonLoadMore() {
     const [state, dispatch] = useStoreContext();
-
-    // useEffect(() => {
-    //     if(state.prevIndex != 0) {
-
-    //     }
-    // }, []);
 
     const loadMore = () => {
 
@@ -24,20 +19,14 @@ function ButtonLoadMore(props) {
             type: SET_VISIBLE_INDEX,
             visibleIndex: state.visibleIndex + 12
         });
-        gatherDataPaginationHikes();
-    };
-
-    const gatherDataPaginationHikes = () => {
-        const moreHikesToLoad = []
+          const moreHikesToLoad = []
         state.paginationHikes.slice(state.prevIndex, state.visibleIndex).map((hike, i) => {
             moreHikesToLoad.push(hike);
         });
         let hikesWithDetails;
         axios.post('/hikeDetails', moreHikesToLoad)
             .then(res => {
-                console.log(res.config.data)
                 hikesWithDetails = JSON.parse(res.config.data);
-                console.log("!!!", hikesWithDetails);
                 dispatch({
                     type: LOAD_MORE_HIKES,
                     hikes: hikesWithDetails
@@ -47,7 +36,14 @@ function ButtonLoadMore(props) {
     };
 
     return (
-        <button className="btn card_btn" onClick={() => loadMore()}>Load More</button>
+        (state.loading)
+        ?
+        <div>
+        <button className="load_more btn card_btn" onClick={() => loadMore()}>Load More</button>
+        <img id="bucketListImage" src={loading} />
+        </div>
+        :
+        <button className="load_more btn card_btn" onClick={() => loadMore()}>Load More</button>
     );
 };
 
