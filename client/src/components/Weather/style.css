@@ -1,4 +1,26 @@
+.weather {
+    margin-top: 2%;
+}
 .main_weather {
     display: flex;
     justify-content: center;
+}
+.weather_card {
+    padding: 1%;
+    margin: 2%;
+}
+.weather_cards_div {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+}
+.weather_city {
+    font-size: 25px;
+}
+.weather_title {
+    display: flex;
+    flex-direction: column;
+}
+.weather_title {
+    font-size: 40px;
 }
