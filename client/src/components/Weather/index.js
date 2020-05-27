@@ -38,7 +38,7 @@ function Weather() {
 
     return (
         <div>
-        <p>Condtions</p>
+        <p>Conditions</p>
         <p>{state.forecastLocation}</p>
         {state.weather.map((day, i) => (
             <div key={i}>
