@@ -38,12 +38,12 @@ function LogResults() {
                     <li key={index} className="hikeListItem cards_item">
                         <div className="card">
                             <div className="card_image">
-                                {(hike.imgMedium !== ""
+                                {(hike.imgMedium !== "")
                                     ?
                                     <img className="card-img-top" src={hike.imgMedium} alt={hike.name} />
                                     :
                                     <img className="card-img-top" src={emptyImage} alt={hike.name} />
-                                )}
+                               }
                             </div>
                             <div className="card_content is-centered">
                                 <h2 className="card_title">{hike.name}</h2>

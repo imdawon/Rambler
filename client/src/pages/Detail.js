@@ -48,12 +48,12 @@ const Detail = () => {
             <div>
                 <div className="card" id="detail_card">
                     <div className="card_image">
-                        {(state.currentHike.imgMedium !== ""
+                        {(state.currentHike.imgMedium !== "" )
                             ?
                             <img className="card-img-top" id="detailImage" src={state.currentHike.imgMedium} alt={state.currentHike.name} />
                             :
                             <img className="card-img-top" id="detailImage" src={emptyImage} alt={state.currentHike.name} />
-                        )}
+                       }
                     </div>
                     <div className="card_content is-centered">
                         <h2 id="detail_name" className="detail_card card_title">{state.currentHike.name}</h2>

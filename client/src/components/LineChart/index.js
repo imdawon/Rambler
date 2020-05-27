@@ -6,9 +6,7 @@ import {
 } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
 import {
-  FlexibleXYPlot,
   FlexibleWidthXYPlot,
-  XYPlot,
   XAxis,
   YAxis,
   VerticalGridLines,
@@ -69,9 +67,10 @@ function LineChart() {
       width: "45%",
       minWidth: "300px",
       minHeight: "300px",
-      margin: "0 auto"
+      margin: "0 auto",
+      display: "inline-block",
     }}>
-    <FlexibleWidthXYPlot height={300}>
+    <FlexibleWidthXYPlot style={{textAlign: "center"}} height={300}>
       <VerticalGridLines />
       <HorizontalGridLines />
       <XAxis title="Distance (Miles)" />
