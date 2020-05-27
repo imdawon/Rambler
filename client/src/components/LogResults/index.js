@@ -2,7 +2,6 @@ import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Link } from "react-router-dom";
 import API from '../../utils/API';
-import "./style.css";
 import ButtonDetail from "../ButtonDetails";
 import ButtonDeleteLog from '../ButtonDeleteLog';
 import createNotificationEvent from "../../utils/createNotificationEvent";
@@ -80,7 +79,7 @@ function LogResults() {
                 ))}
             </ul>
         </div>
-    )
+    );
 };
 
 export default LogResults;

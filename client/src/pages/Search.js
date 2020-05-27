@@ -7,7 +7,7 @@ import loading from "../assets/loading.png";
 
 const Search = () => {
   const [state, dispatch] = useStoreContext();
-
+// if loading display loading image otherwise display results!
   return (
     (state.loading)
     ?
@@ -23,7 +23,7 @@ const Search = () => {
       <SearchResults />
     </div>
   );
-}
+};
 
 export default Search;
 

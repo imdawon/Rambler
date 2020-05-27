@@ -13,7 +13,7 @@ import emptyImage from "../assets/emptyTrailImage.jpg"
 
 const Detail = () => {
     const [state, dispatch] = useStoreContext();
-
+// add user bucket list hike to database
     const setBucketList = (bucketListHike) => {
         console.log(bucketListHike)
         createNotificationEvent('Added to Bucket List!')
@@ -27,6 +27,7 @@ const Detail = () => {
             bucketList: bucketListHike
         });
     };
+    // add user log hike to database
     const setLog = (logHike) => {
         console.log(logHike)
 
@@ -41,7 +42,7 @@ const Detail = () => {
             log: logHike
         });
     };
-
+// display the current hike detils and weather conditions
     return (
         (state.currentHike.id)
             ?
@@ -114,7 +115,7 @@ const Detail = () => {
             :
             <h1 style={{textAlign: "center",}}>Hike Not Found</h1>
     );
-}
+};
 
 export default Detail;
 
