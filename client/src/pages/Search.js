@@ -1,14 +1,25 @@
 import React from "react";
 import SearchForm from "../components/SearchForm";
 import SearchResults from "../components/SearchResults";
+import { useStoreContext } from "../utils/GlobalState";
+import loading from "../assets/loading.png";
+
 
 const Search = () => {
+  const [state, dispatch] = useStoreContext();
 
   return (
-      <div>
+        (state.loading) 
+        ?
+        <div>
+        <SearchForm />
+        <img id="loading" src={loading} alt="Loading"/>
+        </div>
+        :
+        <div>
         <SearchForm />
         <SearchResults />
-      </div>
+        </div>
   );
 }
 

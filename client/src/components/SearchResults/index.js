@@ -6,6 +6,7 @@ import "./style.css";
 import ButtonLogAdd from "../ButtonLogAdd";
 import ButtonBucketAdd from '../ButtonBucketAdd';
 import ButtonDetail from '../ButtonDetails';
+import ButtonLoadMore from '../ButtonLoadMore';
 import { SET_CURRENT_HIKE, ADD_BUCKETLIST, ADD_LOG } from "../../utils/actions";
 import emptyImage from "../../assets/emptyTrailImage.jpg";
 
@@ -56,8 +57,8 @@ function SearchResults() {
     return (
         <div>
             <ul className="hikeResultList cards">
-                {state.hikes.map(hike => (
-                    <li key={hike.id} className="hikeListItem cards_item">
+                {state.hikes.slice(0, state.visibleIndex).map((hike, i) => (
+                    <li key={i} className="hikeListItem cards_item">
                         <div className="card">
                         <div className="card_image">
                             {(hike.imgMedium !== "" 
@@ -141,7 +142,11 @@ function SearchResults() {
                         </div>
                     </li>
                 ))}
+                
             </ul>
+            {state.visibleIndex < state.paginationHikes.length &&
+                <ButtonLoadMore />
+             }
         </div>
     )
 };

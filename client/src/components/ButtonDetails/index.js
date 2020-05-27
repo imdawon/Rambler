@@ -1,9 +1,9 @@
 import React from 'react';
 
-function ButtonDetails(props) {
-
+function ButtonDetails() {
+    
     return (
-        <button className="btn card_btn" {...props}>Details</button>
+        <button className="btn card_btn">Details</button>
     );
 };
 

@@ -19,7 +19,11 @@ import {
   SET_CURRENT_HIKE,
   SET_ACTION_NOTIFICATION,
   CATCH_FORECAST,
-  SET_FORECAST_LOCATION
+  SET_FORECAST_LOCATION,
+  SET_VISIBLE_INDEX, 
+  UPDATE_PAGINATION_HIKES, 
+  SET_PREV_INDEX,
+  LOAD_MORE_HIKES
 } from "./actions";
 
 const StoreContext = createContext();
@@ -31,13 +35,24 @@ const reducer = (state, action) => {
       return {
         ...state,
         userSearch: action.userSearch,
-        loading: false
+        loading: true
       };
     case UPDATE_HIKES:
       return {
         ...state,
         hikes: [...action.hikes],
         loading: false
+      };
+    case LOAD_MORE_HIKES:
+      return {
+        ...state,
+        hikes: [...state.hikes, ...action.hikes],
+        loading: false
+      };
+    case UPDATE_PAGINATION_HIKES:
+      return {
+        ...state,
+        paginationHikes: [...action.paginationHikes],
       };
     case UPDATE_LAT_LON:
       return {
@@ -98,14 +113,16 @@ const reducer = (state, action) => {
         ...state,
         bucketList: state.bucketList.filter((hike) => {
           return hike.id !== action.bucketList;
-        })
+        }),
+        loading: false
       };
     case REMOVE_LOG:
       return {
         ...state,
         log: state.log.filter((hike) => {
           return hike.id !== action.log;
-        })
+        }),
+        loading: false
       };
     case LOADING:
       return {
@@ -144,6 +161,16 @@ const reducer = (state, action) => {
         ...state,
         forecastLocation: action.forecastLocation
       };
+    case SET_VISIBLE_INDEX: 
+      return {
+        ...state,
+        visibleIndex: action.visibleIndex
+      };
+    case SET_PREV_INDEX: 
+      return {
+        ...state,
+        prevIndex: action.prevIndex
+      };
     default:
       return state;
   };
@@ -156,6 +183,9 @@ const StoreProvider = ({ value = [], ...props }) => {
     searchLon: "",
     actionNotification: "",
     hikes: [],
+    paginationHikes: [],
+    visibleIndex: 12,
+    prevIndex: 0,
     googleId: "",
     user: "",
     currentHike: {},

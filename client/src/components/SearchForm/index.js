@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { SET_USER_SEARCH, LOADING, UPDATE_LAT_LON, UPDATE_HIKES } from "../../utils/actions";
+import { SET_USER_SEARCH, LOADING, UPDATE_LAT_LON, UPDATE_HIKES, UPDATE_PAGINATION_HIKES } from "../../utils/actions";
 import "./style.css";
 import API from "../../utils/API";
 import { Collection } from "mongoose";
+import axios from "axios";
 
-const cheerio = require('cheerio');
 
 const SearchForm = () => {
     //user search input
@@ -66,41 +66,37 @@ const SearchForm = () => {
     };
     // Takes converted lat and lon to make REI API call to gather hike data
     const loadHikes = () => {
+        let maxDistance = max_distance.current.value
+        console.log(maxDistance)
+        let maxResults = "60";
 
-        let maxDistance =  max_distance.current.value
-        console.log(maxDistance)    
-        let maxResults = "12";
-      
         API.getTrails(state.lat, state.lon, maxDistance, maxResults)
             .then((trails) => {
                 let hikeResults = trails.data.trails
-                getMoreInfo(hikeResults);
+                console.log(hikeResults, "@@@@")
+                dispatch({
+                    type: UPDATE_PAGINATION_HIKES,
+                    paginationHikes: hikeResults
+                })
+                getMoreInfo(hikeResults.slice(0, state.visibleIndex));
+               return hikeResults;
             })
             .catch(err => console.log(err));
     };
 
     const getMoreInfo = (hikeResults) => {
-        let hikesWithDetails = []
-        hikeResults.map((hike, i) => {
-            API.getDetails(hike.url)
-                .then((res) => {
-                    const $ = cheerio.load(res.data);
-                    let type = $('.mb-quarter').html();
-                    let summary = $('h3:contains("Description")').next().text();
-                    let hikeData = { ...hike, trailType: type, description: summary };
-                    hikesWithDetails.push(hikeData);
-                })
-                .then(() => {
-                    console.log(hikesWithDetails);
-                    dispatch({
-                        type: UPDATE_HIKES,
-                        hikes: hikesWithDetails
-                    });
-                })
-                .catch(err => console.log(err));
+        let hikesWithDetails;
+        axios.post('/hikeDetails', hikeResults)
+        .then(res => {
+            // console.log(res.config.data)
+            hikesWithDetails = JSON.parse(res.config.data);
+            console.log("!!!",hikesWithDetails);
+            dispatch({
+                type: UPDATE_HIKES,
+                hikes: hikesWithDetails
+            });
         });
     };
-
     return (
         <div class="search-area">
             <form className="searchForm" onSubmit={handleFormSubmit}>
@@ -133,6 +129,6 @@ const SearchForm = () => {
             </form>
         </div>
     )
-}
+};
 
 export default SearchForm;
