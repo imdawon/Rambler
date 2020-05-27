@@ -45,7 +45,7 @@ function Weather() {
             <p>Date:  
                 <Moment format="MM/DD h:mm">{day.dt_txt}</Moment>
             </p>
-            <img src={`http://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="wthr img" />
+            <img src={`https://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="wthr img" />
              <p>Temp: {(Math.floor((day.main.temp * 9 / 5) + 32))} °F</p>
              <p>Humidity: {day.main.humidity} %</p>
              <p>Wind: {day.wind.speed} MPH</p>
