@@ -33,7 +33,7 @@ const ramblerUserSchema = new Schema({
       ascent: {
         type: Number
       },
-      img: {
+      imgMedium: {
         type: String
       },
       summary: {
