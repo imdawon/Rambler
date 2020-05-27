@@ -1,9 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { SET_USER_SEARCH, LOADING, UPDATE_LAT_LON, UPDATE_HIKES, UPDATE_PAGINATION_HIKES } from "../../utils/actions";
+import { SET_USER_SEARCH, UPDATE_LAT_LON, UPDATE_HIKES, UPDATE_PAGINATION_HIKES } from "../../utils/actions";
 import "./style.css";
 import API from "../../utils/API";
-import { Collection } from "mongoose";
 import axios from "axios";
 
 
@@ -46,7 +45,6 @@ const SearchForm = () => {
         });
         search_input.current.value = "";
         max_distance.current.value = "";
-        generateCoordinates();
     };
 
     // takes user search input to convert to lat lon LocationIQ API 
@@ -78,7 +76,7 @@ const SearchForm = () => {
                     paginationHikes: hikeResults
                 })
                 getMoreInfo(hikeResults.slice(0, state.visibleIndex));
-               return hikeResults;
+            //    return hikeResults;
             })
             .catch(err => console.log(err));
     };
@@ -87,9 +85,7 @@ const SearchForm = () => {
         let hikesWithDetails;
         axios.post('/hikeDetails', hikeResults)
         .then(res => {
-            // console.log(res.config.data)
-            hikesWithDetails = JSON.parse(res.config.data);
-            console.log("!!!",hikesWithDetails);
+            hikesWithDetails = res.data;
             dispatch({
                 type: UPDATE_HIKES,
                 hikes: hikesWithDetails
@@ -97,7 +93,7 @@ const SearchForm = () => {
         })
         .catch(err => console.log(err));
     };
-    
+ 
     return (
         <div class="search-area">
             <form className="searchForm" onSubmit={handleFormSubmit}>
