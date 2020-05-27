@@ -7,7 +7,7 @@ const axios = require('axios');
 
 function ButtonLoadMore() {
     const [state, dispatch] = useStoreContext();
-
+// on click load the next 12 hikes, gathering the details needed from REI for trailType and description
     const loadMore = () => {
 
         dispatch({

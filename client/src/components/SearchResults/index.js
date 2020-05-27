@@ -13,6 +13,8 @@ import createNotificationEvent from "../../utils/createNotificationEvent";
 
 function SearchResults() {
     const [state, dispatch] = useStoreContext();
+
+    // set current hike so when user clickes on detail it will navigate them to the details page for THAT hike
     const setCurrentHike = (hike) => {
         console.log("details!!!", hike);
         dispatch({
@@ -20,6 +22,7 @@ function SearchResults() {
             currentHike: hike
         });
     };
+    //add hike to user bucket list mongodb
     const setBucketList = (bucketListHike) => {
         createNotificationEvent('Added to Bucket List!')
 
@@ -34,6 +37,7 @@ function SearchResults() {
             bucketList: bucketListHike
         });
     };
+ //add hike to user log mongodb
     const setLog = (logHike) => {
         createNotificationEvent('Added to Hike Log!')
 
@@ -46,7 +50,7 @@ function SearchResults() {
             log: logHike
         });
     };
-
+    // on render if the STATE.VISIBLE is < the available hikes in STATE.PAGINATIONHIKES it will display a load more button
     return (
         <div>
             <ul className="hikeResultList cards">
