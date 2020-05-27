@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { SET_USER_SEARCH, UPDATE_LAT_LON, UPDATE_HIKES } from "../../utils/actions";
+import { SET_USER_SEARCH, UPDATE_LAT_LON, UPDATE_HIKES, UPDATE_PAGINATION_HIKES } from "../../utils/actions";
 import "./style.css";
 import API from "../../utils/API";
 import axios from "axios";
@@ -45,7 +45,6 @@ const SearchForm = () => {
         });
         search_input.current.value = "";
         max_distance.current.value = "";
-        generateCoordinates();
     };
 
     // takes user search input to convert to lat lon LocationIQ API 
@@ -64,15 +63,20 @@ const SearchForm = () => {
     };
     // Takes converted lat and lon to make REI API call to gather hike data
     const loadHikes = () => {
+        let maxDistance = max_distance.current.value
+        console.log(maxDistance)
+        let maxResults = "60";
 
-        let maxDistance =  max_distance.current.value
-        console.log(maxDistance)    
-        let maxResults = "12";
-      
         API.getTrails(state.lat, state.lon, maxDistance, maxResults)
             .then((trails) => {
                 let hikeResults = trails.data.trails
-                getMoreInfo(hikeResults);
+                console.log(hikeResults, "@@@@")
+                dispatch({
+                    type: UPDATE_PAGINATION_HIKES,
+                    paginationHikes: hikeResults
+                })
+                getMoreInfo(hikeResults.slice(0, state.visibleIndex));
+            //    return hikeResults;
             })
             .catch(err => console.log(err));
     };
@@ -82,7 +86,6 @@ const SearchForm = () => {
         axios.post('/hikeDetails', hikeResults)
         .then(res => {
             hikesWithDetails = res.data;
-            console.log("!!!",hikesWithDetails);
             dispatch({
                 type: UPDATE_HIKES,
                 hikes: hikesWithDetails
@@ -90,7 +93,7 @@ const SearchForm = () => {
         })
         .catch(err => console.log(err));
     };
-
+ 
     return (
         <div class="search-area">
             <form className="searchForm" onSubmit={handleFormSubmit}>
@@ -123,6 +126,6 @@ const SearchForm = () => {
             </form>
         </div>
     )
-}
+};
 
 export default SearchForm;
