@@ -42,11 +42,9 @@ router.post('/hikeDetails', (req, res) => {
         let summary = $('h3:contains("Description")').next().text();
         let hikeData = { ...hike, trailType: type, description: summary };
         hikesWithDetails.push(hikeData);
-        // console.log("@@@",hikesWithDetails[1])
       });
   }))
     .then(() => {
-      // console.log("^^^",hikesWithDetails[1])
       res.send(hikesWithDetails)
     })
     .catch(err => console.log(err));

@@ -14,7 +14,7 @@ import createNotificationEvent from "../../utils/createNotificationEvent";
 function SearchResults() {
     const [state, dispatch] = useStoreContext();
     const setCurrentHike = (hike) => {
-        console.log(hike);
+        console.log("details!!!", hike);
         dispatch({
             type: SET_CURRENT_HIKE,
             currentHike: hike
@@ -72,23 +72,24 @@ function SearchResults() {
                                 <Link to={"/hike_details/" + hike.id}>
                                     <ButtonDetail
                                         hike={hike}
-                                        onClick={() => setCurrentHike(
-                                            {
-                                                id: hike.id,
-                                                name: hike.name,
-                                                location: hike.location,
-                                                latitude: hike.latitude,
-                                                longitude: hike.longitude,
-                                                length: hike.length,
-                                                ascent: hike.ascent,
-                                                imgMedium: hike.imgMedium,
-                                                summary: hike.summary,
-                                                url: hike.url,
-                                                trailType: hike.trailType,
-                                                description: hike.description
-                                            }
-                                        )
-                                        }
+                                        onClick={() => {
+                                            setCurrentHike(
+                                                {
+                                                    id: hike.id,
+                                                    name: hike.name,
+                                                    location: hike.location,
+                                                    latitude: hike.latitude,
+                                                    longitude: hike.longitude,
+                                                    length: hike.length,
+                                                    ascent: hike.ascent,
+                                                    imgMedium: hike.imgMedium,
+                                                    summary: hike.summary,
+                                                    url: hike.url,
+                                                    trailType: hike.trailType,
+                                                    description: hike.description
+                                                }
+                                            )
+                                        }} 
                                     />
                                 </Link>
                                 <ButtonBucketAdd
