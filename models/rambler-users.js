@@ -41,6 +41,12 @@ const ramblerUserSchema = new Schema({
       },
       url: {
         type: String
+      },
+      trailType: {
+        type: String
+      },
+      description: {
+        type: String
       }
     }
   ],
@@ -69,13 +75,19 @@ const ramblerUserSchema = new Schema({
       ascent: {
         type: Number
       },
-      img: {
+      imgMedium: {
         type: String
       },
       summary: {
         type: String
       },
       url: {
+        type: String
+      }, 
+      trailType: {
+        type: String
+      },
+      description: {
         type: String
       }
     }
