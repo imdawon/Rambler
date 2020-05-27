@@ -17,6 +17,10 @@
 .weather_city {
     font-size: 25px;
 }
+.weather_img {
+    display: flex;
+    justify-content: center;
+}
 .weather_title {
     display: flex;
     flex-direction: column;
