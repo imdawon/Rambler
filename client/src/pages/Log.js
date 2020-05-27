@@ -40,8 +40,8 @@ function Log() {
         ? 
         <div>
         <img id="logImage" src={log} />
+        <LineChart />
         <BarChart/>   
-        <LineChart /> 
         <LogResults />
         </div>
         : <div>

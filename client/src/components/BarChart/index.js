@@ -18,7 +18,6 @@ import "../../../node_modules/react-vis/dist/style.css";
 
 function BarChart() {
   const [state, dispatch] = useStoreContext();
-
   useEffect(() => {
     processData();
   }, [state.log]);
