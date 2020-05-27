@@ -39,11 +39,11 @@ function ButtonLoadMore() {
         (state.loading)
         ?
         <div>
-        <button className="load_more btn card_btn" onClick={() => loadMore()}>Load More</button>
+        <button className="load_more button is-success is-light detailButton" onClick={() => loadMore()}>Load More</button>
         <img id="bucketListImage" src={loading} />
         </div>
         :
-        <button className="load_more btn card_btn" onClick={() => loadMore()}>Load More</button>
+        <button className="load_more button is-success is-light detailButton" onClick={() => loadMore()}>Load More</button>
     );
 };
 
