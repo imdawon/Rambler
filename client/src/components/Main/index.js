@@ -16,7 +16,7 @@ function Main() {
 
     return (
         <Router>
-            <Navbar />
+            <GetUserInfo />
             <Header />
              <ActionNotification />
             <Switch>
