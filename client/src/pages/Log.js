@@ -10,7 +10,7 @@ import log from "../assets/log.jpg";
 
 function Log() {
     const [state, dispatch] = useStoreContext();
-
+// on page load get user log data from database
     useEffect(() => {
         generateLogData();
     }, []);
@@ -34,9 +34,8 @@ function Log() {
             })
             .catch(err => console.log(err));
     };
-
+// if user has nothing in their log display go hike! image
     return (
-        
         (state.log.length > 0) 
         ? 
         <div>
@@ -49,9 +48,7 @@ function Log() {
         <h2>Get out on the trail and log some hikes!</h2>
         <img id="emptyLog" src={takeAHike} />
         </div>
-        
-        
     );
-}
+};
 
 export default Log;

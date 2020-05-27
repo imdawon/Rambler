@@ -11,7 +11,7 @@ function Logout() {
     // onMount, make GET request to our /getUserInfo route which returns current passport session data
     // for the current user
     useEffect(() => {
-        window.location = 'https://shielded-reaches-07010.herokuapp.com/logout';
+        window.location = `https://gorambler.herokuapp.com/logout`;
     }, [])
     return (
         <h1>Logging you out</h1>

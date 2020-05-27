@@ -8,12 +8,7 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
     },
-    create: function(req, res) {
-        db
-        .create(req.body)
-        .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
-    }, 
+    // add hike to bucket list
     updateBucketList: function(req, res) {
         db
         .findOneAndUpdate({ googleId : req.params.id }, 
@@ -21,6 +16,7 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => console.log(err));
     },
+    // add hike to log
     updateLog: function(req, res) {
         db
         .findOneAndUpdate({ googleId : req.params.id }, 
@@ -28,6 +24,7 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => console.log(err));
     },
+    // remove hike from bucket list
     removeBucketList: function(req, res) {
         db
         .findOneAndUpdate({ googleId : req.params.id }, 
@@ -35,6 +32,7 @@ module.exports = {
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
       },
+      // remove hike from log
       removeLog: function(req, res) {
         db
         .findOneAndUpdate({ googleId: req.params.id }, 

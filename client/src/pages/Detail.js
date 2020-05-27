@@ -13,7 +13,7 @@ import emptyImage from "../assets/emptyTrailImage.jpg"
 
 const Detail = () => {
     const [state, dispatch] = useStoreContext();
-
+// add user bucket list hike to database
     const setBucketList = (bucketListHike) => {
         console.log(bucketListHike)
         createNotificationEvent('Added to Bucket List!')
@@ -27,6 +27,7 @@ const Detail = () => {
             bucketList: bucketListHike
         });
     };
+    // add user log hike to database
     const setLog = (logHike) => {
         console.log(logHike)
 
@@ -41,19 +42,19 @@ const Detail = () => {
             log: logHike
         });
     };
-
+// display the current hike detils and weather conditions
     return (
         (state.currentHike.id)
             ?
             <div>
                 <div className="card" id="detail_card">
                     <div className="card_image">
-                        {(state.currentHike.imgMedium !== ""
+                        {(state.currentHike.imgMedium !== "")
                             ?
                             <img className="card-img-top" id="detailImage" src={state.currentHike.imgMedium} alt={state.currentHike.name} />
                             :
                             <img className="card-img-top" id="detailImage" src={emptyImage} alt={state.currentHike.name} />
-                        )}
+                       }
                     </div>
                     <div className="card_content is-centered">
                         <h2 id="detail_name" className="detail_card card_title">{state.currentHike.name}</h2>
@@ -63,7 +64,8 @@ const Detail = () => {
                         <h6 className="detail_card card_text">{state.currentHike.description}</h6>
                     </div>
                 </div>
-
+                <br />
+                <br/>
                 <ButtonBucketAdd
                     detail={"true"}
                     hike={state.currentHike}
@@ -111,9 +113,9 @@ const Detail = () => {
 
             </div>
             :
-            <h3>Hike Not Found</h3>
+            <h1 style={{textAlign: "center",}}>Hike Not Found</h1>
     );
-}
+};
 
 export default Detail;
 
