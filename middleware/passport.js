@@ -4,7 +4,7 @@ const RamblerUser = require('../models/rambler-users');
 
 // Set callbackURL route for google to send user to after being authenticated
 // for production env or dev
-const callbackURL = process.env.HEROKU_URL + '/google-auth/callback';
+const callbackURL = process.env.HEROKU_URL + 'google-auth/callback';
 
 // Generate cookie based off userid
 passport.serializeUser((user, done) => {
