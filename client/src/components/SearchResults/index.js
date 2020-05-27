@@ -89,7 +89,7 @@ function SearchResults() {
                                                     description: hike.description
                                                 }
                                             )
-                                        }} 
+                                        }}
                                     />
                                 </Link>
                                 <ButtonBucketAdd
@@ -138,7 +138,7 @@ function SearchResults() {
                 ))}
                 
             </ul>
-            {state.visibleIndex < state.paginationHikes.length &&
+            {state.visibleIndex < state.paginationHikes.length  &&
                 <ButtonLoadMore />
              }
             <br />

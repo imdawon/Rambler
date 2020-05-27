@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
-import { SET_USER_SEARCH, UPDATE_LAT_LON, UPDATE_HIKES, UPDATE_PAGINATION_HIKES } from "../../utils/actions";
+import { SET_USER_SEARCH, UPDATE_LAT_LON, UPDATE_HIKES, UPDATE_PAGINATION_HIKES, SET_PREV_INDEX, SET_VISIBLE_INDEX } from "../../utils/actions";
 import "./style.css";
 import API from "../../utils/API";
 import axios from "axios";
@@ -42,6 +42,14 @@ const SearchForm = () => {
         dispatch({
             type: SET_USER_SEARCH,
             userSearch: searchValue
+        });
+        dispatch({
+            type: SET_VISIBLE_INDEX,
+            visibleIndex: 12
+        });
+        dispatch({
+            type: SET_PREV_INDEX,
+            prevIndex: 0
         });
         search_input.current.value = "";
         max_distance.current.value = "";
