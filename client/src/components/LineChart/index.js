@@ -43,7 +43,6 @@ function LineChart() {
         x: e.length,
         y: e.ascent,
       }));
-
     dispatch({
       type: UPDATE_LINE_CHART,
       lineChart: stateDataPoints,
