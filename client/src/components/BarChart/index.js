@@ -48,6 +48,9 @@ function BarChart() {
                 barChart: logListHikes
             });
         })
+        .then( () => {
+          console.log(state.log);
+        })
         .catch(err => console.log(err));
 };
 
