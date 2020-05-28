@@ -22,17 +22,19 @@ import API from "../../utils/API";
 function BarChart() {
   const [state, dispatch] = useStoreContext();
   useEffect(() => {
+    console.log(state.log)
     processData();
   }, [state.log]);
 
   useEffect(() => {
+    console.log(state.log)
     if (state.log.length < 1) {
       generateLogData();
     }
   }, []);
-
   const generateLogData = () => {
-    API.getUserList(state.googleId)
+    if(state.googleId){
+      API.getUserList(state.googleId)
         .then((hikes) => {
             let logListHikes = hikes.data.log;
             dispatch({
@@ -52,6 +54,7 @@ function BarChart() {
           console.log(state.log);
         })
         .catch(err => console.log(err));
+    }
 };
 
   const processData = () => {
