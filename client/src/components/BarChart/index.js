@@ -28,10 +28,7 @@ function BarChart() {
 
   useEffect(() => {
     console.log(state.log)
-    if (state.log.length < 1) {
-      generateLogData();
-    }
-  }, []);
+  }, [state.barChart,state.barChartLabels,state.barLabelStyle]);
   const generateLogData = () => {
     if(state.googleId){
       API.getUserList(state.googleId)
@@ -40,14 +37,6 @@ function BarChart() {
             dispatch({
                 type: UPDATE_LOG,
                 log: logListHikes
-            });
-            dispatch({
-                type: UPDATE_LINE_CHART,
-                lineChart: logListHikes
-            });
-            dispatch({
-                type: UPDATE_BAR_CHART,
-                barChart: logListHikes
             });
         })
         .then( () => {
