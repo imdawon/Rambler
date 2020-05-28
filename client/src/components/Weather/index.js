@@ -52,7 +52,7 @@ function Weather() {
                             <div className="card_content is-centered no_white">
                                 <img className="weather_icon" src={`https://openweathermap.org/img/w/${day.weather[0].icon}.png`} alt="wthr img" />
 
-                                <p className="card_text">Date:
+                                <p className="card_text">
                 <Moment format="MM/DD h:mm">{day.dt_txt}</Moment>
                                 </p>
 
