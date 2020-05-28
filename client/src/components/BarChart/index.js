@@ -28,6 +28,7 @@ function BarChart() {
 
   useEffect(() => {
     console.log(state.log)
+    generateLogData();
   }, [state.barChart,state.barChartLabels,state.barLabelStyle]);
   const generateLogData = () => {
     if(state.googleId){
