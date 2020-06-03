@@ -45,7 +45,7 @@ function Navbar() {
     </a>
   </div>
 
-  <div id="navbarBasicExample" className="navbar-menu">
+  <div id="navbarBasicExample" className="navbar-menu is-active">
     <div className="navbar-start">
       <div className="navbar-item">
         <div className="buttons">
