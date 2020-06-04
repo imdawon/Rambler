@@ -14,7 +14,7 @@ const Search = () => {
     <div>
       <SearchForm />
       <div className="loading">
-        <img  id="loading" src={loading} alt="Loading" />
+        <img  id="loading" className="rotate"src={loading} alt="Loading" />
       </div>
     </div>
     :
