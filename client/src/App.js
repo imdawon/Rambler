@@ -9,8 +9,7 @@ function App() {
     <div>
       <StoreProvider>
         <Wrapper>
-          <Main>
-          </Main>
+          <Main />
         </Wrapper>
       </StoreProvider>
     </div>

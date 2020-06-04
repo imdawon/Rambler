@@ -1,10 +1,10 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Link } from "react-router-dom";
-import GetUserInfo from "../../components/GetUserInfo";
 import bulma from "bulma";
 import "./style.css";
 import logo from "../../assets/logo.png"
+import WelcomeMessage from "../WelcomeMessage";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function NavbarLoggedIn() {
     const [state, dispatch] = useStoreContext();
     return (
-
+<div>
   <nav className="navbar is-transparent" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
     <a className="navbar-item" href="/">
@@ -73,7 +73,6 @@ function NavbarLoggedIn() {
     <div className="navbar-end">
       <div className="navbar-item">
         <div className="buttons">
-        <h6>Happy hiking, { state.user }!</h6>
           <Link to="/Logout">
             <a className="button is-light">
               Log Out
@@ -84,6 +83,8 @@ function NavbarLoggedIn() {
     </div>
   </div>
 </nav>
+<WelcomeMessage />
+</div>
     );
 }
 
