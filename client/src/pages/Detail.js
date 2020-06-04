@@ -57,11 +57,11 @@ const Detail = () => {
                        }
                     </div>
                     <div className="card_content is-centered">
-                        <h2 id="detail_name" className="detail_card card_title">{state.currentHike.name}</h2>
-                        <p className="detail_card card_text">Location: {state.currentHike.location} </p>
-                        <p className="detail_card card_text">Distance: {state.currentHike.length} miles {state.currentHike.trailType}</p>
-                        <p className="detail_card card_text">Elevation Gain: {state.currentHike.ascent} feet</p>
-                        <h6 className="detail_card card_text">{state.currentHike.description}</h6>
+                        <h1 id="detail_name" className="detail_card card_title">{state.currentHike.name}</h1>
+                        <h2 className="detail_card card_text ">Location: {state.currentHike.location} </h2>
+                        <h2 className="detail_card card_text ">Distance: {state.currentHike.length} miles {state.currentHike.trailType}</h2>
+                        <h2 className="detail_card card_text ">Elevation Gain: {state.currentHike.ascent} feet</h2>
+                        <h6 className="detail_card card_text ">{state.currentHike.description}</h6>
                     </div>
                 </div>
                 <br />
