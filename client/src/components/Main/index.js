@@ -12,7 +12,6 @@ import GetUserInfo from "../GetUserInfo";
 import Logout from "../Logout";
 
 function Main() {
-
     return (
         <Router>
             <GetUserInfo />

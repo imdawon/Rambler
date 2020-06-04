@@ -16,7 +16,6 @@ function SearchResults() {
 
     // set current hike so when user clickes on detail it will navigate them to the details page for THAT hike
     const setCurrentHike = (hike) => {
-        console.log("details!!!", hike);
         dispatch({
             type: SET_CURRENT_HIKE,
             currentHike: hike
@@ -25,13 +24,9 @@ function SearchResults() {
     //add hike to user bucket list mongodb
     const setBucketList = (bucketListHike) => {
         createNotificationEvent('Added to Bucket List!')
-
-        console.log(`bucketListHike value: ${bucketListHike}`);
-
         API.addToBucketList(state.googleId, bucketListHike)
             .then(res => console.log("Updated Bucket List", res.data))
             .catch(err => console.log(err));
-
         dispatch({
             type: ADD_BUCKETLIST,
             bucketList: bucketListHike

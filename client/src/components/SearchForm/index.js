@@ -5,7 +5,6 @@ import "./style.css";
 import API from "../../utils/API";
 import axios from "axios";
 
-
 const SearchForm = () => {
     //user search input
     const search_input = useRef();
