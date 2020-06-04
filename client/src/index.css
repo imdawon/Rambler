@@ -37,10 +37,32 @@ code {
   width: 40%;
 }
 
-#detail_card {
-  width: 80%;
-  margin: 0 10%;
-  text-align: justify;
+@media (max-width: 539px){
+  #detail_card {
+    width: 80%;
+    margin: 0 10%;
+    text-align: justify;
+}
+}
+
+@media (min-width: 540px){
+    #detail_card {
+    width: 50%;
+    margin: 0 25%;
+    text-align: justify;
+  }
+}
+
+#search-distance {
+  width: 60%;
+}
+
+#search-name {
+  width: 60%;
+}
+
+.card_text {
+  font-size: 1.5em;
 }
 
 #detail_name {
@@ -48,7 +70,21 @@ code {
 }
 #detailImage {
   width: 100%;
+  max-height: 500px;
   height: auto;
+}
+
+/* loading image rotate */
+.rotate {
+  animation: rotation 2s infinite linear;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 .button {

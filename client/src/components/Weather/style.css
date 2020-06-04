@@ -1,0 +1,33 @@
+.weather_icon {
+    display: block;
+    margin: 0 auto;
+}
+
+.card{
+    background-color: transparent;
+}
+
+.no_white {
+    margin-bottom: -20px;
+}
+
+#display {
+    display: grid;
+}
+
+@media (min-width: 920px) {
+    #display{
+    width: 20%;
+    }
+}
+@media (max-width: 919px) {
+    #display{
+    width: 33%;
+    }
+}
+
+@media (max-width: 539px) {
+    #display{
+        width: 80%;
+    }
+}

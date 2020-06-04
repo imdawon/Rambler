@@ -3,6 +3,7 @@ import {
   UPDATE_BAR_CHART,
   UPDATE_BAR_CHART_LABELS,
   UPDATE_BAR_LABEL_STYLE,
+  UPDATE_LOG
 } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
 import {
@@ -15,14 +16,30 @@ import {
   LabelSeries,
 } from "react-vis";
 import "../../../node_modules/react-vis/dist/style.css";
-
+import API from "../../utils/API";
 
 function BarChart() {
   const [state, dispatch] = useStoreContext();
+  useEffect(() => {
+    processData();
+  }, [state.log]);
 
   useEffect(() => {
-    processData(state.log);
-  }, [state.log]);
+    generateLogData();
+  }, [state.barChart,state.barChartLabels,state.barLabelStyle]);
+  const generateLogData = () => {
+    if(state.googleId){
+      API.getUserList(state.googleId)
+        .then((hikes) => {
+            let logListHikes = hikes.data.log;
+            dispatch({
+                type: UPDATE_LOG,
+                log: logListHikes
+            });
+        })
+        .catch(err => console.log(err));
+    }
+};
 
   const processData = () => {
     let updatedDistance = state.log.map((e) => {

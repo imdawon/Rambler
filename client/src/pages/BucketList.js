@@ -8,15 +8,14 @@ import bucket from "../assets/bucket.jpg";
 
 function BucketList() {
     const [state, dispatch] = useStoreContext();
-
-
+    // on page load get the database data for user bucketlist
     useEffect(() => {
         generateBucketListData();
     }, []);
 
-    useEffect(() => {
-        console.log(state.bucketList)
-    }, [state]);
+    // useEffect(() => {
+    //     console.log(state.bucketList)
+    // }, [state]);
 
     const generateBucketListData = () => {
         API.getUserList(state.googleId)
@@ -29,7 +28,7 @@ function BucketList() {
             })
             .catch(err => console.log(err));
     };
-
+// if user has nothing in bucket list display go hike! image
     return (
         (state.bucketList.length > 0) 
         ? 
@@ -42,7 +41,7 @@ function BucketList() {
         <h2>Add some hikes to your Bucket List!</h2>
         <img id="emptyLog" src={takeAHike} />
         </div>
-    )
-}
+    );
+};
 
 export default BucketList;

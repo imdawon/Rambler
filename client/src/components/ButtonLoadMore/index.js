@@ -7,7 +7,7 @@ const axios = require('axios');
 
 function ButtonLoadMore() {
     const [state, dispatch] = useStoreContext();
-
+// on click load the next 12 hikes, gathering the details needed from REI for trailType and description
     const loadMore = () => {
 
         dispatch({
@@ -39,11 +39,11 @@ function ButtonLoadMore() {
         (state.loading)
         ?
         <div>
-        <button className="load_more btn card_btn" onClick={() => loadMore()}>Load More</button>
+        <button className="load_more button is-success is-light detailButton" onClick={() => loadMore()}>Load More</button>
         <img id="bucketListImage" src={loading} />
         </div>
         :
-        <button className="load_more btn card_btn" onClick={() => loadMore()}>Load More</button>
+        <button className="load_more button is-success is-light detailButton" onClick={() => loadMore()}>Load More</button>
     );
 };
 
