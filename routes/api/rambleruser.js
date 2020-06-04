@@ -15,7 +15,6 @@ router
 router
     .route("/log/remove/:id")
     .put(ramblerUserController.removeLog)
-
 //add to bucketlist
 router
     .route("/bucketlist/:id")
@@ -24,7 +23,5 @@ router
 router 
     .route("/bucketlist/remove/:id")
     .put(ramblerUserController.removeBucketList)
-
-
 
 module.exports = router;
