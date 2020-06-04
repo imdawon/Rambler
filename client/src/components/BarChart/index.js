@@ -3,7 +3,6 @@ import {
   UPDATE_BAR_CHART,
   UPDATE_BAR_CHART_LABELS,
   UPDATE_BAR_LABEL_STYLE,
-  UPDATE_LINE_CHART,
   UPDATE_LOG
 } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
@@ -22,12 +21,10 @@ import API from "../../utils/API";
 function BarChart() {
   const [state, dispatch] = useStoreContext();
   useEffect(() => {
-    console.log(state.log)
     processData();
   }, [state.log]);
 
   useEffect(() => {
-    console.log(state.log)
     generateLogData();
   }, [state.barChart,state.barChartLabels,state.barLabelStyle]);
   const generateLogData = () => {
@@ -39,9 +36,6 @@ function BarChart() {
                 type: UPDATE_LOG,
                 log: logListHikes
             });
-        })
-        .then( () => {
-          console.log(state.log);
         })
         .catch(err => console.log(err));
     }
