@@ -20,9 +20,9 @@ import API from "../../utils/API";
 
 function BarChart() {
   const [state, dispatch] = useStoreContext();
-  useEffect(() => {
-    processData();
-  }, [state.log]);
+  // useEffect(() => {
+  //   processData();
+  // }, [state.log]);
 
   useEffect(() => {
     if (state.log.length < 1) {
@@ -38,13 +38,15 @@ function BarChart() {
       API.getUserList(state.googleId)
         .then((hikes) => {
             let logListHikes = hikes.data.log;
+            console.log("LOG LIST HIKES FROM BAR CHART", logListHikes);
             dispatch({
                 type: UPDATE_LOG,
                 log: logListHikes
             });
         })
         .catch(err => console.log(err));
-    }
+    };
+    processData();
 };
 
   const processData = () => {
