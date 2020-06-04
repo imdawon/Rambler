@@ -6,7 +6,7 @@ export default {
     },
     // rei api for hike data
     getTrails: function(lat, lon, maxDistance, maxResults) {
-        return axios.get("https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=" + maxDistance + "&maxResults=" + maxResults + "&key=" + process.env.REACT_APP_REI_API_KEY)
+        return axios.get("https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&maxDistance=" + maxDistance + "&maxResults=" + maxResults + "&sort=distance" + "&key=" + process.env.REACT_APP_REI_API_KEY)
     },
     // openweather for hike detail weather forecast
     getWeather: function(lat, lon) {

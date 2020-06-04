@@ -108,7 +108,7 @@ const SearchForm = () => {
             <form className="searchForm" onSubmit={handleFormSubmit}>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input is-success"
+                        <input id="search-name" class="input is-success"
                             ref={search_input}
                             type="text"
                             placeholder="Where is the next adventure?"
@@ -120,7 +120,7 @@ const SearchForm = () => {
                 </div>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input is-success"
+                        <input id="search-distance" class="input is-success"
                             ref={max_distance}
                             type="text"
                             placeholder="Travel Distance (default 30 miles)"
