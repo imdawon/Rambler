@@ -12,7 +12,6 @@ function LogResults() {
     const [state, dispatch] = useStoreContext();
 
     const setCurrentHike = (hike) => {
-        console.log(hike);
         dispatch({
             type: SET_CURRENT_HIKE,
             currentHike: hike
