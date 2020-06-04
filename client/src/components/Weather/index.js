@@ -12,7 +12,7 @@ function Weather() {
         window.scrollTo(0, 0);
         generateWeather();
     }, []);
-
+    // api call to open weather
     const generateWeather = () => {
         API.getWeather(state.currentHike.latitude, state.currentHike.longitude)
             .then((res) => {
@@ -21,6 +21,7 @@ function Weather() {
             .catch(err => console.log(err));
     };
 
+    // gathers date/time at 9 am city name, and sets them to state.
     const compileData = (data) => {
         const dailyData = data.list.filter(reading => {
             return reading.dt_txt.includes("09:00:00")
@@ -64,7 +65,6 @@ function Weather() {
                 ))}
             </div>
         </div>
-
     )
 };
 

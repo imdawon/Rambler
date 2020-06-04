@@ -4,7 +4,6 @@ import SearchResults from "../components/SearchResults";
 import { useStoreContext } from "../utils/GlobalState";
 import loading from "../assets/loading.png";
 
-
 const Search = () => {
   const [state, dispatch] = useStoreContext();
 // if loading display loading image otherwise display results!
