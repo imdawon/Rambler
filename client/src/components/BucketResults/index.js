@@ -2,16 +2,16 @@ import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Link } from "react-router-dom";
 import API from '../../utils/API';
-import "./style.css";
 import ButtonLogAdd from '../ButtonLogAdd';
 import ButtonDeleteBucket from '../ButtonDeleteBucket';
 import ButtonDetail from '../ButtonDetails';
 import createNotificationEvent from "../../utils/createNotificationEvent";
 import { SET_CURRENT_HIKE, ADD_LOG, REMOVE_BUCKETLIST } from "../../utils/actions";
 import emptyImage from "../../assets/emptyTrailImage.jpg"
+
 function BucketResults() {
     const [state, dispatch] = useStoreContext();
-
+// set the current hike if the user clicks on details, navigate user to deatils page for that currentn hike
     const setCurrentHike = (hike) => {
         console.log(hike);
         dispatch({
@@ -19,6 +19,8 @@ function BucketResults() {
             currentHike: hike
         });
     };
+
+    // add the log to the mongo db 
     const setLog = (logHike) => {
         console.log(logHike)
 
@@ -31,6 +33,8 @@ function BucketResults() {
             log: logHike
         });
     };
+
+    // delete hike from mongodb
     const removeHike = (hikeToRemoveID, hikeToRemove) => {
         createNotificationEvent('Removed from Bucket List!')
         API.removeBucketlistHike(state.googleId, hikeToRemove)
@@ -111,7 +115,7 @@ function BucketResults() {
                 ))}
             </ul>
         </div>
-    )
+    );
 };
 
 export default BucketResults;

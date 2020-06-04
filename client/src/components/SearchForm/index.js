@@ -43,13 +43,15 @@ const SearchForm = () => {
             type: SET_USER_SEARCH,
             userSearch: searchValue
         });
+
+        // for pagination to render correct indexes
         dispatch({
             type: SET_VISIBLE_INDEX,
-            visibleIndex: 12
+            visibleIndex: 24
         });
         dispatch({
             type: SET_PREV_INDEX,
-            prevIndex: 0
+            prevIndex: 12
         });
         search_input.current.value = "";
         max_distance.current.value = "";
@@ -73,22 +75,21 @@ const SearchForm = () => {
     const loadHikes = () => {
         let maxDistance = max_distance.current.value
         console.log(maxDistance)
-        let maxResults = "60";
+        //we will call for 72 display 12 at a time we will save these in state until ready to render to page
+        let maxResults = "72";
 
         API.getTrails(state.lat, state.lon, maxDistance, maxResults)
             .then((trails) => {
                 let hikeResults = trails.data.trails
-                console.log(hikeResults, "@@@@")
                 dispatch({
                     type: UPDATE_PAGINATION_HIKES,
                     paginationHikes: hikeResults
                 })
-                getMoreInfo(hikeResults.slice(0, state.visibleIndex));
-            //    return hikeResults;
+                getMoreInfo(hikeResults.slice(0, 12));
             })
             .catch(err => console.log(err));
     };
-
+// get more details for trailType and description, once data is recieved update state to the VISIBLE HIKES
     const getMoreInfo = (hikeResults) => {
         let hikesWithDetails;
         axios.post('/hikeDetails', hikeResults)
@@ -107,7 +108,7 @@ const SearchForm = () => {
             <form className="searchForm" onSubmit={handleFormSubmit}>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input is-success"
+                        <input id="search-name" class="input is-success"
                             ref={search_input}
                             type="text"
                             placeholder="Where is the next adventure?"
@@ -119,7 +120,7 @@ const SearchForm = () => {
                 </div>
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                        <input class="input is-success"
+                        <input id="search-distance" class="input is-success"
                             ref={max_distance}
                             type="text"
                             placeholder="Travel Distance (default 30 miles)"

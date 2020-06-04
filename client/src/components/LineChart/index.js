@@ -3,6 +3,7 @@ import {
   UPDATE_LINE_CHART,
   UPDATE_LINE_CHART_LABELS,
   UPDATE_LINE_LABEL_STYLE,
+  UPDATE_LOG
 } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
 import {
@@ -15,11 +16,37 @@ import {
   LabelSeries,
 } from "react-vis";
 import "../../../node_modules/react-vis/dist/style.css";
+import API from "../../utils/API";
+
+//Set store context and then call processData when the state.log is updated.
 function LineChart() {
   const [state, dispatch] = useStoreContext();
   useEffect(() => {
     processData();
   }, [state.log]);
+
+  useEffect(() => {
+    if (state.log.length < 1) {
+      generateLogData();
+    }
+  }, []);
+
+  useEffect(() => {
+    generateLogData();
+  }, [state.lineChart,state.lineChartLabels,state.lineLabelStyle]);
+  const generateLogData = () => {
+    if(state.googleId){
+      API.getUserList(state.googleId)
+        .then((hikes) => {
+            let logListHikes = hikes.data.log;
+            dispatch({
+                type: UPDATE_LOG,
+                log: logListHikes
+            });
+        })
+        .catch(err => console.log(err));
+    }
+};
 
   const processData = () => {
     let updatedDistance = state.log.map((e) => {
@@ -40,7 +67,6 @@ function LineChart() {
         x: e.length,
         y: e.ascent,
       }));
-
     dispatch({
       type: UPDATE_LINE_CHART,
       lineChart: stateDataPoints,

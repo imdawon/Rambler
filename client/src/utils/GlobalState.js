@@ -98,30 +98,30 @@ const reducer = (state, action) => {
         barChart: [...action.barChart],
         loading: false
       };
-      case UPDATE_BAR_CHART_LABELS:
+    case UPDATE_BAR_CHART_LABELS:
+    return {
+      ...state,
+      barChartLabels: [...action.barChartLabels],
+      loading: false
+    };
+    case UPDATE_LINE_CHART_LABELS:
+    return {
+      ...state,
+      lineChartLabels: [...action.lineChartLabels],
+      loading: false
+    };
+    case UPDATE_BAR_LABEL_STYLE:
       return {
         ...state,
-        barChartLabels: [...action.barChartLabels],
+        barLabelStyle: action.barLabelStyle,
         loading: false
       };
-      case UPDATE_LINE_CHART_LABELS:
+    case UPDATE_LINE_LABEL_STYLE:
       return {
         ...state,
-        lineChartLabels: [...action.lineChartLabels],
+        lineLabelStyle: action.lineLabelStyle,
         loading: false
       };
-      case UPDATE_BAR_LABEL_STYLE:
-        return {
-          ...state,
-          barLabelStyle: action.barLabelStyle,
-          loading: false
-        };
-        case UPDATE_LINE_LABEL_STYLE:
-          return {
-            ...state,
-            lineLabelStyle: action.lineLabelStyle,
-            loading: false
-          };
     case REMOVE_BUCKETLIST:
       return {
         ...state,
@@ -160,11 +160,11 @@ const reducer = (state, action) => {
         ...state,
         currentHike: action.currentHike
       };
-      case SET_ACTION_NOTIFICATION:
-        return {
-          ...state,
-          actionNotification: action.actionNotification
-        }
+    case SET_ACTION_NOTIFICATION:
+      return {
+        ...state,
+        actionNotification: action.actionNotification
+      }
     case CATCH_FORECAST:
       return {
         ...state,

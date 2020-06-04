@@ -3,7 +3,6 @@ const ramblerUserController = require('../../controllers/ramblerUserController')
 
 router
     .route("/")
-    .post(ramblerUserController.create)
 //get user saved hikes
 router
     .route("/:id")

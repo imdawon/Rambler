@@ -2,7 +2,7 @@ import React from 'react';
 import "./style.css"
 
 function ButtonBucketAdd(props) {
-
+// depending what page you are on, button will look differnt for the details page
     return (
         (props.detail)
             ?
