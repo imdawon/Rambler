@@ -5,6 +5,7 @@ import GetUserInfo from "../../components/GetUserInfo";
 import bulma from "bulma";
 import "./style.css";
 import logo from "../../assets/logo.png"
+import WelcomeMessage from "../WelcomeMessage";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -34,7 +35,7 @@ function NavbarNotLoggedIn() {
     const [state, dispatch] = useStoreContext();
 
     return (
-
+<div>
   <nav className="navbar is-transparent" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
     <a className="navbar-item" href="/">
@@ -84,6 +85,7 @@ function NavbarNotLoggedIn() {
     </div>
   </div>
 </nav>
+</div>
     );
 }
 
