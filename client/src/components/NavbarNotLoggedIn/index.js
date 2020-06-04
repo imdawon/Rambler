@@ -49,7 +49,7 @@ function NavbarNotLoggedIn() {
     </a>
   </div>
 
-  <div id="navbarBasicExample" className="navbar-menu is-active">
+  <div id="navbarBasicExample" className="navbar-menu">
     <div className="navbar-start">
       <div className="navbar-item">
         <div className="buttons">
