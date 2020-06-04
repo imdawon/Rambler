@@ -21,9 +21,9 @@ import API from "../../utils/API";
 //Set store context and then call processData when the state.log is updated.
 function LineChart() {
   const [state, dispatch] = useStoreContext();
-  useEffect(() => {
-    processData();
-  }, [state.log]);
+  // useEffect(() => {
+  //   processData();
+  // }, [state.log]);
 
   useEffect(() => {
     if (state.log.length < 1) {
@@ -39,13 +39,15 @@ function LineChart() {
       API.getUserList(state.googleId)
         .then((hikes) => {
             let logListHikes = hikes.data.log;
+            console.log("LOG LIST HIKES FROM LINE CHART", logListHikes);
             dispatch({
                 type: UPDATE_LOG,
                 log: logListHikes
             });
         })
         .catch(err => console.log(err));
-    }
+    };
+    processData();
 };
 
   const processData = () => {
