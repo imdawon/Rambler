@@ -15,9 +15,8 @@ const Detail = () => {
     const [state, dispatch] = useStoreContext();
 // add user bucket list hike to database
     const setBucketList = (bucketListHike) => {
-        console.log(bucketListHike)
-        createNotificationEvent('Added to Bucket List!')
-  
+        createNotificationEvent('Added to Bucket List!');
+
         API.addToBucketList(state.googleId, bucketListHike)
             .then(res => console.log("Updated Bucket List", res.data))
             .catch(err => console.log(err));
@@ -29,9 +28,7 @@ const Detail = () => {
     };
     // add user log hike to database
     const setLog = (logHike) => {
-        console.log(logHike)
-
-        createNotificationEvent('Added to your Hike Log!')
+        createNotificationEvent('Added to your Hike Log!');
 
         API.addToLog(state.googleId, logHike)
             .then(res => console.log("Updated log", res.data))
@@ -110,7 +107,6 @@ const Detail = () => {
                         )
                     }} />
                 <Weather />
-
             </div>
             :
             <h1 style={{textAlign: "center",}}>Hike Not Found</h1>

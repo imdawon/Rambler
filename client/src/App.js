@@ -14,9 +14,7 @@ function App() {
         </Wrapper>
       </StoreProvider>
     </div>
-
   );
-
-}
+};
 
 export default App;
