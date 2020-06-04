@@ -3,7 +3,6 @@ import {
   UPDATE_LINE_CHART,
   UPDATE_LINE_CHART_LABELS,
   UPDATE_LINE_LABEL_STYLE,
-  UPDATE_BAR_CHART,
   UPDATE_LOG
 } from "../../utils/actions";
 import { useStoreContext } from "../../utils/GlobalState";
@@ -32,27 +31,23 @@ function LineChart() {
     }
   }, []);
 
+  useEffect(() => {
+    generateLogData();
+  }, [state.lineChart,state.lineChartLabels,state.lineLabelStyle]);
   const generateLogData = () => {
-    API.getUserList(state.googleId)
+    if(state.googleId){
+      API.getUserList(state.googleId)
         .then((hikes) => {
             let logListHikes = hikes.data.log;
             dispatch({
                 type: UPDATE_LOG,
                 log: logListHikes
             });
-            dispatch({
-                type: UPDATE_LINE_CHART,
-                lineChart: logListHikes
-            });
-            dispatch({
-                type: UPDATE_BAR_CHART,
-                barChart: logListHikes
-            });
         })
         .catch(err => console.log(err));
+    }
 };
 
-//Checks if we need to manipulate the length data.
   const processData = () => {
     let updatedDistance = state.log.map((e) => {
       if (e.trailType === "point to point" && e.length < 12.5) {
