@@ -25,8 +25,14 @@ function BarChart() {
   }, [state.log]);
 
   useEffect(() => {
+    if (state.log.length < 1) {
+      generateLogData();
+    }
+  }, []);
+
+  useEffect(() => {
     generateLogData();
-  }, [state.barChart,state.barChartLabels]);
+  }, [state.barChart.length]);
   const generateLogData = () => {
     if(state.googleId){
       API.getUserList(state.googleId)
