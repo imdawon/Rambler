@@ -24,9 +24,9 @@ function Weather() {
     const compileData = (data) => {
         const dailyData = data.list.filter(reading => {
             return reading.dt_txt.includes("12:00:00")
-        }
-        )
-        let city = data.city.name
+        })
+        
+        let city = data.city.name;
         dispatch({
             type: CATCH_FORECAST,
             weather: dailyData
