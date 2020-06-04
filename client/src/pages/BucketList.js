@@ -12,11 +12,7 @@ function BucketList() {
     useEffect(() => {
         generateBucketListData();
     }, []);
-
-    // useEffect(() => {
-    //     console.log(state.bucketList)
-    // }, [state]);
-
+    // gets bucketlist for user from mondodb
     const generateBucketListData = () => {
         API.getUserList(state.googleId)
             .then((hikes) => {
