@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Navbar from "../Navbar";
 import Search from "../../pages/Search";
 import Auth from "../../pages/Auth";
 import Log from "../../pages/Log";
@@ -41,7 +40,7 @@ function Main() {
             </Switch>
             <Footer />
         </Router>
-    )
-}
+    );
+};
 
 export default Main;
