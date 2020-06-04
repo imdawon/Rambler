@@ -33,7 +33,7 @@ function LineChart() {
 
   useEffect(() => {
     generateLogData();
-  }, [state.lineChart,state.lineChartLabels]);
+  }, [state.lineChart.length]);
   const generateLogData = () => {
     if(state.googleId){
       API.getUserList(state.googleId)
