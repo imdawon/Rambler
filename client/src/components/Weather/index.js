@@ -22,8 +22,9 @@ function Weather() {
     };
 
     const compileData = (data) => {
+        console.log(data)
         const dailyData = data.list.filter(reading => {
-            return reading.dt_txt.includes("12:00:00")
+            return reading.dt_txt.includes("09:00:00")
         })
         
         let city = data.city.name;
