@@ -53,7 +53,13 @@ code {
   }
 }
 
+#search-distance {
+  width: 60%;
+}
 
+#search-name {
+  width: 60%;
+}
 
 .card_text {
   font-size: 1.5em;
