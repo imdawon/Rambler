@@ -1,53 +1,54 @@
 import React from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Link } from "react-router-dom";
-import GetUserInfo from "../../components/GetUserInfo";
 import bulma from "bulma";
 import "./style.css";
 import logo from "../../assets/logo.png"
+import WelcomeMessage from "../WelcomeMessage";
 
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
 
-  // Get all "navbar-burger" elements
-  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+//   // Get all "navbar-burger" elements
+//   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-  // Check if there are any navbar burgers
-  if ($navbarBurgers.length > 0) {
+//   // Check if there are any navbar burgers
+//   if ($navbarBurgers.length > 0) {
 
-    // Add a click event on each of them
-    $navbarBurgers.forEach( el => {
-      el.addEventListener('click', () => {
+//     // Add a click event on each of them
+//     $navbarBurgers.forEach( el => {
+//       el.addEventListener('click', () => {
 
-        // Get the target from the "data-target" attribute
-        const target = el.dataset.target;
-        const $target = document.getElementById(target);
+//         // Get the target from the "data-target" attribute
+//         const target = el.dataset.target;
+//         const $target = document.getElementById(target);
 
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-      });
-    });
-  }
-});
+//         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+//         el.classList.toggle('is-active');
+//         $target.classList.toggle('is-active');
+//       });
+//     });
+//   }
+// });
 
 function NavbarLoggedIn() {
     const [state, dispatch] = useStoreContext();
     return (
-
+<div>
   <nav className="navbar is-transparent" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
     <a className="navbar-item" href="/">
       <img id="navLogo" className="is-rounded" src={logo} width="112" height="28" />
     </a>
 
-    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+    <label role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" htmlFor="nav-toggle-state">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
-    </a>
+    </label>
   </div>
+  <input type="checkbox" id="nav-toggle-state" />
 
-  <div id="navbarBasicExample" className="navbar-menu is-active">
+  <div id="navbarBasicExample" className="navbar-menu">
     <div className="navbar-start">
       <div className="navbar-item">
         <div className="buttons">
@@ -73,7 +74,6 @@ function NavbarLoggedIn() {
     <div className="navbar-end">
       <div className="navbar-item">
         <div className="buttons">
-        {/* <h6>Happy hiking, { state.user }!&nbsp;&nbsp;&nbsp;</h6> */}
           <Link to="/Logout">
             <a className="button is-light">
               Log Out
@@ -84,6 +84,8 @@ function NavbarLoggedIn() {
     </div>
   </div>
 </nav>
+<WelcomeMessage />
+</div>
     );
 }
 
