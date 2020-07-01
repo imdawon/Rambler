@@ -46,7 +46,9 @@ function Log() {
         </div>
         : <div>
         <h2>Get out on the trail and log some hikes!</h2>
-        <img id="emptyLog" src={takeAHike} />
+        <div className="take-a-hike-img">
+            <img id="emptyLog" src={takeAHike} />
+        </div>
         </div>
     );
 };
