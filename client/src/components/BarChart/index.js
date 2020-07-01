@@ -20,25 +20,33 @@ import API from "../../utils/API";
 
 function BarChart() {
   const [state, dispatch] = useStoreContext();
+  // useEffect(() => {
+  //   processData();
+  // }, [state.log]);
+
   useEffect(() => {
-    processData();
-  }, [state.log]);
+    if (state.log.length < 1) {
+      generateLogData();
+    }
+  }, []);
 
   useEffect(() => {
     generateLogData();
-  }, [state.barChart,state.barChartLabels]);
+  }, [state.barChart.length]);
   const generateLogData = () => {
     if(state.googleId){
       API.getUserList(state.googleId)
         .then((hikes) => {
             let logListHikes = hikes.data.log;
+            console.log("LOG LIST HIKES FROM BAR CHART", logListHikes);
             dispatch({
                 type: UPDATE_LOG,
                 log: logListHikes
             });
         })
         .catch(err => console.log(err));
-    }
+    };
+    processData();
 };
 
   const processData = () => {
