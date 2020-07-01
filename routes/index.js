@@ -37,7 +37,7 @@ router.post('/hikeDetails', (req, res) => {
     return axios.get(hike.url)
       .then((res) => {
         const $ = cheerio.load(res.data);
-        let type = $('.mb-quarter').html();
+        let type = $('.stat-block').children('h3').html();
         let summary = $('h3:contains("Description")').next().text();
         let hikeData = { ...hike, trailType: type, description: summary };
         hikesWithDetails.push(hikeData);
