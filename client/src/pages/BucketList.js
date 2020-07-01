@@ -35,7 +35,9 @@ function BucketList() {
         :
         <div>
         <h2>Add some hikes to your Bucket List!</h2>
-        <img id="emptyLog" src={takeAHike} />
+        <div className="take-a-hike-img">
+            <img id="emptyLog" src={takeAHike} />
+        </div>        
         </div>
     );
 };
