@@ -18,8 +18,8 @@ code {
 }
 
 #emptyLog {
-  width: 50%;
-  margin: 20px 25% 0;
+  width: 25%;
+  margin-top: 2%;
 }
 
 #bucketListImage {
@@ -94,6 +94,10 @@ code {
   display: flex;
   justify-content: center;
   margin-top: 2%;
+}
+.take-a-hike-img{
+  display: flex;
+  justify-content: center;
 }
 @media (max-width: 539px){
   #navLogo {
